@@ -10,30 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180409204420) do
+ActiveRecord::Schema.define(version: 20180409212819) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "users", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer "sign_in_count", default: 0, null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.inet "current_sign_in_ip"
-    t.inet "last_sign_in_ip"
-    t.string "first_name"
-    t.string "last_name"
-    t.string "phone_number"
-    t.string "cpf"
+  create_table "companies", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "cnpj"
+    t.string "name"
+    t.string "street_number"
+    t.string "address1"
+    t.string "address2"
+    t.string "zip_code"
+    t.string "city"
+    t.string "state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["user_id"], name: "index_companies_on_user_id"
   end
 
   create_table "lines", force: :cascade do |t|
@@ -75,6 +69,28 @@ ActiveRecord::Schema.define(version: 20180409204420) do
     t.index ["station_id"], name: "index_stations_lines_on_station_id"
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet "current_sign_in_ip"
+    t.inet "last_sign_in_ip"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "phone_number"
+    t.string "cpf"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  add_foreign_key "companies", "users"
   add_foreign_key "panels", "panel_types"
   add_foreign_key "panels", "stations"
   add_foreign_key "stations_lines", "lines"

@@ -1,3 +1,3 @@
 class PanelType < ApplicationRecord
-  belongs_to :panel
+  has_many :panels
 end

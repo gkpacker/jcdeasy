@@ -1,4 +1,4 @@
 class Panel < ApplicationRecord
-  has_one :panel_type
-  has_many :stations
+  belongs_to :panel_type
+  belongs_to :station
 end

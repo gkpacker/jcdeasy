@@ -20,6 +20,7 @@ gem 'devise'
 gem "cpf_cnpj"
 gem 'cloudinary'
 gem 'money-rails', '~>1'
+gem 'carrierwave', '~> 1.2'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

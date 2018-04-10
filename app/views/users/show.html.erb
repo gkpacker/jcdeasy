@@ -1,3 +1,20 @@
-<h1>Users#show</h1>
-<p>User: <%= current_user.first_name + " " + current_user.last_name %></p>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1>Dashboard</h1>
+
+<h2>Meu perfil :</h2>
+<h4><%= link_to "Editar", edit_user_registration_path %></h4>
+<p>Name: <%= @user.first_name + " " + @user.last_name %></p>
+<p>Phone number: <%= @user.phone_number %></p>
+<p>CPF: <%= @user.cpf %></p>
+
+<h2><%= "Empresa".pluralize(@user.companies.count) + " " + "registrada".pluralize(@user.companies.count) %>:</h2>
+<h4><%= link_to "Registrar outra empresa", new_company_path %></h4>
+
+<% @user.companies.each do |company| %>
+  <p><%= company.name %></p>
+  <p>CNPJ: <%= company.cnpj %></p>
+  <p>Endereço: <%= company.address1 %> <%= company.address2 if company.address2  %> <%= company.street_number  %>, <%= company.zip_code  %> <%= company.city %>, <%= company.state %></p>
+  <p><%= link_to "Editar empresa", edit_company_path(company) %></p>
+  <p><%= link_to "Deletar empresa", company_path(company), method: :delete, data: { confirm: "Are you sure?" } %></p>
+  <p>------------------------------------------------------------------------------</p>
+<% end %>
+</ol>

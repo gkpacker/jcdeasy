@@ -169,3 +169,24 @@ Panel.create!(panel_type: random_panel_type,
 
 puts "Created #{Panel.count} panels"
 
+puts "Creating test user"
+cpf = CPF.generate
+cnpj = CNPJ.generate
+user = User.create!(email: 'teste@jcdeasy.com',
+                    password: "123456",
+                    cpf: cpf,
+                    phone_number: "111111111",
+                    first_name: "Teste",
+                    last_name: "jcdeasy")
+
+puts "Creating test user company"
+
+Company.create!(user: user,
+                cnpj: cnpj,
+                name: "LeWagon",
+                address1: "Rua Mourato Coelho",
+                street_number: "1404",
+                zip_code: "05417-000",
+                city: "SP",
+                state: "São Paulo")
+

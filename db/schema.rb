@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180409215247) do
+ActiveRecord::Schema.define(version: 20180410112900) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,18 @@ ActiveRecord::Schema.define(version: 20180409215247) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.string "date"
+    t.string "duration"
+    t.integer "quantity"
+    t.bigint "campaign_id"
+    t.bigint "panel_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["campaign_id"], name: "index_orders_on_campaign_id"
+    t.index ["panel_id"], name: "index_orders_on_panel_id"
+  end
+
   create_table "panel_types", force: :cascade do |t|
     t.string "name"
     t.string "total_area"
@@ -68,8 +80,8 @@ ActiveRecord::Schema.define(version: 20180409215247) do
     t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "latitude"
-    t.integer "longitude"
+    t.float "latitude"
+    t.float "longitude"
   end
 
   create_table "stations_lines", force: :cascade do |t|
@@ -102,6 +114,8 @@ ActiveRecord::Schema.define(version: 20180409215247) do
 
   add_foreign_key "campaigns", "companies"
   add_foreign_key "companies", "users"
+  add_foreign_key "orders", "campaigns"
+  add_foreign_key "orders", "panels"
   add_foreign_key "panels", "panel_types"
   add_foreign_key "panels", "stations"
   add_foreign_key "stations_lines", "lines"

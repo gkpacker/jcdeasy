@@ -4,4 +4,6 @@ class Panel < ApplicationRecord
   has_many :orders
 
   monetize :price_cents
+
+  validates :price_cents, presence: true
 end

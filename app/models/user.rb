@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  has_many :companies, dependent: :destroy
+  has_many :companies
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
@@ -13,7 +13,7 @@ class User < ApplicationRecord
   private
 
   def check_cpf
-    errors.add(:cpf, "CPF invalido, digite apenas numeros") unless CPF.valid?(self.cpf)
+    errors.add(:cpf, "CPF inválido, digite apenas números") unless CPF.valid?(self.cpf)
   end
 
 end

@@ -18,7 +18,7 @@ gem 'webpacker'
 
 gem 'devise'
 gem "cpf_cnpj"
-
+gem 'cloudinary'
 gem 'money-rails', '~>1'
 
 group :development do

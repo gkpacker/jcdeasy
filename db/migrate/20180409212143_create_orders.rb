@@ -5,7 +5,7 @@ class CreateOrders < ActiveRecord::Migration[5.1]
       t.string :date
       t.string :duration
       t.integer :quantity
-      t.references :campaigns, foreign_key: true
+      t.references :campaign, foreign_key: true
 
       t.timestamps
     end

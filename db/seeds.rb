@@ -40,4 +40,3 @@ parsed.each do |station_collection|
 end
 
 puts "Created #{Station.count} stations."
-

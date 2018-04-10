@@ -19,6 +19,7 @@ gem 'webpacker'
 gem 'devise'
 gem "cpf_cnpj"
 
+gem 'money-rails', '~>1'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180409212819) do
+ActiveRecord::Schema.define(version: 20180409215247) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "campaigns", force: :cascade do |t|
+    t.bigint "company_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_campaigns_on_company_id"
+  end
 
   create_table "companies", force: :cascade do |t|
     t.bigint "user_id"
@@ -51,6 +58,7 @@ ActiveRecord::Schema.define(version: 20180409212819) do
     t.bigint "station_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "price_cents", default: 0, null: false
     t.index ["panel_type_id"], name: "index_panels_on_panel_type_id"
     t.index ["station_id"], name: "index_panels_on_station_id"
   end
@@ -90,6 +98,7 @@ ActiveRecord::Schema.define(version: 20180409212819) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "campaigns", "companies"
   add_foreign_key "companies", "users"
   add_foreign_key "panels", "panel_types"
   add_foreign_key "panels", "stations"

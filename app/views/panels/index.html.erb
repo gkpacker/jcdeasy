@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+
+    <% @panels.each do |panel| %>
+      <div class="col-xs-12 col-sm-4">
+        <div class="card">
+          <div class="card-image">
+            <%= image_tag "https://source.unsplash.com/random" %>
+          </div>
+          <div class="card-footer">
+            <div class="card-description">
+              <h5><%= panel.panel_type.name %></h5>
+              <p><%= panel.station.name %></p>
+              <% panel.station.lines.each do |line| %>
+                <p><%= line.name %></p>
+              <% end %>
+              <p><%= panel.panel_type.total_area %></p>
+              <p><%= panel.price %></p>
+            </div>
+          </div>
+          <%= link_to "", "#", class: "card-link" %>
+        </div>
+      </div>
+    <% end %>
+
+
+  </div>
+</div>

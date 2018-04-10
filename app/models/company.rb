@@ -1,7 +1,7 @@
 class Company < ApplicationRecord
   belongs_to :user
-  has_many :campaigns, dependent: :destroy
-  
+  has_many :campaigns
+
   validates :cnpj, :name, :street_number, :address1, :zip_code, :city, :state, presence: true
   validate :check_cnpj
 

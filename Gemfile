@@ -17,6 +17,8 @@ gem 'uglifier'
 gem 'webpacker'
 
 gem 'devise'
+gem "cpf_cnpj"
+
 gem 'money-rails', '~>1'
 
 group :development do

@@ -1,5 +1,5 @@
 .card {
-  margin: 10px;
+  margin: 30px;
   height: 175px;
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   color: white;
@@ -8,8 +8,7 @@
 .card-image {
   background-size: cover !important;
   background-position: center;
-  width: 250px;
-  width: 200px;
+  width: 100%;
 }
 .card-description {
   margin-top: 200px;

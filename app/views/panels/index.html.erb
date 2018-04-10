@@ -4,9 +4,7 @@
     <% @panels.each do |panel| %>
       <div class="col-xs-12 col-sm-4">
         <div class="card">
-          <div class="card-image">
-            <%= image_tag "https://source.unsplash.com/random" %>
-          </div>
+          <%= image_tag "https://source.unsplash.com/random", class: "card-image" %>
           <div class="card-footer">
             <div class="card-description">
               <h5><%= panel.panel_type.name %></h5>

@@ -1,5 +1,9 @@
 class CompaniesController < ApplicationController
-before_action :find_company, only: [:edit, :update, :destroy]
+before_action :find_company, only: [:show, :edit, :update, :destroy]
+
+  def show
+
+  end
 
   def new
     @company = Company.new

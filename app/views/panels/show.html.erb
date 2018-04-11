@@ -5,13 +5,24 @@
     <p><%= line.name %></p>
   <% end %>
 
-  <input type="text" class="panel-date">
   <p>Area total: <%= @panel.panel_type.total_area %></p>
   <p>Area visivel: <%= @panel.panel_type.visible_area %></p>
   <p>Area de seguranca: <%= @panel.panel_type.security_area %></p>
   <p><%= humanized_money_with_symbol(@panel.price) %></p>
   <%= link_to "back", panels_path %>
 </div>
+
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <%= simple_form_for [@panel, @order] do |f| %>
+        <%= f.input :date, input_html: { class: "panel-date" } %>
+        <%= f.association :campaign, collection: @campaigns %>
+        <%= f.select :duration, collection: [28, 56, 84, 112, 140, 168, 196, 224, 252, 280, 308, 336, 364] %>
+        <%= f.submit %>
+      <% end %>
+    </div>
+  </div>
+
 <ul class="hidden">
   <% @dates.each do |date| %>
     <li class="dates" data-datefrom="<%= date[:from] %>" data-dateto="<%= date[:to] %>"></li>

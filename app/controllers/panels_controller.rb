@@ -1,6 +1,6 @@
 class PanelsController < ApplicationController
   before_action :set_panel, only: [:show, :available, :calculate_dates]
-
+  skip_before_action :authenticate_user!, only: [:index, :show]
   def index
     if params[:station].present?
       @panels = Panel.station_search(params[:station])
@@ -10,12 +10,14 @@ class PanelsController < ApplicationController
   end
 
   def show
+    if user_signed_in?
     @dates = calculate_dates
     @order = @panel.orders.build
-    @campaigns = []
-    current_user.companies.each do |company|
-      company.campaigns.each do |campaign|
-        @campaigns << campaign
+      @campaigns = []
+      current_user.companies.each do |company|
+        company.campaigns.each do |campaign|
+          @campaigns << campaign
+        end
       end
     end
   end

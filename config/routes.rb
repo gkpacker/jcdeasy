@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
   resources :companies, only: [:show, :edit, :update, :destroy]
   resources :panels, only: [:index, :show]
-  resources :users, only: [:show]
+  resource :users, only: [:show]
   resources :companies, except: [:index]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

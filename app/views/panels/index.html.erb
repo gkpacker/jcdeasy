@@ -10,12 +10,19 @@
                         <!-- Wrapper for slides -->
                         <div class="carousel-inner" role="listbox">
                           <div class="item active">
-                            <%= image_tag "https://source.unsplash.com/random/700x500" %>
+                            <% if panel.picture %>
+                              <%= cl_image_tag panel.picture %>
+                            <% else %>
+                              <%= cl_image_tag(panel.panel_type.picture, width: 700, height: 500, crop: :fill) %>
+                            <% end %>
                           </div>
                           <div class="item">
-                            <%= image_tag "https://source.unsplash.com/random/700x500", class: "img-wrap" %>
+                            <% if panel.picture %>
+                              <%= cl_image_tag panel.picture %>
+                            <% else %>
+                              <%= cl_image_tag(panel.panel_type.picture, width: 700, height: 500, crop: :fill) %>
+                            <% end %>
                           </div>
-
                         </div>
 
                         <!-- Controls -->

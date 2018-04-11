@@ -1,11 +1,9 @@
-<h2><%= "Campanha".pluralize(@campaigns_qty) %>:</h2>
-<% if @campaigns == [] %>
-  <p>Você ainda não montou nenhuma campanha para suas empresas</p>
-  <p class="btn btn-primary">Começa agora</p>
-<% else %>
-  <% @campaigns.each do |campaign| %>
+<h2>Campanhas:</h2>
+<% @all_companies.each do |company| %>
+
+  <% company.campaigns.each do |campaign| %>
     <p><%= campaign.company.name %></p>
-    <p><%= campaign.title %></p>
+      <p><%= campaign.title %></p>
     <p>Estatus do pagamento :
       <% if campaign.paid %>
         Aprovado
@@ -15,3 +13,4 @@
     </p>
   <% end %>
 <% end %>
+

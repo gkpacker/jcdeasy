@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   devise_for :users
-
+  get "/panels/:id/available_dates/", to: "panels#available", as: "available"
   resources :users, only: [:show] do
     resources :companies, only: [:index, :new, :create]
   end

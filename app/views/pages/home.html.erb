@@ -1,9 +1,9 @@
 <h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-
-<form action="<%= panels_path %>">
-  <div class="search-wrapper">
-    <input type="text" name="station" class="field_search">
-    <button class="btn btn-primary btn_search btn-easy">Buscar</button>
-  </div>
-</form>
+<div id="banner">
+  <form action="<%= panels_path %>">
+    <div class="search-wrapper text-center">
+      <%= select_tag 'search_station', options_from_collection_for_select(Station.all, :id, :name), multiple: 'multiple' %>
+      <button class="btn btn-primary btn_search btn-easy">Buscar</button>
+    </div>
+  </form>
+</div>

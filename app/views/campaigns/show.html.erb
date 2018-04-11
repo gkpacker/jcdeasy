@@ -1,1 +1,15 @@
-<%= @campaign.title %>
+<div class="container">
+  <div class="row">
+    <h1 class="text-center"><%= @campaign.title %></h1>
+    <br>
+    <% @campaign.orders.each do |order| %>
+      <div class="col-md-6 col-md-offset-3">
+        <h4><%= order.panel.panel_type.name %></h4>
+        <p>Data de veículação: <%= order.date %></p>
+        <p><strong>Duração:</strong> <%= order.duration %></p>
+        <p><strong>Válido até: </strong><%= order.date.to_date + order.duration
+          %></p>
+      </div>
+    <% end %>
+  </div>
+</div>

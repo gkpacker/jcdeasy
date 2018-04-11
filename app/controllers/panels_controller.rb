@@ -11,6 +11,13 @@ class PanelsController < ApplicationController
 
   def show
     @dates = calculate_dates
+    @order = @panel.orders.build
+    @campaigns = []
+    current_user.companies.each do |company|
+      company.campaigns.each do |campaign|
+        @campaigns << campaign
+      end
+    end
   end
 
   def available

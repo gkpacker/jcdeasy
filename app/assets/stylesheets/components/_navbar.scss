@@ -87,9 +87,8 @@
 
 .search-wrapper {
   position: relative;
-  height: 50px;
+  // height: 40px;
   width: 700px;
-  border-radius: 10px;
 
   img {
     position: absolute;
@@ -113,4 +112,12 @@
 
 .input-group-addon:not(:first-child):not(:last-child), .input-group-btn:not(:first-child):not(:last-child), .input-group .form-control:not(:first-child):not(:last-child) {
     border-radius: 3px;
+}
+
+.select2-selection__choice {
+  margin-left: 60px !important;
+}
+
+.select2-selection--multiple {
+  min-height: 50px !important;
 }

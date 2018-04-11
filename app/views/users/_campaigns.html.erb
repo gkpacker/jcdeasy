@@ -2,6 +2,7 @@
 <% if @campaigns == [] %>
   <p>Você ainda não montou nenhuma campanha para suas empresas</p>
   <p class="btn btn-primary">Começa agora</p>
+  <%#= link_to "Começar agora", new_users_company_campaign_path %>
 <% else %>
   <% @campaigns.each do |campaign| %>
     <p><%= campaign.company.name %></p>

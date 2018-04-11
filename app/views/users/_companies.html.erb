@@ -2,7 +2,7 @@
 <%= link_to "Registrar outra empresa", new_users_company_path %>
 
 <% @user.companies.each do |company| %>
-  <p><%= company.name %></p>
+  <%= link_to company.name, company_path(company) %>
   <p>CNPJ: <%= company.cnpj %></p>
   <p>Endereço: <%= company.address1 %> <%= company.address2 if company.address2  %> <%= company.street_number  %>, <%= company.zip_code  %> <%= company.city %>, <%= company.state %></p>
   <p><%= link_to "Editar empresa", edit_company_path(company) %></p>

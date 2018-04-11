@@ -1,4 +1,5 @@
 class Company < ApplicationRecord
+  enum status: [ :active, :archived ]
   belongs_to :user
   has_many :campaigns
 

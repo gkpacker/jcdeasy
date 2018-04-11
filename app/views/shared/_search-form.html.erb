@@ -1,0 +1,14 @@
+ <form action="<%= panels_path %>">
+  <div class="search-section">
+  <div class="input-group search-wrapper">
+    <%= image_tag "metro_icon.png", width: 30 %>
+
+    <input type="text" class="form-control"  placeholder="Digite uma estação" name="query" >
+
+    <%= link_to panels_path do %>
+      <button type="button" class="btn btn-primary" name="query">Buscar</button>
+
+    <% end  %>
+  </div>
+</div>
+ </form>

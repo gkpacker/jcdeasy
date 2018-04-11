@@ -21,7 +21,7 @@ class PanelsController < ApplicationController
     dates = []
     @panel.orders.each do |order|
       dates << { from: order.date.to_date,
-                to: order.date.to_date + order.duration.to_i}
+                to: order.date.to_date + order.duration}
     end
     dates
   end

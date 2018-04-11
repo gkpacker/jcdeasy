@@ -1,14 +1,11 @@
- <form action="<%= panels_path %>">
+<form action="<%= panels_path %>">
   <div class="search-section">
-  <div class="input-group search-wrapper">
-    <%= image_tag "metro_icon.png", width: 30 %>
-
-    <%= select_tag 'station', options_from_collection_for_select(Station.all, :name, :name), multiple: 'multiple', class:"form-control" %>
-
-    <%= link_to panels_path do %>
-
-      <button class="btn btn-primary btn_search btn-easy">Buscar</button>
-    <% end  %>
+    <div class="input-group search-wrapper">
+      <%= image_tag "metro_icon.png", width: 30 %>
+      <%= select_tag 'station', options_from_collection_for_select(Station.all, :name, :name), multiple: 'multiple', class:"form-control" %>
+      <%= link_to panels_path do %>
+        <button class="btn btn-primary btn_search btn-easy">Buscar</button>
+      <% end %>
+    </div>
   </div>
-</div>
- </form>
+</form>

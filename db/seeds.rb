@@ -149,6 +149,24 @@ PanelType.create!(name: "Painel Backlight Master ",
                   picture: "https://res.cloudinary.com/charlotteboucher/image/upload/v1523474841/Produtos/Painel_Backlight_Master.jpg"
                   )
 
+# puts "Creating panels based on real JCD inventory"
+
+# require 'csv'
+
+# csv_options = { col_sep: ',', quote_char: '"', headers: :first_row }
+# filepath = "inventory/metroSP-11abril.csv"
+
+# CSV.foreach(filepath, csv_options) do |row|
+#   new_panel = Panel.new
+#   panel_type = row['GRUPO']
+#   new_panel.panel_type = PanelType.where(name: panel_type)
+#   station = row['NOME DA ESTAÇÃO'].delete_prefix!("ESTACAO ")
+#   new_panel.station = Station.where(name: station)
+#   new_panel.save
+# end
+
+# puts "Created #{Panel.count} panels"
+
 puts "Creating panels in 'Linha 1 Azul'"
 random_panel_type = PanelType.all
 random_line1_station = linha_azul.stations

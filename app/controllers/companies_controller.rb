@@ -30,7 +30,7 @@ before_action :find_company, only: [:show, :edit, :update, :destroy]
   end
 
   def destroy
-    @company.destroy
+    @company.archived!
     redirect_to users_path
   end
 

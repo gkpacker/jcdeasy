@@ -9,10 +9,20 @@ class CampaignsController < ApplicationController
   end
 
   def create
-
+    @campaign = Campaign.new(campaign_params)
+    @campaign.company = Company.find(params[:company_id])
+    if @campaign.save
+      redirect_to @campaign.company
+    else
+      render :new
+    end
   end
 
   private
+
+  def campaign_params
+    params.require(:campaign).permit(:title)
+  end
 
   def set_company
     @company = Company.find(params[:company_id])

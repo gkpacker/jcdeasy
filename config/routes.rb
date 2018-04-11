@@ -8,7 +8,9 @@ Rails.application.routes.draw do
     resources :companies, only: [:new, :create]
   end
   resources :campaigns, only: [:show]
-  resources :companies, only: [:show, :edit, :update, :destroy]
+  resources :companies, only: [:show, :edit, :update, :destroy] do
+    resources :campaigns, only: [:new, :create]
+  end
   resources :panels, only: [:index, :show]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

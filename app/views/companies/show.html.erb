@@ -4,10 +4,11 @@
 <p><%= link_to "Editar empresa", edit_company_path(@company) %></p>
 <p><%= link_to "Deletar empresa", company_path(@company), method: :delete, data: { confirm: "Are you sure?" } %></p>
 <% if @company.campaigns == [] %>
-  <%= link_to "Começar agora", new_users_company_campaign_path %>
+  <%= link_to "Começar agora", new_company_campaign_path(@company) %>
 <% else %>
+  <%= link_to "Criar nova campanha", new_company_campaign_path(@company) %>
   <% @company.campaigns.each do |campaign| %>
-    <p></p>
+    <p>------------------</p>
     <%= link_to campaign.title, campaign_path(campaign) %>
     <p>Estatus do pagamento :
       <% if campaign.paid %>

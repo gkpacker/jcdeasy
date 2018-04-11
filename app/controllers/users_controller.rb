@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   def show
     @user = current_user
-    @campaigns = Campaign.where(company: @user.companies)
+    @companies = Company.where(user: @user, status: [:active])
+    @campaigns = Campaign.where(company: @companies)
     if @campaigns == []
       @campaigns_qty = 1
     else

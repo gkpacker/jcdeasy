@@ -9,7 +9,7 @@ before_action :find_company, only: [:edit, :update, :destroy]
     @company = Company.new(company_params)
     @company.user = current_user
     if @company.save
-      redirect_to user_path(current_user)
+      redirect_to users_path
     else
       render :new
     end
@@ -20,7 +20,7 @@ before_action :find_company, only: [:edit, :update, :destroy]
 
   def update
     if @company.update(company_params)
-      redirect_to user_path(current_user)
+      redirect_to users_path
     else
       render :edit
     end

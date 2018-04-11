@@ -1,5 +1,5 @@
 <h2><%= "Empresa".pluralize(@companies_qty) + " " + "registrada".pluralize(@companies_qty) %>:</h2>
-<h4><%= link_to "Registrar outra empresa", new_user_company_path(current_user) %></h4>
+<%= link_to "Registrar outra empresa", new_users_company_path %>
 
 <% @user.companies.each do |company| %>
   <p><%= company.name %></p>

@@ -7,10 +7,11 @@
     <p><%= campaign.company.name %></p>
     <p><%= campaign.title %></p>
     <p>Estatus do pagamento :
-    <% if campaign.paid %>
-      Aprovado
-    <% else %>
-      Em espera
-    <% end %></p>
+      <% if campaign.paid %>
+        Aprovado
+      <% else %>
+        Em espera
+      <% end %>
+    </p>
   <% end %>
 <% end %>

@@ -7,8 +7,10 @@
         <h4><%= order.panel.panel_type.name %></h4>
         <p>Data de veículação: <%= order.date %></p>
         <p><strong>Duração: </strong><%= order.duration %></p>
-        <p><strong>Válido até: </strong><%= order.date.to_date + order.duration
-          %></p>
+        <p>
+          <strong>Válido até: </strong>
+          <%= order.date.to_date + order.duration%>
+        </p>
       </div>
     <% end %>
   </div>

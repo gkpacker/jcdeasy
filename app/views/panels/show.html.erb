@@ -4,9 +4,16 @@
   <% @panel.station.lines.each do |line| %>
     <p><%= line.name %></p>
   <% end %>
+
+  <input type="text" class="panel-date">
   <p>Area total: <%= @panel.panel_type.total_area %></p>
   <p>Area visivel: <%= @panel.panel_type.visible_area %></p>
   <p>Area de seguranca: <%= @panel.panel_type.security_area %></p>
   <p><%= humanized_money_with_symbol(@panel.price) %></p>
   <%= link_to "back", panels_path %>
 </div>
+<ul class="hidden">
+  <% @dates.each do |date| %>
+    <li class="dates" data-datefrom="<%= date[:from] %>" data-dateto="<%= date[:to] %>"></li>
+  <% end %>
+</ul>

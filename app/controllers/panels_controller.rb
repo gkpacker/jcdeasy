@@ -10,6 +10,7 @@ class PanelsController < ApplicationController
   end
 
   def show
+    @dates = calculate_dates
   end
 
   def available
@@ -20,8 +21,9 @@ class PanelsController < ApplicationController
   def calculate_dates
     dates = []
     @panel.orders.each do |order|
-      dates << { from: order.date.to_date,
-                to: order.date.to_date + order.duration}
+      start_date = order.date.to_date
+      dates << { from: start_date,
+                to: start_date + order.duration }
     end
     dates
   end

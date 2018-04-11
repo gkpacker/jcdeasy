@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import 'select2';
 
-$('#search_station').select2({
+$('#station').select2({
   placeholder: 'Seleciona uma estação'
 });
 

@@ -2,7 +2,7 @@
 <div id="banner">
   <form action="<%= panels_path %>">
     <div class="search-wrapper text-center">
-      <%= select_tag 'search_station', options_from_collection_for_select(Station.all, :id, :name), multiple: 'multiple' %>
+      <%= select_tag 'station', options_from_collection_for_select(Station.all, :name, :name), multiple: 'multiple' %>
       <button class="btn btn-primary btn_search btn-easy">Buscar</button>
     </div>
   </form>

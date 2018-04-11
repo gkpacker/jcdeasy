@@ -2,8 +2,8 @@ class PanelsController < ApplicationController
   before_action :set_panel, only: [:show, :available, :calculate_dates]
 
   def index
-    if params[:query].present?
-      @panels = Panel.station_search(params[:query])
+    if params[:station].present?
+      @panels = Panel.station_search(params[:station])
     else
       @panels = Panel.all
     end

@@ -6,11 +6,3 @@ $('#search_station').select2({
 });
 
 import 'select2/dist/css/select2.css';
-// stations = Stations.all
-
-// const list_stations = document.getElementById("search_station")
-// list_stations.addEventListener("keyup", autocomplete)
-
-// const autocomplete = (event) => {
-//   event.currentTarget.
-//    }

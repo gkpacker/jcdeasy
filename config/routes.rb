@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   devise_for :users
   get "/panels/:id/available_dates/", to: "panels#available", as: "available"
   resource :users, only: [:show] do
-    resources :companies, only: [:index, :new, :create]
+    resources :companies, only: [:new, :create]
   end
   resources :companies, only: [:show, :edit, :update, :destroy]
   resources :panels, only: [:index, :show]

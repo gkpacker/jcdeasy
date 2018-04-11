@@ -32,7 +32,7 @@ before_action :find_company, only: [:show, :edit, :update, :destroy]
 
   def destroy
     @company.destroy
-    redirect_to user_path(current_user)
+    redirect_to users_path
   end
 
   private

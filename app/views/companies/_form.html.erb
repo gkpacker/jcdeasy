@@ -1,4 +1,4 @@
-<%= simple_form_for @company do |form| %>
+<%= simple_form_for @company, url: users_companies_path do |form| %>
   <%= form.input :name %>
   <%= form.input :cnpj %>
   <%= form.input :address1 %>

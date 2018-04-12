@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row">
     <h1 class="text-center"><%= @campaign.title %></h1>
+    <h2 class="text-center"><%= humanized_money_with_symbol(@total) %></h2>
     <br>
 
     <ul class="list-unstyled">
@@ -27,6 +28,49 @@
           </div>
         </li>
       <% end %>
+      <button class="btn-primary" id="pay-button">Finalizar compra</button>
+
+      <script>
+      var button = document.querySelector('#pay-button');
+      button.addEventListener('click', function() {
+        // inicia a instância do Checkout
+        var checkout = new PagarMeCheckout.Checkout({
+          encryption_key: 'ek_test_haQ07HnJq4J4TgMhPKUvUymJPksG69',
+          success: function(data) {
+            console.log(data);
+          },
+          error: function(err) {
+            console.log(err);
+          },
+          close: function() {
+            console.log('The modal has been closed.');
+          }
+        });
+
+        // Obs.: é necessário passar os valores boolean como string
+        checkout.open({
+          amount: <%= @total_cents %>,
+          buttonText: 'Pagar',
+          buttonClass: 'botao-pagamento',
+          customerData: 'false',
+          createToken: 'true',
+          maxInstallments: 6,
+          paymentMethods: 'credit_card, boleto',
+          billing: {
+            name: '<%= @campaign.company.name %>',
+            address: {
+              country: 'br',
+              state: '<%= @campaign.company.state %>',
+              city: '<%= @campaign.company.city %>',
+              neighborhood: '<%= @campaign.company.address2 %>',
+              street: '<%= @campaign.company.address1 %>',
+              street_number: '<%= @campaign.company.street_number %>',
+              zip_code: '<%= @campaign.company.zip_code %>'
+            }
+          }
+        });
+      });
+      </script>
     </ul>
   </div>
 </div>

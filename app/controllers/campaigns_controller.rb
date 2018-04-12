@@ -2,6 +2,14 @@ class CampaignsController < ApplicationController
   before_action :set_company, only: [:new, :create]
   def show
     @campaign = Campaign.find(params[:id])
+    @total = 0
+    @total_cents = 0
+    @campaign.orders.each do |order|
+      @total += order.price
+    end
+    @campaign.orders.each do |order|
+      @total_cents += order.price_cents
+    end
   end
 
   def new
@@ -17,6 +25,16 @@ class CampaignsController < ApplicationController
       render :new
     end
   end
+
+
+  # require 'pagarme'
+
+  # PagarMe.api_key = "ak_test_Cj4zU15ZgUEcixiy6IaF5ocKxDoP4j";
+
+  # transaction = PagarMe::Transaction.find_by_id("TOKEN")
+  # transaction.capture({:amount => 1000})
+
+
 
   private
 

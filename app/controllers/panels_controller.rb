@@ -13,7 +13,7 @@ class PanelsController < ApplicationController
     if user_signed_in?
     @dates = calculate_dates
     @order = @panel.orders.build
-      @campaigns = []
+    @campaigns = []
       current_user.companies.each do |company|
         company.campaigns.each do |campaign|
           @campaigns << campaign

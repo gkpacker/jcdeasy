@@ -10,6 +10,7 @@
   box-shadow: 5px 5px 5px -4px #ddd;
   display: block;
   margin-top: 15px;
+  margin-bottom: 20px;
 
 
 }
@@ -38,7 +39,11 @@
   justify-content: space-between;
   align-items: center;
   color: #565655;
-  margin-top: 25px;
+}
+
+.title-edit i {
+  display: block;
+  margin-bottom: -70px;
 }
 
 .edit-icon {
@@ -46,9 +51,65 @@
  font-size: 24px;
  &:hover {
   color: #D17A00;
+  text-decoration: none;
  }
 }
+
+
 
 .btn-new-company {
   padding: 15px;
 }
+
+
+.company-list {
+  list-style-type: none;
+  border: 1px solid #e1e1e1;
+  margin: 0 auto;
+  margin-top:10px;
+  border-radius: 15px;
+  &:hover {
+    border: 1px solid #fda403;
+  }
+
+}
+
+.company-list-ul {
+  padding-left: 0;
+}
+
+.company-name-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fda403;
+  padding: 15px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  color: white;
+  width: 100%;
+
+}
+
+.company-name {
+  color: white;
+  &:hover {
+    color: white;
+  }
+}
+
+.company-info-wrap {
+  padding: 15px;
+  p {
+    font-size: 12px;
+  }
+}
+
+.company-icons{
+  color: white;
+  &:hover {
+    color: white;
+  }
+}
+
+

@@ -9,9 +9,11 @@
   padding: 15px;
   box-shadow: 5px 5px 5px -4px #ddd;
   display: block;
+  margin-top: 15px;
 
 
 }
+
 
 
 
@@ -35,4 +37,18 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: #565655;
+  margin-top: 25px;
+}
+
+.edit-icon {
+ color: #565655;
+ font-size: 24px;
+ &:hover {
+  color: #D17A00;
+ }
+}
+
+.btn-new-company {
+  padding: 15px;
 }

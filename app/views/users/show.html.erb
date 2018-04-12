@@ -4,23 +4,34 @@
       <div class="col-md-12">
         <div class="title-edit">
           <h4>Meu perfil :</h4>
-          <h4><%= link_to edit_user_registration_path  do%>
+          <%= link_to edit_user_registration_path, class:"edit-icon"  do%>
             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-          <% end %></h4>
+          <% end %>
         </div>
         <div class="profile">
+          <div class="row">
+            <div class="col-md-6">
+              <p class="title-profile">Nome:</p>
+              <p class="title-profile-value"><%= @user.first_name + " " + @user.last_name %></p>
+              <p class="title-profile">Telefone:</p>
+              <p class="title-profile-value"><%= @user.phone_number %></p>
 
-          <p class="title-profile">Nome:</p>
-          <p class="title-profile-value"><%= @user.first_name + " " + @user.last_name %></p>
-          <p class="title-profile">Telefone:</p>
-          <p class="title-profile-value"><%= @user.phone_number %></p>
-          <p class="title-profile">CPF:</p>
-          <p class="title-profile-value"><%= @user.cpf %></p>
+            </div>
+            <div class="col-md-6">
+              <p class="title-profile">CPF:</p>
+              <p class="title-profile-value"><%= @user.cpf %></p>
+              <p class="title-profile">Email:</p>
+              <p class="title-profile-value"><%= @user.email + " " + @user.last_name %></p>
+            </div>
+          </div>
         </div><!-- profile-info -->
       </div>
 
         <div class="col-md-12">
-          <h4>Minhas Empresas:</h4>
+          <div class="title-edit">
+            <h4>Minhas Empresas:</h4>
+            <%= link_to "Nova Empresa", new_users_company_path, class:"btn-primary btn-new-company" %>
+          </div>
           <div class="profile">
             <%= render 'users/companies' %>
           </div>

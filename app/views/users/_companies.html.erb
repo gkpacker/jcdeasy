@@ -1,6 +1,3 @@
-
-<%= link_to "Registrar outra empresa", new_users_company_path %>
-
 <% @companies.each do |company| %>
   <%= link_to company.name, company_path(company) %>
   <p>CNPJ: <%= company.cnpj %></p>

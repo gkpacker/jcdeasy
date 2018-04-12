@@ -21,8 +21,8 @@ linha_lilas = Line.create!(name: "Linha 5 - Lilás")
 puts "Created #{Line.count} lines."
 
 
-url = open('https://gist.githubusercontent.com/rafaelrinaldi/6a82dd1eceed6dfc7deb/raw/a43679cd321e9b779f2eb53e2f9fc8279b7a3c29/stations.json')
-parsed = JSON.parse(url.read)
+file = File.read("stations.json")
+parsed = JSON.parse(file)
 
 puts "Creating stations..."
 
@@ -30,6 +30,7 @@ parsed.each do |station_collection|
   station_info = station_collection.last
   station = Station.new
   station.name = station_info["title"]
+  station.sigla = station_info["sigla"]
   station.latitude = station_info["location"]["latitude"]
   station.longitude = station_info["location"]["longitude"]
   station.address = station_info["location"]["address"]
@@ -44,48 +45,8 @@ parsed.each do |station_collection|
       station.lines << linha_lilas
     end
   end
-  station.save
+  station.save!
 end
-
-station = Station.new
-station.name = "Adolfo Pinheiro"
-station.latitude = -23.650237
-station.longitude = -46.7061442
-station.address = "Av. Adolfo Pinheiro, 301 - Santo Amaro, São Paulo - SP, 04753-060"
-station.lines << linha_lilas
-station.save
-
-station = Station.new
-station.name = "Alto da Boa Vista"
-station.latitude = -23.6413461
-station.longitude = -46.7015247
-station.address = "Av. Santo Amaro, 6936 - Santo Amaro, São Paulo - SP, 04702-002"
-station.lines << linha_lilas
-station.save
-
-station = Station.new
-station.name = "Borba Gato"
-station.latitude = -23.6335141
-station.longitude = -46.6950494
-station.address = "Av. Santo Amaro, São Paulo - Estado de São Paulo, 04701-000"
-station.lines << linha_lilas
-station.save
-
-station = Station.new
-station.name = "Brooklin"
-station.latitude = 23.6265811
-station.longitude = -46.690056
-station.address = "Av. Jardim das Acacias, São Paulo - Estado de São Paulo, 04605-000"
-station.lines << linha_lilas
-station.save
-
-station = Station.new
-station.name = "Eucaliptos"
-station.latitude = -23.6128272
-station.longitude = -46.6711394
-station.address = "Av. Ibirapuera, 3144 - Indianópolis, São Paulo - SP, 04028-003"
-station.lines << linha_lilas
-station.save
 
 puts "Created #{Station.count} stations."
 

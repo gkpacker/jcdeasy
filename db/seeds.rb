@@ -21,7 +21,7 @@ linha_lilas = Line.create!(name: "Linha 5 - Lilás")
 puts "Created #{Line.count} lines."
 
 
-file = File.read("stations.json")
+file = File.read("db/inventory/stations.json")
 parsed = JSON.parse(file)
 
 puts "Creating stations..."

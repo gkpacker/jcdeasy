@@ -54,7 +54,13 @@
                 </div>
 
                 <div class="card-btn-wrap">
-                  <p class="price"><small>R$ </small><strong><%= panel.price %></strong></p>
+                  <p class="price"><small>R$ </small><strong>
+                    <% if panel.price == 0 %>
+                      <%= panel.panel_type.price %>
+                    <% else %>
+                      <%= panel.price %>
+                    <% end %>
+                  </strong>/ mês</p>
                   <button type="button" class="btn btn-primary">Ver detalhes</button>
                 </div>
               </div>

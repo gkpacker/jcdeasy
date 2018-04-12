@@ -6,7 +6,7 @@ class PanelsController < ApplicationController
     if params[:station].present?
       @panels = Panel.station_search(params[:station])
     else
-      @panels = Panel.all
+      @panels = Panel.all.sample(10)
     end
   end
 
@@ -14,8 +14,11 @@ class PanelsController < ApplicationController
     if user_signed_in?
       @dates = calculate_dates
       @order = @panel.orders.build
+      @companies = Company.where(status: :active, user: current_user)
+      @campaign = Campaign.new
+      @company = Company.new
       @campaigns = []
-      current_user.companies.each do |company|
+      @companies.each do |company|
         company.campaigns.each do |campaign|
           @campaigns << campaign
         end

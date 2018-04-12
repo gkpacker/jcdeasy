@@ -1,11 +1,17 @@
-<%= simple_form_for @company, url: users_companies_path do |form| %>
-  <%= form.input :name %>
-  <%= form.input :cnpj %>
-  <%= form.input :address1 %>
-  <%= form.input :address2 %>
-  <%= form.input :street_number %>
-  <%= form.input :zip_code %>
-  <%= form.input :city %>
-  <%= form.input :state %>
-  <%= form.submit %>
-<% end %>
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
+    <%= simple_form_for @company, url: users_companies_path do |form| %>
+      <%= form.input :name, autofocus: true, placeholder: 'Nome da sua empresa', label: false %>
+      <%= form.input :cnpj, placeholder: 'CNPJ', label: false %>
+      <%= form.input :address1, placeholder: 'Endereço', label: false %>
+      <%= form.input :address2, placeholder: 'Bairro', label: false %>
+      <%= form.input :street_number, placeholder: 'Número', label: false %>
+      <%= form.input :zip_code, placeholder: 'CEP', label: false %>
+      <%= form.input :city, placeholder: 'Cidade', label: false %>
+      <%= form.input :state, placeholder: 'Estado', label: false %>
+      <div class="text-center">
+        <%= form.submit "Criar Empresa", class: 'btn btn-primary' %>
+      </div>
+    </div>
+  <% end %>
+</div>

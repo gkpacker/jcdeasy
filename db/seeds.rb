@@ -122,48 +122,12 @@ filepath = "db/inventory/MetroSP-Inventario-existente-12abril.csv"
 
 CSV.foreach(filepath, csv_options) do |row|
   new_panel = Panel.new
-  # puts "@@@@@@@@#{row['GRUPO']}@@@@@@@@"
   new_panel.panel_type = PanelType.find_by("name ilike ?", row['GRUPO'])
   new_panel.station = Station.find_by(sigla: "#{row['SIGLA DA ESTAÇÃO']}")
   new_panel.save!
 end
 
 puts "Created #{Panel.count} panels"
-
-# puts "Creating panels in 'Linha 1 Azul'"
-# random_panel_type = PanelType.all
-# random_line1_station = linha_azul.stations
-
-# 10.times do
-#   Panel.create!(panel_type: random_panel_type.sample,
-#               station: random_line1_station.sample,
-#               price_cents: 100000)
-# end
-# puts "Creating panels in 'Linha 2 Verde'"
-
-# random_line2_station = linha_verde.stations
-# 10.times do
-#   Panel.create!(panel_type: random_panel_type.sample,
-#                 station: random_line2_station.sample,
-#                 price_cents: 200000)
-# end
-
-# puts "Creating panels in 'Linha 3 Vermelha'"
-# random_line3_station = linha_vermelha.stations
-# 10.times do
-#   Panel.create!(panel_type: random_panel_type.sample,
-#                 station: random_line3_station.sample,
-#               price_cents: 300000)
-# end
-# puts "Creating panels in 'Linha 5 Lilás'"
-
-# random_line5_station = linha_lilas.stations
-# 10.times do
-#   Panel.create!(panel_type: random_panel_type.sample,
-#                 station: random_line5_station.sample,
-#                 price_cents: 500000)
-# end
-# puts "Created #{Panel.count} panels"
 
 puts "Creating test user"
 cpf = CPF.generate

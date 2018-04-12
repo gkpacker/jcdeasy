@@ -1,5 +1,4 @@
 class CampaignsController < ApplicationController
-  before_action :set_company, only: [:new, :create]
   def show
     @campaign = Campaign.find(params[:id])
     @total = 0
@@ -23,9 +22,9 @@ class CampaignsController < ApplicationController
 
   def create
     @campaign = Campaign.new(campaign_params)
-    @campaign.company = Company.find(params[:company_id])
+    @campaign.company = Company.find(params[:campaign][:company])
     if @campaign.save
-      redirect_to @campaign.company
+      redirect_to stored_location_for(:user) || super
     else
       render :new
     end
@@ -37,7 +36,4 @@ class CampaignsController < ApplicationController
     params.require(:campaign).permit(:title)
   end
 
-  def set_company
-    @company = Company.find(params[:company_id])
-  end
 end

@@ -5,6 +5,7 @@
     "@rails/webpacker": "3.4",
     "bootstrap": "3",
     "flatpickr": "^4.4.4",
+    "inputmask": "^3.3.11",
     "jquery": "^3.3.1",
     "select2": "^4.0.6-rc.1"
   },

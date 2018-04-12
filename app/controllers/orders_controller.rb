@@ -4,7 +4,11 @@ class OrdersController < ApplicationController
 
   def create
     @order = @panel.orders.build(order_params)
-    @order.price_cents = @order.panel.price_cents * @order.duration.divmod(28).first
+    if @panel.price == 0
+      @order.price_cents = @panel.panel_type.price_cents * @order.duration.divmod(28).first
+    else
+      @order.price_cents = @panel.price
+    end
     if @order.save
       redirect_to campaign_path(@order.campaign)
     else

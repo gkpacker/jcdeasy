@@ -12,5 +12,6 @@ dates.forEach((date)=> {
 flatpickr(".panel-date", {
     dateFormat: "Y/m/d",
     minDate: new Date().fp_incr(10),
-    disable: disableDates
+    disable: disableDates,
+    onValueUpdate: close()
 });

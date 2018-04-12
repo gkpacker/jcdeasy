@@ -70,7 +70,7 @@ PanelType.create!(name: "Painel Super",
                   picture: "https://res.cloudinary.com/charlotteboucher/image/upload/v1523474846/Produtos/Painel_Super.jpg",
                   price_cents: 523000)
 
-PanelType.create!(name: "Painel Dupla Face",
+PanelType.create!(name: "Painel Dupla-Face",
                   total_area: "2,23m x 1,52m",
                   visible_area: "2,22m x 1,48m (3,28m²)",
                   security_area: "2,18m x 1,44m",
@@ -78,7 +78,7 @@ PanelType.create!(name: "Painel Dupla Face",
                   picture: "https://res.cloudinary.com/charlotteboucher/image/upload/v1523474846/Produtos/Painel_CrossTrack.jpg",
                   price_cents: 689500)
 
-PanelType.create!(name: "Painel Escadas",
+PanelType.create!(name: "Painel de Escada",
                   total_area: "0,41m x 0,61m",
                   visible_area: "0,41m x  0,61m (0,25m²)",
                   security_area: "0,39m x 0,59m",
@@ -86,7 +86,7 @@ PanelType.create!(name: "Painel Escadas",
                   picture: "https://res.cloudinary.com/charlotteboucher/image/upload/v1523474842/Produtos/Painel_Escada.jpg",
                   price_cents: 75000)
 
-PanelType.create!(name: "Painel Backlight Super",
+PanelType.create!(name: "Painel SuperBacklight",
                   total_area: "2,56m x 1,32m",
                   visible_area: "2,46m x 1,22m (3,01m²)",
                   security_area: "2,40m x 1,16m ",
@@ -94,7 +94,7 @@ PanelType.create!(name: "Painel Backlight Super",
                   picture: "https://res.cloudinary.com/charlotteboucher/image/upload/v1523474841/Produtos/Painel_Backlight_Super.jpg",
                   price_cents: 855000)
 
-PanelType.create!(name: "Painel Backlight Hiper",
+PanelType.create!(name: "Painel HiperBacklight",
                   total_area: "3,82m x 1,32m ",
                   visible_area: "3,72m x 1,22m (4,54m²)",
                   security_area: "3,66m x 1,16m ",
@@ -102,7 +102,7 @@ PanelType.create!(name: "Painel Backlight Hiper",
                   picture: "https://res.cloudinary.com/charlotteboucher/image/upload/v1523474837/Produtos/Painel_Backlight_Hiper.jpg",
                   price_cents: 1283000)
 
-PanelType.create!(name: "Painel Backlight Master ",
+PanelType.create!(name: "Painel MasterBacklight",
                   total_area: "4,97m x 2,79m ",
                   visible_area: "4,94m x 2,74m (13,54m²) ",
                   security_area: "4,80m x 2,70m",
@@ -112,56 +112,58 @@ PanelType.create!(name: "Painel Backlight Master ",
 
 puts "Created #{PanelType.count} panel types."
 
-# puts "Creating panels based on real JCD inventory"
+puts "Creating panels based on real JCD inventory"
 
-# require 'csv'
+require 'csv'
 
-# csv_options = { col_sep: ',', quote_char: '"', headers: :first_row }
-# filepath = "db/inventory/MetroSP-inventario-existente-12-avril.csv"
+csv_options = { col_sep: ';', quote_char: '"', headers: :first_row }
+filepath = "db/inventory/MetroSP-Inventario-existente-12abril.csv"
 
-# CSV.foreach(filepath, csv_options) do |row|
-#   new_panel = Panel.new
-#   new_panel.panel_type = PanelType.where(name: row['GRUPO'])
-#   new_panel.station = Station.where(sigla: row['SIGLA DA ESTAÇÃO'])
-#   new_panel.save
+
+CSV.foreach(filepath, csv_options) do |row|
+  new_panel = Panel.new
+  # puts "@@@@@@@@#{row['GRUPO']}@@@@@@@@"
+  new_panel.panel_type = PanelType.find_by("name ilike ?", row['GRUPO'])
+  new_panel.station = Station.find_by(sigla: "#{row['SIGLA DA ESTAÇÃO']}")
+  new_panel.save!
+end
+
+puts "Created #{Panel.count} panels"
+
+# puts "Creating panels in 'Linha 1 Azul'"
+# random_panel_type = PanelType.all
+# random_line1_station = linha_azul.stations
+
+# 10.times do
+#   Panel.create!(panel_type: random_panel_type.sample,
+#               station: random_line1_station.sample,
+#               price_cents: 100000)
+# end
+# puts "Creating panels in 'Linha 2 Verde'"
+
+# random_line2_station = linha_verde.stations
+# 10.times do
+#   Panel.create!(panel_type: random_panel_type.sample,
+#                 station: random_line2_station.sample,
+#                 price_cents: 200000)
 # end
 
+# puts "Creating panels in 'Linha 3 Vermelha'"
+# random_line3_station = linha_vermelha.stations
+# 10.times do
+#   Panel.create!(panel_type: random_panel_type.sample,
+#                 station: random_line3_station.sample,
+#               price_cents: 300000)
+# end
+# puts "Creating panels in 'Linha 5 Lilás'"
+
+# random_line5_station = linha_lilas.stations
+# 10.times do
+#   Panel.create!(panel_type: random_panel_type.sample,
+#                 station: random_line5_station.sample,
+#                 price_cents: 500000)
+# end
 # puts "Created #{Panel.count} panels"
-
-puts "Creating panels in 'Linha 1 Azul'"
-random_panel_type = PanelType.all
-random_line1_station = linha_azul.stations
-
-10.times do
-  Panel.create!(panel_type: random_panel_type.sample,
-              station: random_line1_station.sample,
-              price_cents: 100000)
-end
-puts "Creating panels in 'Linha 2 Verde'"
-
-random_line2_station = linha_verde.stations
-10.times do
-  Panel.create!(panel_type: random_panel_type.sample,
-                station: random_line2_station.sample,
-                price_cents: 200000)
-end
-
-puts "Creating panels in 'Linha 3 Vermelha'"
-random_line3_station = linha_vermelha.stations
-10.times do
-  Panel.create!(panel_type: random_panel_type.sample,
-                station: random_line3_station.sample,
-              price_cents: 300000)
-end
-puts "Creating panels in 'Linha 5 Lilás'"
-
-random_line5_station = linha_lilas.stations
-10.times do
-  Panel.create!(panel_type: random_panel_type.sample,
-                station: random_line5_station.sample,
-                price_cents: 500000)
-end
-puts "Created #{Panel.count} panels"
 
 puts "Creating test user"
 cpf = CPF.generate

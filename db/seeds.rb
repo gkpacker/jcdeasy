@@ -1,6 +1,5 @@
 require 'open-uri'
 require 'json'
-require 'pry-byebug'
 
 StationsLine.destroy_all
 Line.destroy_all
@@ -122,7 +121,6 @@ filepath = "db/inventory/MetroSP-Inventario-existente-12abril.csv"
 
 CSV.foreach(filepath, csv_options) do |row|
   new_panel = Panel.new
-  # puts "@@@@@@@@#{row['GRUPO']}@@@@@@@@"
   new_panel.panel_type = PanelType.find_by("name ilike ?", row['GRUPO'])
   new_panel.station = Station.find_by(sigla: "#{row['SIGLA DA ESTAÇÃO']}")
   new_panel.save!

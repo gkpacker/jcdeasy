@@ -21,6 +21,11 @@ class PanelsController < ApplicationController
         end
       end
     end
+    if @panel.price == 0
+      @price = @panel.panel_type.price
+    else
+      @price = @panel.price
+    end
   end
 
   def available

@@ -8,7 +8,7 @@
   <p>Area total: <%= @panel.panel_type.total_area %></p>
   <p>Area visivel: <%= @panel.panel_type.visible_area %></p>
   <p>Area de seguranca: <%= @panel.panel_type.security_area %></p>
-  <p><%= humanized_money_with_symbol(@panel.price) %></p>
+  <p><%= humanized_money_with_symbol(@price) %> / mês</p>
   <%= link_to "back", panels_path %>
 
   <% if user_signed_in? %>

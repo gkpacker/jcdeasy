@@ -10,7 +10,7 @@ dates.forEach((date)=> {
 });
 
 flatpickr(".panel-date", {
-    dateFormat: "Y/m/d",
+    dateFormat: "d/m/Y",
     minDate: new Date().fp_incr(10),
     disable: disableDates,
     onValueUpdate: close()

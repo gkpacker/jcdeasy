@@ -17,9 +17,7 @@ class OrdersController < ApplicationController
   end
 
   def destroy
-    if @order.destroy
-    else
-    end
+    @order.destroy
   end
 
   private

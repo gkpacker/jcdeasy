@@ -32,8 +32,8 @@ class PanelsController < ApplicationController
     dates = []
     @panel.orders.each do |order|
       start_date = order.date.to_date
-      dates << { from: start_date,
-                to: start_date + order.duration }
+      dates << { from: start_date.strftime("%d/%m/%Y"),
+                to: (start_date + order.duration).strftime("%d/%m/%Y") }
     end
     dates
   end

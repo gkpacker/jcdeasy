@@ -1,6 +1,6 @@
 
 .img-card {
-  background-size: cover;
+
   width: 100%;
 }
 
@@ -48,7 +48,7 @@
 
 .container-slide {
  margin: 0 auto;
- width: 300px;
+
 }
 
 
@@ -70,4 +70,14 @@
 
 .card-info p {
   font-size: 12px;
+}
+
+
+.cards-margin {
+  margin: 0;
+  padding: 0;
+}
+
+.carousel-inner > .item > img, .carousel-inner > .item > a > img {
+  height: auto;
 }

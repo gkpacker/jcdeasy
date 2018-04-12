@@ -51,7 +51,7 @@
         checkout.open({
           amount: <%= @total_cents %>,
           buttonText: 'Pagar',
-          buttonClass: 'botao-pagamento',
+          buttonClass: 'botao-pagamento btn-primary',
           customerData: 'false',
           createToken: 'true',
           maxInstallments: 6,
@@ -72,7 +72,7 @@
                 number: '<%= @campaign.company.cnpj %>'
               }
             ],
-            phone_numbers: ['+<%= current_user.phone_number %>'],
+            phone_numbers: ['<%= j current_user.phone_number %>'],
           },
           defaultInstallment: 1,
           billing: {

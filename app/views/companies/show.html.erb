@@ -3,19 +3,14 @@
 <p>Endereço: <%= @company.address1 %> <%= @company.address2 if @company.address2  %> <%= @company.street_number  %>, <%= @company.zip_code  %> <%= @company.city %>, <%= @company.state %></p>
 <p><%= link_to "Editar empresa", edit_company_path(@company) %></p>
 <p><%= link_to "Deletar empresa", company_path(@company), method: :delete, data: { confirm: "Are you sure?" } %></p>
-<% if @company.campaigns == [] %>
-  <%= link_to "Começar agora", new_company_campaign_path(@company) %>
-<% else %>
-  <%= link_to "Criar nova campanha", new_company_campaign_path(@company) %>
-  <% @company.campaigns.each do |campaign| %>
-    <p>------------------</p>
-    <%= link_to campaign.title, campaign_path(campaign) %>
-    <p>Estatus do pagamento :
-      <% if campaign.paid %>
-        Aprovado
-      <% else %>
-        Em espera
-      <% end %>
-    </p>
-  <% end %>
+<% @company.campaigns.each do |campaign| %>
+  <p>------------------</p>
+  <%= link_to campaign.title, campaign_path(campaign) %>
+  <p>Estatus do pagamento :
+    <% if campaign.paid %>
+      Aprovado
+    <% else %>
+      Em espera
+    <% end %>
+  </p>
 <% end %>

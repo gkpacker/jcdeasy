@@ -7,10 +7,8 @@ Rails.application.routes.draw do
   resource :users, only: [:show] do
     resources :companies, only: [:new, :create]
   end
-  resources :campaigns, only: [:show]
-  resources :companies, only: [:show, :edit, :update, :destroy] do
-    resources :campaigns, only: [:new, :create]
-  end
+  resources :campaigns, only: [:show, :new, :create]
+  resources :companies, only: [:show, :edit, :update, :destroy]
   resources :panels, only: [:index, :show] do
     resources :orders, only: :create
   end

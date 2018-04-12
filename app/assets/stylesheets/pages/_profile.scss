@@ -1,0 +1,38 @@
+.background{
+  background-color: #F2F2F2;
+}
+
+.profile {
+  background: #fff;
+  border: 1px solid #e1e1e1;
+  border-radius: 3px;
+  padding: 15px;
+  box-shadow: 5px 5px 5px -4px #ddd;
+  display: block;
+
+
+}
+
+
+
+.title-profile {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.title-profile-value {
+  display: block;
+  background-color: #eee;
+  color: #333;
+  font-size: 16px;
+  padding: 10px;
+  width: 100%;
+  border-radius: 7px;
+
+}
+
+.title-edit {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

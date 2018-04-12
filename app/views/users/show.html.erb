@@ -33,7 +33,9 @@
             <%= link_to "Nova Empresa", new_users_company_path, class:"btn-primary btn-new-company" %>
           </div>
           <div class="profile">
-            <%= render 'users/companies' %>
+            <ul class="company-list-ul">
+              <%= render 'users/companies' %>
+            </ul>
           </div>
         </div>
         <div class="col-md-12">

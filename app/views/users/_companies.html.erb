@@ -1,8 +1,37 @@
-<% @companies.each do |company| %>
-  <%= link_to company.name, company_path(company) %>
-  <p>CNPJ: <%= company.cnpj %></p>
-  <p>Endereço: <%= company.address1 %> <%= company.address2 if company.address2  %> <%= company.street_number  %>, <%= company.zip_code  %> <%= company.city %>, <%= company.state %></p>
-  <p><%= link_to "Editar empresa", edit_company_path(company) %></p>
-  <p><%= link_to "Deletar empresa", company_path(company), method: :delete, data: { confirm: "Are you sure?" } %></p>
-  <p>------------------------------------------------------------------------------</p>
+<div class="row"><% @companies.each do |company| %>
+  <li class="col-md-4 list-unstyled">
+    <div class="company-list">
+    <div class="row">
+      <div class="col-md-12">
+
+
+            <div class="company-name-wrap">
+              <%= link_to company.name, company_path(company), class:"company-name"%>
+
+              <div class="edit-delete-icon">
+              <%= link_to edit_company_path(company), class:"company-icons" do %>
+                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+              <% end %>
+              <%= link_to company_path(company), method: :delete, data: { confirm: "Are you sure?" }, class:"company-icons" do %>
+                <i class="fa fa-trash" aria-hidden="true"></i>
+              <% end %>
+            </div>
+            </div>
+
+
+
+      </div>
+      <div class="col-md-12">
+          <div class="company-info-wrap">
+        <p><strong>CNPJ:</strong> <%= company.cnpj %></p>
+        <p><strong>Endereço:</strong> <%= company.address1 %> <%= company.address2 if company.address2  %> <%= company.street_number  %>, <%= company.zip_code  %> <%= company.city %>, <%= company.state %></p>
+          </div>
+
+      </div>
+    </div>
+    </div>
+</li>
 <% end %>
+</div>
+
+

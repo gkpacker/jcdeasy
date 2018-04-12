@@ -1,12 +1,37 @@
-<div class="container">
-  <h1>Dashboard</h1>
+<div class="background">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="title-edit">
+          <h4>Meu perfil :</h4>
+          <h4><%= link_to edit_user_registration_path  do%>
+            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+          <% end %></h4>
+        </div>
+        <div class="profile">
 
-  <h2>Meu perfil :</h2>
-  <h4><%= link_to "Editar", edit_user_registration_path %></h4>
-  <p>Name: <%= @user.first_name + " " + @user.last_name %></p>
-  <p>Phone number: <%= @user.phone_number %></p>
-  <p>CPF: <%= @user.cpf %></p>
+          <p class="title-profile">Nome:</p>
+          <p class="title-profile-value"><%= @user.first_name + " " + @user.last_name %></p>
+          <p class="title-profile">Telefone:</p>
+          <p class="title-profile-value"><%= @user.phone_number %></p>
+          <p class="title-profile">CPF:</p>
+          <p class="title-profile-value"><%= @user.cpf %></p>
+        </div><!-- profile-info -->
+      </div>
 
-  <%= render 'users/companies' %>
-  <%= render 'users/campaigns' %>
+        <div class="col-md-12">
+          <h4>Minhas Empresas:</h4>
+          <div class="profile">
+            <%= render 'users/companies' %>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <h4>Minhas Campanhas:</h4>
+          <div class="profile">
+            <%= render 'users/campaigns' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

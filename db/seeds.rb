@@ -171,7 +171,7 @@ cnpj = CNPJ.generate
 user = User.create!(email: 'teste@gmail.com',
                     password: "123456",
                     cpf: cpf,
-                    phone_number: "111111111",
+                    phone_number: "11972390274",
                     first_name: "Teste",
                     last_name: "jcdeasy")
 
@@ -183,7 +183,7 @@ Company.create!(user: user,
                 address1: "Rua Mourato Coelho",
                 address2: "Vila Madalena",
                 street_number: "1404",
-                zip_code: "05417-000",
+                zip_code: "05417000",
                 city: "SP",
                 state: "São Paulo")
 

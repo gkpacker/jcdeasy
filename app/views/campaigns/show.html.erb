@@ -56,6 +56,25 @@
           createToken: 'true',
           maxInstallments: 6,
           paymentMethods: 'credit_card, boleto',
+          customer: {
+            external_id: '<%= @campaign.company.id %>',
+            name: '<%= @campaign.company.name %>',
+            type: 'individual',
+            country: 'br',
+            email: '<%= current_user.email %>',
+            documents: [
+              {
+                type: 'cpf',
+                number: '<%= current_user.cpf %>'
+              },
+              {
+                type: 'cnpj',
+                number: '<%= @campaign.company.cnpj %>'
+              }
+            ],
+            phone_numbers: ['+<%= current_user.phone_number %>'],
+          },
+          defaultInstallment: 1,
           billing: {
             name: '<%= @campaign.company.name %>',
             address: {
@@ -65,9 +84,10 @@
               neighborhood: '<%= @campaign.company.address2 %>',
               street: '<%= @campaign.company.address1 %>',
               street_number: '<%= @campaign.company.street_number %>',
-              zip_code: '<%= @campaign.company.zip_code %>'
+              zipcode: '<%= @campaign.company.zip_code %>'
             }
-          }
+          },
+          items: <%= raw @orders.to_json %>
         });
       });
       </script>

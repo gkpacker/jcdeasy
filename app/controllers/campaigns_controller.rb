@@ -4,10 +4,15 @@ class CampaignsController < ApplicationController
     @campaign = Campaign.find(params[:id])
     @total = 0
     @total_cents = 0
+    @orders = []
     @campaign.orders.each do |order|
+      @orders << { id: order.id,
+                  title: order.panel.panel_type.name,
+                  unit_price: order.price_cents,
+                  quantity: 1,
+                  tangible: true
+                  }
       @total += order.price
-    end
-    @campaign.orders.each do |order|
       @total_cents += order.price_cents
     end
   end
@@ -25,16 +30,6 @@ class CampaignsController < ApplicationController
       render :new
     end
   end
-
-
-  # require 'pagarme'
-
-  # PagarMe.api_key = "ak_test_Cj4zU15ZgUEcixiy6IaF5ocKxDoP4j";
-
-  # transaction = PagarMe::Transaction.find_by_id("TOKEN")
-  # transaction.capture({:amount => 1000})
-
-
 
   private
 

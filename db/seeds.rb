@@ -3,9 +3,13 @@ require 'json'
 
 StationsLine.destroy_all
 Line.destroy_all
+Campaign.destroy_all
+Company.destroy_all
+Order.destroy_all
 Panel.destroy_all
 PanelType.destroy_all
 Station.destroy_all
+User.destroy_all
 
 puts "Creating lines..."
 
@@ -134,7 +138,7 @@ cnpj = CNPJ.generate
 user = User.create!(email: 'teste@gmail.com',
                     password: "123456",
                     cpf: cpf,
-                    phone_number: "11972390274",
+                    phone_number: "+11972390274",
                     first_name: "Teste",
                     last_name: "jcdeasy")
 

@@ -17,10 +17,6 @@
 
 
 
-
-
-
-
 .title-profile {
   font-size: 12px;
   font-weight: bold;
@@ -115,4 +111,14 @@
   }
 }
 
+.compaign-wrap{
+  color: #565655;
+  background-color: #eee;
+  border-left: 3px solid #fda403;
+  padding: 15px;
+  &:hover {
+     border-left: 10px solid #fda403;
+    transition-duration: 0.2s
+  }
 
+}

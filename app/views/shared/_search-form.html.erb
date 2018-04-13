@@ -2,9 +2,9 @@
   <div class="search-section">
     <div class="input-group search-wrapper">
       <%= image_tag "metro_icon.png", width: 30 %>
-      <%= select_tag 'station', options_from_collection_for_select(Station.all, :name, :name), multiple: 'multiple', class:"form-control" %>
+      <%= select_tag 'station[]', option_groups_from_collection_for_select(Line.all.includes(:stations), :stations, :name, :name, :name), multiple: 'multiple', class: "form-control select2" %>
       <%= link_to panels_path do %>
-        <button class="btn btn-primary btn_search btn-easy">Buscar</button>
+        <button class="btn-primary btn_search btn-easy">Buscar</button>
       <% end %>
     </div>
   </div>

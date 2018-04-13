@@ -4,9 +4,17 @@ class PanelsController < ApplicationController
 
   def index
     if params[:station].present?
-      @panels = Panel.station_search(params[:station])
+      if params[:station].length > 1
+        panels = []
+        params[:station].each do |station|
+          panels << Panel.includes(:panel_type).includes(:station).station_search(station)
+        end
+        @panels = panels.flatten
+      else
+        @panels = Panel.includes(:panel_type).includes(:station).station_search(params[:station])
+      end
     else
-      @panels = Panel.all.sample(10)
+      @panels = Panel.all.includes(:panel_type).includes(:station).sample(10)
     end
   end
 

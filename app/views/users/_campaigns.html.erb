@@ -1,32 +1,25 @@
-<div class="row">
-  <li class="col-md-12 list-unstyled">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="compaign-wrap">
-          <div class="row">
-            <div class="col-md-6 compaign-info">
-              <ul>
-          <% @all_companies.each do |company| %>
-            <% company.campaigns.each do |campaign| %>
-            <p><%= campaign.title %> - <%= campaign.company.name %></p>
-          </div>
-          <div class="col-md-6">
-              <p>Estatus do pagamento :
-            <% if campaign.paid %>
-              Aprovado
-            <% else %>
-              Em espera
-            <% end %>
-            </ul>
-          </p>
-        </div>
-        </div>
-          </div>
-        </div>
-    </div>
-  </li>
-      <% end %>
+<% @all_companies.each do |company| %>
+  <% company.campaigns.each do |campaign| %>
+    <%= link_to campaign_path(campaign) do%>
+      <div class="row">
+        <li class="col-md-12 list-unstyled">
+            <div class="compaign-wrap">
+              <div class="row">
+                <div class="col-md-6 compaign-info">
+                  <p><%= campaign.title %> - <%= campaign.company.name %></p>
+                </div>
+                  <p>Estatus do pagamento :
+                    <% if campaign.paid %>
+                      Aprovado
+                    <% else %>
+                      Em espera
+                    <% end %>
+                  </p>
+              </div>
+            </div>
+        </li>
+      </div>
     <% end %>
-
-</div>
+  <% end %>
+<% end %>
 

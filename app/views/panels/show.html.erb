@@ -15,20 +15,6 @@
            <% end %>
         </div>
       </div>
-<<<<<<< Updated upstream
-    <% elsif !@companies.nil? && @campaigns.empty? %>
-      <h5>Você ainda não possui uma campanha</h5>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".campaign-modal">Criar campanha</button>
-
-    <% else %>
-      <div class="row">
-        <div class="col-md-4 col-md-offset-4">
-          <%= simple_form_for [@panel, @order] do |f| %>
-            <%= f.input :date, input_html: { class: "panel-date" } %>
-            <%= f.association :campaign, collection: @campaigns %>
-            <%= f.select :duration, collection: [28, 56, 84, 112, 140, 168, 196, 224, 252, 280, 308, 336, 364] %>
-            <%= f.submit %>
-=======
 
        <div class="col-md-6">
         <div class="panel-buy-wrap">
@@ -36,7 +22,6 @@
         <ul class="hidden">
           <% @dates.each do |date| %>
             <li class="dates" data-datefrom="<%= date[:from] %>" data-dateto="<%= date[:to] %>"></li>
->>>>>>> Stashed changes
           <% end %>
         </ul>
         <% if @companies.nil? || @companies.empty? %>

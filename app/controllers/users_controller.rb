@@ -4,5 +4,6 @@ class UsersController < ApplicationController
     @all_companies = Company.where(user: @user)
     @companies = Company.where(user: @user, status: [:active])
     @company = Company.new
+    @campaign = Campaign.new
   end
 end

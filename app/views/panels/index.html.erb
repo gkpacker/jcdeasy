@@ -45,11 +45,12 @@
                     <h6><strong><%= panel.panel_type.name %></strong></h6>
                     <p><strong>Estação:</strong> <%= panel.station.name %></br>
 
-                        <% panel.station.lines.each do |line| %>
-                  <%= line.name %> /
-                <% end %></br>
-              <%= panel.panel_type.total_area %></br>
-              </p>
+                    <% panel.station.lines.each do |line| %>
+                      <%= line.name %> /
+                    <% end %>
+                  </br>
+                  <%= panel.panel_type.total_area %></br>
+                  </p>
 
                   </div>
 

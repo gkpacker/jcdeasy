@@ -14,7 +14,7 @@ class PanelsController < ApplicationController
         @panels = Panel.includes(:panel_type).includes(:station).station_search(params[:station])
       end
     else
-      @panels = Panel.all.includes(:panel_type).includes(:station).sample(10)
+      @panels = Panel.includes(:panel_type).includes(:station).includes(station: :lines).first(10)
     end
   end
 

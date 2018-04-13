@@ -112,14 +112,14 @@
 
   img {
     position: absolute;
-    top: 10px;
-    left: 10px;
+    top: 5.5px;
+    left: 5px;
     z-index: 1000;
   }
   a {
     position: absolute;
-    top: 7px;
-    right: 5px;
+    top: 6.5px;
+    right: 6px;
     z-index: 1000;
   }
   input {
@@ -134,10 +134,12 @@
     border-radius: 3px;
 }
 
-// .select2-selection__choice {
-//   margin-left: 60px !important;
-// }
-
-// .select2-selection--multiple {
-//   min-height: 50px !important;
-// }
+.select2-selection--multiple {
+  padding-left: 40px !important;
+  height: 42px !important;
+}
+.select2-container .select2-search--inline .select2-search__field {
+  position: absolute;
+  top: -5px;
+  left: 8px;
+}

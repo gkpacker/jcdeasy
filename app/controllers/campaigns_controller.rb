@@ -1,6 +1,7 @@
 class CampaignsController < ApplicationController
+  before_action :find_campaign, only: [:show, :edit, :update]
+
   def show
-    @campaign = Campaign.find(params[:id])
     @total = 0
     @total_cents = 0
     @orders = []
@@ -30,10 +31,26 @@ class CampaignsController < ApplicationController
     end
   end
 
+
+  def edit
+  end
+
+  def update
+    if @campaign.update(campaign_params)
+      redirect_to campaign_path
+    else
+      render :edit
+    end
+  end
+
   private
 
+  def find_campaign
+    @campaign = Campaign.find(params[:id])
+  end
+
   def campaign_params
-    params.require(:campaign).permit(:title)
+    params.require(:campaign).permit(:title, :company_id)
   end
 
 end

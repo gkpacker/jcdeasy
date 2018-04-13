@@ -4,9 +4,17 @@ class PanelsController < ApplicationController
 
   def index
     if params[:station].present?
-      @panels = Panel.station_search(params[:station])
+      if params[:station].length > 1
+        panels = []
+        params[:station].each do |station|
+          panels << Panel.includes(:panel_type).includes(:station).station_search(station)
+        end
+        @panels = panels.flatten
+      else
+        @panels = Panel.includes(:panel_type).includes(:station).station_search(params[:station])
+      end
     else
-      @panels = Panel.all.sample(10)
+      @panels = Panel.includes(:panel_type).includes(:station).includes(station: :lines).first(10)
     end
   end
 
@@ -14,7 +22,7 @@ class PanelsController < ApplicationController
     if user_signed_in?
       @dates = calculate_dates
       @order = @panel.orders.build
-      @companies = Company.where(status: :active, user: current_user)
+      @companies = Company.where(status: :active, user: current_user).includes(:campaigns)
       @campaign = Campaign.new
       @company = Company.new
       @campaigns = []

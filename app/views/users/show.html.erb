@@ -34,6 +34,9 @@
           </div>
           <div class="profile">
             <ul class="company-list-ul">
+              <% if @companies.empty? %>
+                <em><h5>Você ainda não possui empresas registradas</h5></em>
+              <% end %>
             <%= render 'users/companies' %>
             </ul>
           </div>
@@ -45,7 +48,10 @@
           </div>
           <div class="profile">
             <ul class="company-list-ul">
-            <%= render 'users/campaigns' %>
+              <% if @campaigns.empty? %>
+                <em><h5>Você ainda não possui campanhas</h5></em>
+              <% end %>
+              <%= render 'users/campaigns' %>
             </ul>
           </div>
         </div>

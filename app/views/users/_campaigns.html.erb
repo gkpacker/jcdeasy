@@ -1,4 +1,4 @@
-<% @all_companies.each do |company| %>
+<% @companies.each do |company| %>
   <% company.campaigns.each do |campaign| %>
     <%= link_to campaign_path(campaign) do%>
       <div class="row">
@@ -22,4 +22,3 @@
     <% end %>
   <% end %>
 <% end %>
-

@@ -81,3 +81,15 @@
 .carousel-inner > .item > img, .carousel-inner > .item > a > img {
   height: auto;
 }
+
+
+.scroll-box {
+    width: 100px;
+    height: 1.2em;
+    overflow: hidden;
+    position: relative;
+}
+.scroll-text {
+    position: absolute;
+    white-space: nowrap;
+}

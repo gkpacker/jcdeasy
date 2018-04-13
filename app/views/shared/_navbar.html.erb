@@ -3,8 +3,9 @@
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
     <%= image_tag "logo.png", height: 50 %>
   <% end %>
-
- <%= render 'shared/search-form' %>
+  <% unless current_page?(root_path) %>
+    <%= render 'shared/search-form' %>
+  <% end %>
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 

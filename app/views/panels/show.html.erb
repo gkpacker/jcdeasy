@@ -10,76 +10,76 @@
         <div class="panel-title">
           <% if @panel.picture %>
             <%= cl_image_tag(@panel.picture) %>
-            <% else %>
-          <%= cl_image_tag(@panel.panel_type.picture, height:'100%', width: '100%') %>
-           <% end %>
+          <% else %>
+            <%= cl_image_tag(@panel.panel_type.picture, height:'100%', width: '100%') %>
+          <% end %>
         </div>
       </div>
 
        <div class="col-md-6">
         <div class="panel-buy-wrap">
           <% if user_signed_in? %>
-        <ul class="hidden">
-          <% @dates.each do |date| %>
-            <li class="dates" data-datefrom="<%= date[:from] %>" data-dateto="<%= date[:to] %>"></li>
-          <% end %>
-        </ul>
-        <% if @companies.nil? || @companies.empty? %>
-          <div class="text-center">
-            <h4>
-              Você precisa registrar sua empresa antes de adicionar painéis à sua campanha.
-            </h4>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".company-modal">Criar empresa</button>
-          </div>
-        <% elsif !@companies.nil? && @campaigns.empty? %>
-          <h5>Você ainda não possui uma campanha</h5>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".campaign-modal">Criar campanha</button>
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".company-modal">Criar nova empresa</button>
-
-        <% else %>
-          <div class="row">
-            <div class="col-md-4 col-md-offset-4">
-              <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target=".campaign-modal">Criar nova campanha</button>
-              <%= simple_form_for [@panel, @order] do |f| %>
-                <%= f.select :duration, [['1 mês', 28], ['2 meses', 56], ['3 meses', 84], ['4 meses', 112], ['5 meses', 140], ['5 meses', 168], ['6 meses', 196], ['7 meses', 224], ['8 meses', 252], ['9 meses', 280], ['10 meses', 308], ['11 meses', 336], ['12 meses', 364]] %>
-                <%= f.input :date, required: false, input_html: { class: "panel-date" }, placeholder: 'Data de veículação', label: false %>
-                <%= f.association :campaign, collection: @campaigns, placeholder: 'Escolha uma campanha', label: false %>
-                <%= f.submit 'Adicionar painel à campanha', class: 'btn btn-primary btn-block' %>
+            <ul class="hidden">
+              <% @dates.each do |date| %>
+                <li class="dates" data-datefrom="<%= date[:from] %>" data-dateto="<%= date[:to] %>"></li>
               <% end %>
+            </ul>
+            <% if @companies.nil? || @companies.empty? %>
+              <div class="text-center">
+                <h4>
+                  Você precisa registrar sua empresa antes de adicionar painéis à sua campanha.
+                </h4>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".company-modal">Criar empresa</button>
+              </div>
+            <% elsif !@companies.nil? && @campaigns.empty? %>
+              <h5>Você ainda não possui uma campanha</h5>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".campaign-modal">Criar campanha</button>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".company-modal">Criar nova empresa</button>
+            <% else %>
+              <div class="row">
+                <div class="col-md-4 col-md-offset-4">
+                  <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target=".campaign-modal">Criar nova campanha</button>
+                  <%= simple_form_for [@panel, @order] do |f| %>
+                    <%= f.select :duration, [['1 mês', 28], ['2 meses', 56], ['3 meses', 84], ['4 meses', 112], ['5 meses', 140], ['5 meses', 168], ['6 meses', 196], ['7 meses', 224], ['8 meses', 252], ['9 meses', 280], ['10 meses', 308], ['11 meses', 336], ['12 meses', 364]] %>
+                    <%= f.input :date, required: false, input_html: { class: "panel-date" }, placeholder: 'Data de veículação', label: false %>
+                    <%= f.association :campaign, collection: @campaigns, placeholder: 'Escolha uma campanha', label: false %>
+                    <%= f.submit 'Adicionar painel à campanha', class: 'btn btn-primary btn-block' %>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+
+          <div class="modal fade company-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <%= render template: "companies/new" %>
+              </div>
             </div>
           </div>
+
+
+          <div class="modal fade campaign-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="row">
+                  <div class="col-md-4 col-md-offset-4">
+                    <%= simple_form_for [@campaign] do |f| %>
+                      <%= f.select :company, @companies.map { |company| [company.name, company.id]} %>
+                      <%= f.input :title %>
+                      <%= f.submit "Criar campanha", class: "btn btn-primary" %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         <% end %>
-      <% end %>
-        </div>
       </div>
+    </div>
 
   </div>
 </div>
-
-<div class="modal fade company-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-          <%= render template: "companies/new" %>
-        </div>
-      </div>
-    </div>
-
-
- <div class="modal fade campaign-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-          <div class="row">
-            <div class="col-md-4 col-md-offset-4">
-              <%= simple_form_for [@campaign] do |f| %>
-                <%= f.select :company, @companies.map { |company| [company.name, company.id]} %>
-                <%= f.input :title %>
-                <%= f.submit "Criar campanha", class: "btn btn-primary" %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
 
 

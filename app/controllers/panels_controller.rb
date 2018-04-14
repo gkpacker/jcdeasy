@@ -4,12 +4,9 @@ class PanelsController < ApplicationController
 
   def index
     if params[:station].present?
-      cookies[:station] = params[:station]
       if params[:station].length > 1
         panels = []
-        @stations = []
         params[:station].each do |station|
-          @stations << station
           panels << Panel.includes(:panel_type).includes(:station).station_search(station)
         end
         @panels = panels.flatten

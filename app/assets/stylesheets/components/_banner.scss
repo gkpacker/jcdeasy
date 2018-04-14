@@ -1,5 +1,8 @@
 #banner {
-  height: 500px;
+  height: 100vh;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
   background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url("http://res.cloudinary.com/charlotteboucher/image/upload/v1523457982/JCD%20easy/estac3a7c3a3o-alto-da-boa-vista.jpg");
   display: flex;
   justify-content: space-around;

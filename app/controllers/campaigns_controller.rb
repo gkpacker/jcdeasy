@@ -5,7 +5,7 @@ class CampaignsController < ApplicationController
     @total = 0
     @total_cents = 0
     @orders = []
-    @campaign.orders.each do |order|
+    @campaign.orders.includes(:panel).includes(panel: :panel_type).each do |order|
       @orders << { id: order.id,
                   title: order.panel.panel_type.name,
                   unit_price: order.price_cents,

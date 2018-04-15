@@ -5,4 +5,6 @@ import "plugins/inputmask";
 import "components/select2";
 import "components/scroll-text.js";
 import { initUpdateNavbarOnScroll } from '../components/navbar';
-initUpdateNavbarOnScroll();
+if (document.querySelector('.navbar-wagon')) {
+  initUpdateNavbarOnScroll();
+}

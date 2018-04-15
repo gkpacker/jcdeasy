@@ -95,7 +95,7 @@
               neighborhood: '<%= @campaign.company.address2 %>',
               street: '<%= @campaign.company.address1 %>',
               street_number: '<%= @campaign.company.street_number %>',
-              zipcode: '<%= @campaign.company.zip_code %>'
+              zipcode: '<%= @campaign.company.zip_code.tr('-', '') %>'
             }
           },
           items: <%= raw @orders.to_json %>

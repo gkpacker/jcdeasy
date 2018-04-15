@@ -25,7 +25,7 @@ class CampaignsController < ApplicationController
     @campaign = Campaign.new(campaign_params)
     @campaign.company = Company.find(params[:campaign][:company])
     if @campaign.save
-      redirect_to stored_location_for(:user) || super
+      redirect_to stored_location_for(:user)
     else
       render :new
     end

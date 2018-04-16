@@ -1,0 +1,34 @@
+.pay-wrap {
+  background: #fff;
+  border: 1px solid #e1e1e1;
+  border-radius: 3px;
+  padding: 15px;
+  box-shadow: 5px 5px 5px -4px #ddd;
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+
+
+
+.panels-wrap li {
+  margin-top: 10px;
+  border: 1px solid #e1e1e1;
+
+}
+
+.pic-wrap{
+  width: 100%;
+  height: 100%;
+}
+
+.order-infos{
+  display:flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 14px;
+}
+
+.col-info{
+  background-color: red;
+}

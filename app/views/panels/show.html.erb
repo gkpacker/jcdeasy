@@ -2,17 +2,19 @@
   <div class="row">
     <div class="col-md-12">
       <div class="panel-title">
-        <h2><%= @panel.panel_type.name %></h2>
+        <h2>
+          <%= @panel.panel_type.name %>
+        </h2>
       </div>
-        <%= link_to 'Back', @back %>
+      <%= link_to 'Back', @back %>
     </div>
     <div class="col-md-7">
       <div class="panel-wrap">
         <% if @panel.picture %>
           <%= cl_image_tag(@panel.picture) %>
-          <% else %>
-        <%= cl_image_tag(@panel.panel_type.picture, height:'100%', width: '100%') %>
-         <% end %>
+        <% else %>
+         <%= cl_image_tag(@panel.panel_type.picture, height:'100%', width: '100%') %>
+        <% end %>
       </div>
       <% @panel.station.lines.each do |line| %>
         <p><%= line.name %></p>
@@ -50,15 +52,15 @@
             <div class="col-md-7">
               <%= f.input :date, required: false, input_html: { class: "panel-date" }, placeholder: 'Data de veículação', label: false %>
             </div>
-            <%= f.association :campaign, collection: @campaigns, prompt: 'Escolha uma campanha', label: false %>
+            <%= f.association :campaign, collection: @campaigns, prompt: 'Escolha   uma campanha', label: false %>
             <p class="link-cadastrar-empresa">Clique <a href="#" data-toggle="modal" data-target=".campaign-modal">aqui </a> para cadastrar uma nova campanha</p>
             <%= f.submit 'Adicionar painel à campanha', class: 'btn btn-primary btn-block' %>
+            <% end %>
           <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
   </div>
-</div>
 </div>
 <% if user_signed_in? %>
   <div class="modal fade company-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
@@ -73,7 +75,7 @@
       <div class="modal-content">
         <div class="row">
           <div class="col-md-4 col-md-offset-4">
-            <%= simple_form_for [@campaign] do |f| %>
+            <%= simple_form_for @campaign do |f| %>
               <%= f.select :company, @companies.map { |company| [company.name, company.id]} %>
               <%= f.input :title %>
               <%= f.submit "Criar campanha", class: "btn btn-primary" %>

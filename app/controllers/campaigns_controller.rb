@@ -1,5 +1,6 @@
 class CampaignsController < ApplicationController
-  before_action :find_campaign, only: [:show, :edit, :update]
+  before_action :find_campaign, only: [:show, :edit, :update, :paid]
+  skip_before_action :verify_authenticity_token, only: :paid
 
   def show
     @total = 0
@@ -25,7 +26,7 @@ class CampaignsController < ApplicationController
     @campaign = Campaign.new(campaign_params)
     @campaign.company = Company.find(params[:campaign][:company])
     if @campaign.save
-      redirect_to stored_location_for(:user)
+      redirect_to request.referer
     else
       render :new
     end
@@ -37,10 +38,15 @@ class CampaignsController < ApplicationController
 
   def update
     if @campaign.update(campaign_params)
-      redirect_to campaign_path
+      redirect_to campaign_path(@campaign)
     else
       render :edit
     end
+  end
+
+  def paid
+    @campaign.paid = true
+    @campaign.save
   end
 
   private
@@ -50,7 +56,7 @@ class CampaignsController < ApplicationController
   end
 
   def campaign_params
-    params.require(:campaign).permit(:title, :company_id)
+    params.require(:campaign).permit(:title, :company_id, :paid)
   end
 
 end

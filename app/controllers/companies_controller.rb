@@ -12,7 +12,7 @@ before_action :find_company, only: [:show, :edit, :update, :destroy]
     @company = Company.new(company_params)
     @company.user = current_user
     if @company.save
-      redirect_to stored_location_for(:user) || super
+      redirect_to request.referer
     else
       render :new
     end

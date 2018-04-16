@@ -24,7 +24,7 @@ class PanelsController < ApplicationController
     if user_signed_in?
       @dates = calculate_dates
       @order = @panel.orders.build
-      @companies = Company.where(status: :active, user: current_user).includes(:campaigns)
+      @companies = Company.where(status: :active, user: current_user)
       @campaign = Campaign.new
       @company = Company.new
       @campaigns = []

@@ -34,28 +34,30 @@
             <% end %>
           </ul>
           <% if @companies.present? %>
+            <% if @campaigns.empty? %>
+              <h5>Ainda não tem campanhas em andamento, começa montar uma</h5>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".campaign-modal">Montar minha campanha</button>
+
+            <% else %>
+              <%= simple_form_for [@panel, @order] do |f| %>
+                <div class="col-md-5">
+                  <%= f.select :duration, [['1 período', 28], ['2 períodos', 56], ['3 períodos', 84], ['4 períodos', 112], ['5 períodos', 140], ['5 períodos', 168], ['6 períodos', 196], ['7 períodos', 224], ['8 períodos', 252], ['9 períodos', 280], ['10 períodos', 308], ['11 períodos', 336], ['12 períodos', 364]], class: "btn-days" %>
+                </div>
+                <div class="col-md-7">
+                  <%= f.input :date, required: false, input_html: { class: "panel-date" }, placeholder: 'Data de veículação', label: false %>
+                </div>
+                <%= f.association :campaign, collection: @campaigns, prompt: 'Escolha   uma campanha', label: false %>
+                <p class="link-cadastrar-empresa">Clique <a href="#" data-toggle="modal" data-target=".campaign-modal">aqui </a> para cadastrar uma nova campanha</p>
+                <%= f.submit 'Adicionar painel à campanha', class: 'btn btn-primary btn-block' %>
+              <% end %>
+            <% end %>
+          <% else %>
             <div class="text-center">
               <h4>
-                Você precisa registrar sua empresa antes de adicionar painéis à sua campanha.
+                Ainda não tem empresa no seu cadastro: registra uma antes de jogar painéis no seu carrinho.
               </h4>
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".company-modal">Criar empresa</button>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".company-modal">Cadastrar uma empresa</button>
             </div>
-          <% elsif !@companies.nil? && @campaigns.empty? %>
-            <h5>Você ainda não possui uma campanha</h5>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".campaign-modal">Criar campanha</button>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".company-modal">Criar nova empresa</button>
-          <% else %>
-            <%= simple_form_for [@panel, @order] do |f| %>
-            <div class="col-md-5">
-              <%= f.select :duration, [['1 período', 28], ['2 períodos', 56], ['3 períodos', 84], ['4 períodos', 112], ['5 períodos', 140], ['5 períodos', 168], ['6 períodos', 196], ['7 períodos', 224], ['8 períodos', 252], ['9 períodos', 280], ['10 períodos', 308], ['11 períodos', 336], ['12 períodos', 364]], class: "btn-days" %>
-            </div>
-            <div class="col-md-7">
-              <%= f.input :date, required: false, input_html: { class: "panel-date" }, placeholder: 'Data de veículação', label: false %>
-            </div>
-            <%= f.association :campaign, collection: @campaigns, prompt: 'Escolha   uma campanha', label: false %>
-            <p class="link-cadastrar-empresa">Clique <a href="#" data-toggle="modal" data-target=".campaign-modal">aqui </a> para cadastrar uma nova campanha</p>
-            <%= f.submit 'Adicionar painel à campanha', class: 'btn btn-primary btn-block' %>
-            <% end %>
           <% end %>
         <% end %>
       </div>

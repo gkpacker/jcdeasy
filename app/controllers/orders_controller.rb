@@ -26,6 +26,7 @@ class OrdersController < ApplicationController
 
   def destroy
     @order.destroy
+    redirect_to campaign_path(@order.campaign)
   end
 
   private

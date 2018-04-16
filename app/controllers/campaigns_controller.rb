@@ -1,5 +1,6 @@
 class CampaignsController < ApplicationController
   before_action :find_campaign, only: [:show, :edit, :update, :paid]
+  before_action :find_company, only: [:new, :create, :edit, :update]
   skip_before_action :verify_authenticity_token, only: :paid
 
   def show
@@ -53,6 +54,10 @@ class CampaignsController < ApplicationController
 
   def find_campaign
     @campaign = Campaign.find(params[:id])
+  end
+
+  def find_companies
+    @companies = Company.where(status: :active, user: current_user).includes(:campaigns)
   end
 
   def campaign_params

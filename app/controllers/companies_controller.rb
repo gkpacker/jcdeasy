@@ -12,7 +12,6 @@ before_action :find_company, only: [:show, :edit, :update, :destroy]
     @company = Company.new(company_params)
     @company.user = current_user
     if @company.save
-raise
       redirect_to request.referer
     else
       render :new

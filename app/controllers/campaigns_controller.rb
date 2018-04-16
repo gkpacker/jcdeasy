@@ -5,7 +5,7 @@ class CampaignsController < ApplicationController
     @total = 0
     @total_cents = 0
     @orders = []
-    @campaign.orders.each do |order|
+    @campaign.orders.includes(:panel).includes(panel: :panel_type).each do |order|
       @orders << { id: order.id,
                   title: order.panel.panel_type.name,
                   unit_price: order.price_cents,
@@ -25,7 +25,7 @@ class CampaignsController < ApplicationController
     @campaign = Campaign.new(campaign_params)
     @campaign.company = Company.find(params[:campaign][:company])
     if @campaign.save
-      redirect_to stored_location_for(:user) || super
+      redirect_to stored_location_for(:user)
     else
       render :new
     end

@@ -1,5 +1,6 @@
 class PanelsController < ApplicationController
   before_action :set_panel, only: [:show, :available, :calculate_dates]
+  skip_before_action :store_user_location!, only: :show
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
@@ -19,6 +20,7 @@ class PanelsController < ApplicationController
   end
 
   def show
+    @back = stored_location_for(:user)
     if user_signed_in?
       @dates = calculate_dates
       @order = @panel.orders.build

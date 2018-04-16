@@ -29,13 +29,23 @@
 
 .order-infos{
   font-size: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .col-info{
   display: flex;
   justify-content: space-between;
   align-items: center;
-padding: 10px;
+  padding: 10px;
+}
+
+.col-info .fa-trash {
+   color: #fda403;
+  &:hover {
+    color: #c67d09;
+  }
 }
 
 .title-wrap {

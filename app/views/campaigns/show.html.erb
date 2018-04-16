@@ -22,7 +22,7 @@
                   <div class="col-md-12">
                 <div class="col-info">
                   <p><strong><%= order.panel.panel_type.name %></strong></p>
-                  <p><%= humanized_money_with_symbol(order.price) %><%= link_to order_path(order), method: :delete, remote: true  do %>
+                  <p><%= humanized_money_with_symbol(order.price) %><%= link_to order_path(order), method: :delete do %>
                     <i class="fa fa-trash" aria-hidden="true"></i>
                     <% end %>
 </p>
@@ -53,12 +53,19 @@
             <div class="col-md-12">
               <p><strong>Resumo da campanha</strong></p>
             </div>
+            <div class="col-md-12 subtotal-text">
+              <p><strong>Subtotal ( <%= @campaign.orders.size %> produtos)</strong></p>
+              <p><%= humanized_money_with_symbol(@total) %></p>
+
+            </div>
+            <div class="col-md-12 subtotal-text">
+              <p><strong>Total</strong></p>
+              <h6><strong><%= humanized_money_with_symbol(@total) %></strong></h6>
+
+            </div>
             <div class="col-md-12">
-
-
-          <h2 class="text-center"><%= humanized_money_with_symbol(@total) %></h2>
-          <button class="btn btn-primary" id="pay-button">Finalizar compra</button>
-        </div>
+              <button class="btn btn-primary btn-pagar" id="pay-button">Pagar</button>
+            </div>
         </div>
 
       </div>

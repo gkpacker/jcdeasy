@@ -35,9 +35,10 @@
           </ul>
           <% if @companies.present? %>
             <% if @campaigns.empty? %>
-              <h5>Ainda não tem campanhas em andamento, começa montar uma</h5>
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".campaign-modal">Montar minha campanha</button>
-
+              <div class="text-center">
+                <h4>Ainda não tem campanhas em andamento, começa montar uma:</h4>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".campaign-modal">Montar minha campanha</button>
+              </div>
             <% else %>
               <%= simple_form_for [@panel, @order] do |f| %>
                 <div class="col-md-5">
@@ -46,7 +47,7 @@
                 <div class="col-md-7">
                   <%= f.input :date, required: false, input_html: { class: "panel-date" }, placeholder: 'Data de veículação', label: false %>
                 </div>
-                <%= f.association :campaign, collection: @campaigns, prompt: 'Escolha   uma campanha', label: false %>
+                <%= f.association :campaign, collection: @campaigns, prompt: 'Escolhe uma campanha', label: false %>
                 <p class="link-cadastrar-empresa">Clique <a href="#" data-toggle="modal" data-target=".campaign-modal">aqui </a> para cadastrar uma nova campanha</p>
                 <%= f.submit 'Adicionar painel à campanha', class: 'btn btn-primary btn-block' %>
               <% end %>
@@ -54,7 +55,7 @@
           <% else %>
             <div class="text-center">
               <h4>
-                Ainda não tem empresa no seu cadastro: registra uma antes de jogar painéis no seu carrinho.
+                Ainda não tem empresa no seu cadastro: registre uma antes de adicionar painéis ao seu carrinho:
               </h4>
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".company-modal">Cadastrar uma empresa</button>
             </div>

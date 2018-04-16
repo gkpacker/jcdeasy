@@ -12,7 +12,7 @@
             <%= link_to edit_company_path(company), class:"company-icons" do %>
               <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
             <% end %>
-            <%= link_to company_path(company), method: :delete, data: { confirm: "Are you sure?" }, class:"company-icons" do %>
+            <%= link_to company_path(company), method: :delete, data: { confirm_swal: "Are you sure?" }, class: "company-icons" do %>
               <i class="fa fa-trash" aria-hidden="true"></i>
             <% end %>
             </div>

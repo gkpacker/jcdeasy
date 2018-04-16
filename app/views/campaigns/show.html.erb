@@ -22,7 +22,7 @@
                   <div class="col-md-12">
                 <div class="col-info">
                   <p><strong><%= order.panel.panel_type.name %></strong></p>
-                  <p><%= humanized_money_with_symbol(order.price) %><%= link_to order_path(order), method: :delete do %>
+                  <p><%= humanized_money_with_symbol(order.price) %><%= link_to order_path(order), method: :delete, data: { confirm_swal: "Are you sure?"} do %>
                     <i class="fa fa-trash" aria-hidden="true"></i>
                     <% end %>
 </p>

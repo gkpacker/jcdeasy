@@ -8,6 +8,15 @@ class Order < ApplicationRecord
 
   validates :price_cents, presence: true
 
-  validates :date, presence: true
+  validates :date, presence: true, uniqueness: { scope: [:campaign, :panel] }
   validates :duration, presence: true
+
+  def cover?
+    end_date = date.to_date + duration
+    panel.calculate_dates.each do |date|
+      range = (date[:from].to_date..date[:to].to_date)
+      return true if range.cover?(end_date)
+    end
+    return false
+  end
 end

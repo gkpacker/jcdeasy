@@ -48,7 +48,9 @@
           </div>
         </li>
       <% end %>
-      <button class="btn btn-primary" id="pay-button">Finalizar compra</button>
+      <% unless @campaign.paid %>
+        <button class="btn btn-primary" id="pay-button">Finalizar compra</button>
+      <% end %>
 
       <script>
       var button = document.querySelector('#pay-button');

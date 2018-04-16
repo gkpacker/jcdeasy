@@ -15,4 +15,19 @@ class Panel < ApplicationRecord
                   using: {
                     tsearch: { prefix: true }
                   }
+
+
+  def calculate_dates
+    dates = []
+    self.orders.each do |order|
+      if order.campaign.paid
+        start_date = order.date.to_date
+        dates << { from: start_date.strftime("%d/%m/%Y"),
+                  to: (start_date + order.duration).strftime("%d/%m/%Y")
+                  }
+      end
+    end
+    dates
+  end
+
 end

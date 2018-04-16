@@ -1,7 +1,31 @@
-.panel-title {
-margin: 0;
-
+.back-button {
+  margin: 15px 0;
+  a {
+    color: #FBA329;
+    font-family: $headers-font;
+    font-size: 14px;
+  }
 }
+
+.information-wrap {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  h3 {
+    margin: 5px 0;
+  }
+  h4 {
+    margin: 0;
+  }
+  p {
+    margin: 0;
+  }
+}
+
+.panel-picture-wrap {
+  box-shadow: 2px 2px rgb(240,240,240);
+}
+
 .panel-buy-wrap{
   padding: 10px;
   border: 1px solid #ccc;
@@ -14,4 +38,14 @@ margin: 0;
 
 .link-cadastrar-empresa{
   font-size: 12px;
+}
+
+.printing-data {
+  margin-top: 25px;
+  th, td {
+    font-size: 16px;
+  }
+  p {
+    font-size: 12px;
+  }
 }

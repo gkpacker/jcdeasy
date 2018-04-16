@@ -1,0 +1,64 @@
+.pay-wrap {
+  background-color: #F2F2F2;
+  border-radius: 3px;
+  padding: 15px;
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  color: #454545;
+
+}
+
+
+
+.panels-wrap li {
+  margin-top: 5px;
+  border-top: 1px solid #e1e1e1;
+  color: #454545;
+
+
+}
+
+.pic-wrap {
+
+}
+
+.pic{
+  width: 100%;
+}
+
+.order-infos{
+  font-size: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.col-info{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.col-info .fa-trash {
+   color: #fda403;
+  &:hover {
+    color: #c67d09;
+  }
+}
+
+.title-wrap {
+  margin-top: 30px;
+}
+
+.subtotal-text {
+  display: flex;
+  justify-content: space-between;
+  align-items:center;
+  font-size: 14px;
+}
+
+.btn-pagar{
+  width: 100%;
+}

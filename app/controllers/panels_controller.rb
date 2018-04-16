@@ -22,7 +22,7 @@ class PanelsController < ApplicationController
   def show
     @back = stored_location_for(:user)
     if user_signed_in?
-      @dates = calculate_dates
+      @dates = @panel.calculate_dates
       @order = @panel.orders.build
       @companies = Company.where(status: :active, user: current_user)
       @campaign = Campaign.new
@@ -30,7 +30,7 @@ class PanelsController < ApplicationController
       @campaigns = []
       @companies.each do |company|
         company.campaigns.each do |campaign|
-          @campaigns << campaign
+          @campaigns << campaign unless campaign.paid
         end
       end
     end
@@ -43,18 +43,10 @@ class PanelsController < ApplicationController
 
   def available
     # /panels/1/available_dates || available_path(panel)
-    render json: calculate_dates
+    dates = @panel.calculate_dates
+    render json: dates
   end
 
-  def calculate_dates
-    dates = []
-    @panel.orders.each do |order|
-      start_date = order.date.to_date
-      dates << { from: start_date.strftime("%d/%m/%Y"),
-                to: (start_date + order.duration).strftime("%d/%m/%Y") }
-    end
-    dates
-  end
 
   private
 

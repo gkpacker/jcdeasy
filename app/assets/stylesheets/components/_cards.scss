@@ -1,30 +1,22 @@
-
 .img-card {
-
   width: 100%;
 }
 
-.card-wrap{
+.card-wrap {
   margin: 10px;
-
-
 }
 
 .card-wrap:hover {
-
   box-shadow: 4px 4px 5px -3px rgba(0,0,0,0.34);
 }
 
 .card-info {
-
-
 }
 
 .card-btn-wrap {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
 }
 
 .card-footer-wrap {
@@ -32,34 +24,31 @@
   padding: 10px;
   background-color: white;
   border-top: none;
-
 }
-
 
 .card-link:hover {
   text-decoration: none;
 }
 
 @media (max-width:1200px) and (min-width:990px) {
-    .card-wrap{
-      height: 290px;
-     }
+  .card-wrap{
+    height: 290px;
+   }
 }
 
 .container-slide {
- margin: 0 auto;
-
+  margin: 0 auto;
 }
-
 
 .carousel-control{
   display: none;
-  }
+}
 
 .img-wrap:hover {
-  & .carousel-control{
-  display: inline-block;}
+  & .carousel-control {
+    display: inline-block;
   }
+}
 
 .price {
   color: #fda403;
@@ -72,7 +61,6 @@
   font-size: 12px;
 }
 
-
 .cards-margin {
   margin: 0;
   padding: 0;
@@ -83,14 +71,13 @@
   height: 250px;
 }
 
-
 .scroll-box {
-    width: 100px;
-    height: 1.2em;
-    overflow: hidden;
-    position: relative;
+  width: 100px;
+  height: 1.2em;
+  overflow: hidden;
+  position: relative;
 }
 .scroll-text {
-    position: absolute;
-    white-space: nowrap;
+  position: absolute;
+  white-space: nowrap;
 }

@@ -16,18 +16,21 @@
   background: #fff;
   border: 1px solid #e1e1e1;
   border-radius: 3px;
-  padding: 15px;
   color: #454545;
+
 }
 
 .signin-head-title {
-  padding: 10px;
+  padding: 2px;
   font-weight: bolder;
   border-bottom: 1px solid #e1e1e1;
+  padding-top: 15px;
 }
 
 .signin-form {
 padding: 15px;
+font-size: 14px;
+
 
 }
 
@@ -46,4 +49,15 @@ padding: 15px;
 .link-signup{
   font-weight: bolder;
   color: #fda403;
+  &:hover{
+    color: #fda403;
+  }
+}
+
+.text-forget-pass{
+  color: #454545;
+  &:hover{
+    color: #454545;
+  }
+
 }

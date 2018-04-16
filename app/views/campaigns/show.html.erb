@@ -22,7 +22,9 @@
                   <div class="col-md-12">
                 <div class="col-info">
                   <p><strong><%= order.panel.panel_type.name %></strong></p>
-                  <p><%= humanized_money_with_symbol(order.price) %><i class="fa fa-trash" aria-hidden="true"></i>
+                  <p><%= humanized_money_with_symbol(order.price) %><%= link_to order_path(order), method: :delete, remote: true  do %>
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                    <% end %>
 </p>
             </div>
             <div class="col-md-12">

@@ -1,6 +1,5 @@
 import flatpickr from "flatpickr";
 
-
 document.addEventListener("DOMContentLoaded", () => {
   const dates = document.querySelectorAll(".dates")
   const disableDates = []

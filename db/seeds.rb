@@ -62,7 +62,7 @@ PanelType.create!(name: "Painel Clássico",
                   visible_area: "0,74m x 1,12m (0,82m²)",
                   security_area: "0,70m x 1,08m",
                   impression: "UV 300dpi",
-                  picture: "https://res.cloudinary.com/charlotteboucher/image/upload/v1523474845/Produtos/Painel_Interno.jpg",
+                  picture: "http://res.cloudinary.com/charlotteboucher/image/upload/v1523474846/Produtos/Painel_Cl_ssico.jpg",
                   price_cents: 253000)
 
 PanelType.create!(name: "Painel Super",

@@ -1,8 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  before_action :store_user_location!, if: :storable_location?
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :store_user_location!, if: :storable_location?
 
   private
 
@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   end
 
   def storable_location?
-    request.get? && is_navigational_format? && !devise_controller? && !request.xhr?
+    is_navigational_format? && !devise_controller? && !request.xhr?
   end
 
   def store_user_location!

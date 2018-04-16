@@ -9,10 +9,10 @@
       <div class="col-md-12 campaign-form">
         <%= simple_form_for [@campaign] do |f| %>
           <div class="form-inputs">
-            <%= f.input :title, autofocus: true, placeholder: 'Campanha promoção dia dos namorados', label: "Da um titulo a sua nova campanha" %>
+            <%= f.input :title, autofocus: true, placeholder: '"Campanha promoção dia dos namorados"', label: "Da um titulo a sua nova campanha" %>
           </div>
             <% if @companies.present? %>
-              <%= f.select :company, @companies.map { |company| [company.name, company.id]}, label: "Seleciona a empresa a ser faturada apôs fechamento", include_blank: true, input_html: {class: "field-select-company"} %>
+              <%= f.select :company, @companies.map { |company| [company.name, company.id]}, { required: true, prompt: "Seleciona a empresa a ser faturada apôs o fechamento" }, { class: "field-select-company" } %>
             <% else %>
               <p>Você ainda não cadastrou nenhuma empresa no seu perfil</p>
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".company-modal">Criar empresa</button>

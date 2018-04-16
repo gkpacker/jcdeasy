@@ -35,7 +35,16 @@
               <strong>Total: </strong>
               <%= humanized_money_with_symbol(order.price) %>
             </p>
+            <% if @campaign.paid %>
+              <p>Faça o upload da sua arte!</p>
+              <%= simple_form_for(order) do |f| %>
+                <%= f.input :art %>
+                <%= f.input :art_cache, as: :hidden %>
+                <%= f.submit "Enviar", class: 'btn btn-primary' %>
+              <% end %>
+            <% else %>
             <%= link_to "Delete order", order_path(order), method: :delete, remote: true %>
+            <% end %>
           </div>
         </li>
       <% end %>
@@ -49,6 +58,10 @@
           encryption_key: 'ek_test_haQ07HnJq4J4TgMhPKUvUymJPksG69',
           success: function(data) {
             console.log(data);
+            fetch('<%= payment_url(@campaign) %>', {
+              method: 'PATCH',
+              credentials: 'include'
+            })
           },
           error: function(err) {
             console.log(err);

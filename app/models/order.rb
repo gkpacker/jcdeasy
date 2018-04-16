@@ -1,4 +1,6 @@
 class Order < ApplicationRecord
+  mount_uploader :art, ArtUploader
+
   belongs_to :panel
   belongs_to :campaign
 

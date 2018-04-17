@@ -39,13 +39,13 @@
                   <div class="order-status">
 
 
-                 <%# if order.art.url.nil? %>
+                 <% if order.art.url.nil? %>
                   <%= simple_form_for(order, html: { id: 'art-upload', class: 'dropzone'}) do |f| %>
                   <% end %>
-                <%# else %>
+                <% else %>
                   <%= cl_image_tag order.art, width: 230, class: 'dropzone-art' %>
-                  <p>Arte enviada</p>
-                <%# end %>
+                  <p id="art-status">Arte enviada</p>
+                <% end %>
 
 
               </div>

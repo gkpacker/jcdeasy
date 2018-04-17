@@ -25,7 +25,6 @@ class OrdersController < ApplicationController
     @order.update(art_params)
     @campaign = @order.campaign
     head :ok
-    # redirect_to campaign_path(@order.campaign)
   end
 
   def destroy

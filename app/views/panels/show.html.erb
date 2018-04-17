@@ -9,26 +9,22 @@
       </div>
     </div>
 
-    <div class="row information-wrap">
+    <div class="row">
+      <div class="information-wrap">
+        <div class="col-md-7">
+          <% @panel.station.lines.each do |line| %>
+            <p><%= cl_image_tag("Logo/logo-metrô.png", height: 20) %>
+            <%= line.name %></p>
+          <% end %>
+          <p><strong>Estação: </strong><%= @panel.station.name %></p>
+        </div>
 
-      <div class="col-md-7">
-        <% @panel.station.lines.each do |line| %>
-          <p><%= cl_image_tag("Logo/logo-metrô.png", height: 20) %>
-          <%= line.name %></p>
-        <% end %>
-        <p><strong>Estação: </strong><%= @panel.station.name %></p>
+        <div class="col-md-5">
+          <h3><%= @panel.panel_type.name %></h3>
+          <h4><%= humanized_money_with_symbol(@price) %> / mês</h4>
+        </div>
       </div>
-
-      <div class="col-md-5">
-        <h3><%= @panel.panel_type.name %></h3>
-        <h4><%= humanized_money_with_symbol(@price) %> / mês</h4>
-      </div>
-
     </div>
-
-
-
-
 
 
   <div class="row">
@@ -43,7 +39,7 @@
     </div>
 
     <div class="col-md-5">
-      <div class="panel-buy-wrap">
+      <div class="panel-buy-wrap background">
         <% if user_signed_in? %>
           <ul class="hidden">
             <% @dates.each do |date| %>
@@ -59,14 +55,16 @@
               </div>
             <% else %>
                 <%= simple_form_for [@panel, @order] do |f| %>
-                  <div class="col-md-5">
-                    <%= f.select :duration, [['1 período', 28], ['2 períodos', 56], ['3 períodos', 84], ['4 períodos', 112], ['5 períodos', 140], ['5 períodos', 168], ['6 períodos', 196], ['7 períodos', 224], ['8 períodos', 252], ['9 períodos', 280], ['10 períodos', 308], ['11 períodos', 336], ['12 períodos', 364]], class: "btn-days" %>
-                  </div>
-                  <div class="col-md-7">
-                    <%= f.input :date, required: false, input_html: { class: "panel-date" }, placeholder: 'Data de veículação', label: false %>
-                  </div>
+                  <p class="label-title">Indica o título da campanha que você está montando:</p>
                   <%= f.association :campaign, collection: @campaigns, prompt: 'Escolhe uma campanha', label: false %>
                   <p class="link-cadastrar-empresa">Clique <a href="#" data-toggle="modal" data-target=".campaign-modal">aqui </a> para cadastrar uma nova campanha</p>
+                  <p class="label-title">Escolhe a duração de vehiculação da campanha</p>
+                  <div class="form-group select required order_campaign">
+                   <%= f.select :duration, [['1 mês', 28], ['2 meses', 56], ['3 meses', 84], ['4 meses', 112], ['5 meses', 140], ['5 meses', 168], ['6 meses', 196], ['7 meses', 224], ['8 meses', 252], ['9 meses', 280], ['10 meses', 308], ['11 meses', 336], ['12 meses', 364]], { required: true, prompt: "Duração de vehiculação da campanha" }, { class: "form-control select required btn-days"} %>
+                  </div>
+                  <p class="label-title">Escolhe a data de inicio da vehiculação da sua campanha</p>
+                  <%= f.input :date, required: false, input_html: { class: "panel-date" }, placeholder: 'Data de inicio da campanha' %>
+                  </div>
                   <%= f.submit 'Adicionar painel à campanha', class: 'btn btn-primary btn-block', id: 'add-panel', disabled: true %>
                 <% end %>
               <% end %>

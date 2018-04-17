@@ -34,18 +34,28 @@ a:hover {
   box-shadow: 2px 2px rgb(240,240,240);
 }
 
-.panel-buy-wrap{
+.panel-buy-wrap {
   padding: 10px;
   border: 1px solid #ccc;
+  p {
+    margin: 0px;
+  }
 }
 
 
 .btn-days{
-  background-color: red;
+}
+
+
+.label-title {
+  font-size: 16px;
 }
 
 .link-cadastrar-empresa{
   font-size: 12px;
+  a {
+    margin-bottom: 15px;
+  }
 }
 
 .printing-data {

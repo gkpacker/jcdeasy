@@ -28,7 +28,7 @@ class PanelsController < ApplicationController
       @campaign = Campaign.new
       @company = Company.new
       @campaigns = []
-      @companies.each do |company|
+      @companies.includes(:campaigns).each do |company|
         company.campaigns.each do |campaign|
           @campaigns << campaign unless campaign.paid
         end

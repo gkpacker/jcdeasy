@@ -22,6 +22,7 @@ gem 'cloudinary'
 gem 'money-rails', '~>1'
 gem 'carrierwave', '~> 1.2'
 gem 'pg_search'
+gem 'jquery-rails'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

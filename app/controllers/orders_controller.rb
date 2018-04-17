@@ -13,6 +13,7 @@ class OrdersController < ApplicationController
         @order.price_cents = @panel.price
       end
       if @order.save
+        sweetalert(' ', 'Painel adicionado com sucesso', opts = { icon: 'success', button: false, timer: 1400 } )
         redirect_to campaign_path(@order.campaign), notice: "Painel adicionado à campanha com sucesso."
       else
         redirect_to panel_path(@order.panel_id), alert: "Não foi possível salvar as informações."

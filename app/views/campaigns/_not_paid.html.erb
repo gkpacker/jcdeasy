@@ -22,7 +22,7 @@
                   <div class="col-md-12">
                 <div class="col-info">
                   <p><strong><%= order.panel.panel_type.name %></strong></p>
-                  <p><%= humanized_money_with_symbol(order.price) %><%= link_to order_path(order), method: :delete do %>
+                  <p><%= humanized_money_with_symbol(order.price) %><%= link_to order_path(order), method: :delete, data: { confirm_swal: ''} do %>
                     <i class="fa fa-trash" aria-hidden="true"></i>
                     <% end %>
 </p>
@@ -88,6 +88,7 @@
                 method: 'PATCH',
                 credentials: 'include'
               })
+              location = location
             },
             error: function(err) {
               console.log(err);
@@ -99,6 +100,7 @@
 
           // Obs.: é necessário passar os valores boolean como string
           checkout.open({
+            uiColor: '#fda403',
             amount: <%= @total_cents %>,
             buttonText: 'Pagar',
             buttonClass: 'botao-pagamento btn-primary',

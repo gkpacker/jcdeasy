@@ -5,16 +5,18 @@
         <li class="col-md-12 list-unstyled">
             <div class="compaign-wrap">
               <div class="row">
-                <div class="col-md-6 compaign-info">
+                <div class="col-md-8 compaign-info">
                   <p><%= campaign.title %> - <%= campaign.company.name %></p>
                 </div>
-                  <p>Estatus do pagamento :
+                <div class="col-md-4 compaign-info">
+                  <div class="campaign-status">
                     <% if campaign.paid %>
-                      Aprovado
+                      <p class="btn-aprovado-pagamento" align="center">Pagamento Aprovado</p>
                     <% else %>
-                      Em espera
+                      <p class="btn-pagamento-pendente" align="center">Pagamento Pendente</p>
                     <% end %>
-                  </p>
+                  </div>
+                  </div>
               </div>
             </div>
         </li>

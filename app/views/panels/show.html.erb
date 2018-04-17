@@ -3,11 +3,9 @@
 
     <div class="row">
       <div class="col-md-12">
-        <div class="back-button">
-          <%= link_to @back do%>
-            <i class="fa fa-arrow-circle-left" aria-hidden="true"> Voltar</i>
+          <%= link_to @back, class: "back-button" do%>
+            <p><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Voltar</p>
           <% end %>
-        </div>
       </div>
     </div>
 
@@ -64,7 +62,7 @@
                   </div>
                   <%= f.association :campaign, collection: @campaigns, prompt: 'Escolhe uma campanha', label: false %>
                   <p class="link-cadastrar-empresa">Clique <a href="#" data-toggle="modal" data-target=".campaign-modal">aqui </a> para cadastrar uma nova campanha</p>
-                  <%= f.submit 'Adicionar painel à campanha', class: 'btn btn-primary btn-block', id: 'add-panel' %>
+                  <%= f.submit 'Adicionar painel à campanha', class: 'btn btn-primary btn-block', id: 'add-panel', disabled: true %>
                 <% end %>
               <% end %>
             <% else %>

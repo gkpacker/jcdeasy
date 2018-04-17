@@ -13,8 +13,14 @@ html {
 }
 
 body {
-  margin-bottom: 120px;
+  margin-bottom: 60px;
   background-color: white;
   font-family: 'Montserrat', sans-serif;
 }
 
+
+@media screen and (max-width: 540px) {
+  body {
+    margin-bottom: 120px;
+  }
+}

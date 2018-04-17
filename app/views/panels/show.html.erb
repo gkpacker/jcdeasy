@@ -35,9 +35,10 @@
           </ul>
           <% if @companies.present? %>
             <% if @campaigns.empty? %>
-              <h5>Ainda não tem campanhas em andamento, começa montar uma</h5>
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".campaign-modal">Montar minha campanha</button>
-
+              <div class="text-center">
+                <h5>Você não possui nenhuma campanha ativa</h5>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".campaign-modal">Montar nova campanha</button>
+              </div>
             <% else %>
               <%= simple_form_for [@panel, @order] do |f| %>
                 <div class="col-md-5">

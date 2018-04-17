@@ -19,7 +19,6 @@ if (document.querySelector("#company_zip_code")) {
     fetch(`http://api.postmon.com.br/v1/cep/${zipcode.value}`)
     .then((response) => response.json())
     .then((data) => {
-      console.log(data)
       address1.value = data.logradouro
       city.value = data.cidade
       state.value = data.estado

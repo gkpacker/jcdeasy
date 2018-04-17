@@ -30,6 +30,7 @@ const handleConfirm = function(element) {
       confirmButtonText: 'Sim',
       cancelButtonText: 'Cancelar',
       showCancelButton: true,
+      showLoaderOnConfirm: true,
     }).then(result => confirmed(element, result))
   }
 

@@ -27,6 +27,23 @@
       </div>
 
     </div>
+
+
+
+
+
+
+  <div class="row">
+    <div class="col-md-7">
+      <div class="panel-picture-wrap">
+        <% if @panel.picture %>
+          <%= cl_image_tag(@panel.picture) %>
+        <% else %>
+         <%= cl_image_tag(@panel.panel_type.picture, height:'100%', width: '100%') %>
+        <% end %>
+      </div>
+    </div>
+
     <div class="col-md-5">
       <div class="panel-buy-wrap">
         <% if user_signed_in? %>
@@ -43,14 +60,6 @@
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".campaign-modal">Montar nova campanha</button>
               </div>
             <% else %>
-              <%= simple_form_for [@panel, @order] do |f| %>
-                <div class="col-md-5">
-                  <%= f.select :duration, [['1 período', 28], ['2 períodos', 56], ['3 períodos', 84], ['4 períodos', 112], ['5 períodos', 140], ['5 períodos', 168], ['6 períodos', 196], ['7 períodos', 224], ['8 períodos', 252], ['9 períodos', 280], ['10 períodos', 308], ['11 períodos', 336], ['12 períodos', 364]], class: "btn-days" %>
-                </div>
-                <div class="col-md-7">
-                  <%= f.input :date, required: false, input_html: { class: "panel-date" }, placeholder: 'Data de veículação', label: false %>
-                </div>
-              <% else %>
                 <%= simple_form_for [@panel, @order] do |f| %>
                   <div class="col-md-5">
                     <%= f.select :duration, [['1 período', 28], ['2 períodos', 56], ['3 períodos', 84], ['4 períodos', 112], ['5 períodos', 140], ['5 períodos', 168], ['6 períodos', 196], ['7 períodos', 224], ['8 períodos', 252], ['9 períodos', 280], ['10 períodos', 308], ['11 períodos', 336], ['12 períodos', 364]], class: "btn-days" %>

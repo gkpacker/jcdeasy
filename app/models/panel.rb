@@ -19,7 +19,7 @@ class Panel < ApplicationRecord
 
   def calculate_dates
     dates = []
-    self.orders.each do |order|
+    self.orders.includes(:campaign).each do |order|
       if order.campaign.paid
         start_date = order.date.to_date
         dates << { from: start_date.strftime("%d/%m/%Y"),

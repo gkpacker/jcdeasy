@@ -26,11 +26,10 @@ const handleConfirm = function(element) {
       text: 'Não poderá recuperá-lo após a exclusão',
       type: 'warning',
       confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Sim',
+      cancelButtonColor: '#FF0000',
       cancelButtonText: 'Cancelar',
+      confirmButtonText: 'Apagar',
       showCancelButton: true,
-      showLoaderOnConfirm: true,
     }).then(result => confirmed(element, result))
   }
 
@@ -49,6 +48,12 @@ const handleConfirm = function(element) {
         'Deletado!',
         'Seu arquivo foi deletado.',
         'success'
+      )
+    } else {
+      swal(
+        'Cancelado!',
+        'Seu arquivo está a salvo',
+        'error'
       )
     }
   }

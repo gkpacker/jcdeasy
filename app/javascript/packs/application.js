@@ -14,3 +14,25 @@ if (document.querySelector('.navbar-wagon')) {
 if (document.getElementById('add-panel')) {
   bindDisableForm()
 }
+if (document.querySelector(".dropzone")) {
+  Dropzone.options.artUpload = {
+  paramName: "art", // The name that will be used to transfer the art
+  maxFilesize: 2, // MB
+  maxFiles: 1, // MB
+  addRemoveLinks: true,
+  init: function() {
+    this.on("complete", function(file) {
+      this.removeFile(file);
+    })
+  },
+  success: (art) => {
+      const order = document.querySelector('.order-status')
+      if (document.querySelector('.dropzone-art')) {
+        document.querySelector('.dropzone-art').remove()
+        document.querySelector('#art-status').remove()
+      }
+      order.insertAdjacentHTML('beforeend', `<img class="dropzone-art" src="${art.dataURL}" alt="${art.name}" width="230">`)
+      order.insertAdjacentHTML('beforeend', `<p id="art-status">Arte enviada</p>`)
+    }
+  }
+}

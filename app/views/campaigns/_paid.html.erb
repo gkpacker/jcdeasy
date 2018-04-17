@@ -40,18 +40,11 @@
 
 
                  <% if order.art.url.nil? %>
-
-                    <%= simple_form_for(order, html: { class: "dropzone"
-                    }) do |f| %>
-
-                    <%= f.input :art, as: :hidden %>
-                    <%= f.input :art_cache, as: :hidden %>
-                    <%= f.submit "Enviar", class: 'btn btn-primary' %>
-
-                <% end %>
+                  <%= simple_form_for(order, html: { id: 'art-upload', class: 'dropzone'}) do |f| %>
+                  <% end %>
                 <% else %>
-                <%= cl_image_tag order.art, width: 230 %>
-                <p>Arte enviada</p>
+                  <%= cl_image_tag order.art, width: 230, class: 'dropzone-art' %>
+                  <p id="art-status">Arte enviada</p>
                 <% end %>
 
 

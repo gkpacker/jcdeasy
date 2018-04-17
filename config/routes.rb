@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   get "/panels/:id/available_dates/", to: "panels#available", as: "available"
+  patch "/campaigns/:id/", to: "campaign#upload"
 
   patch "/campaigns/:id/paid", to: "campaigns#paid", as: "payment"
 

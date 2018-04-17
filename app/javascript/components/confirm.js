@@ -23,12 +23,13 @@ const handleConfirm = function(element) {
 
     swal({
       title: "Você tem certeza que quer apagar este item?",
-      text: 'Não poderá recuperá-lo após a exclusão',
+      text: ' ',
       type: 'warning',
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#FF0000',
+      customClass: 'sweet-confirm',
+      confirmButtonColor: '#fda403',
       cancelButtonText: 'Cancelar',
       confirmButtonText: 'Apagar',
+      reverseButtons: true,
       showCancelButton: true,
     }).then(result => confirmed(element, result))
   }
@@ -44,16 +45,13 @@ const handleConfirm = function(element) {
       if (companies.childElementCount === 0) {
         list.insertAdjacentHTML("afterbegin", "<em><h5>Você ainda não possui empresas registradas</h5></em>")
       }
-      swal(
-        'Deletado!',
-        'Seu arquivo foi deletado.',
-        'success'
-      )
-    } else {
-      swal(
-        'Cancelado!',
-        'Seu arquivo está a salvo',
-        'error'
+      swal({
+            title: 'Deletado!',
+            text: 'Seu arquivo foi deletado.',
+            type: 'success',
+            buttons: 'false',
+            timer: 2000,
+          }
       )
     }
   }

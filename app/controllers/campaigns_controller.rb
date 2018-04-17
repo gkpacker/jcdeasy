@@ -25,11 +25,18 @@ class CampaignsController < ApplicationController
 
   def create
     @campaign = Campaign.new(campaign_params)
-    @campaign.company = Company.find(params[:campaign][:company])
-    if @campaign.save
-      redirect_to request.referer
+    if params[:campaign][:company].present?
+      @campaign.company = Company.find(params[:campaign][:company])
+      if @campaign.save
+        sweetalert(' ', "Campanha '#{@campaign.title}' criada com sucesso", opts = { icon: 'success', button: false, timer: 1400 } )
+        redirect_to request.referer
+      else
+        sweetalert("Você precisa nomear sua campanha", "Erro ao criar campanha", opts = { icon: 'error', button: true } )
+        redirect_to stored_location_for(:user)
+      end
     else
-      render :new
+      sweetalert("Você deve associar a campanha à uma empresa", "Erro ao criar campanha", opts = { icon: 'error', button: true } )
+      redirect_to stored_location_for(:user)
     end
   end
 

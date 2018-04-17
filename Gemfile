@@ -24,7 +24,9 @@ gem 'carrierwave', '~> 1.2'
 gem 'pg_search'
 gem 'jquery-rails'
 gem 'sweetify'
+gem 'sweetalert2'
 gem 'sweetalert-rails', '~> 0.4.2'
+gem 'dropzonejs-rails'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

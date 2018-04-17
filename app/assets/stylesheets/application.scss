@@ -10,9 +10,13 @@
 @import "font-awesome";
 @import "flatpickr/dist/flatpickr";
 @import "sweetalert2/dist/sweetalert2";
+@import "dropzone/dropzone";
+
 
 // Your CSS partials
 @import "layouts/index";
 @import "components/index";
 @import "pages/index";
 @import "pages/profile";
+
+

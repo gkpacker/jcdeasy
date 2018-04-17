@@ -41,9 +41,10 @@
 
                  <% if order.art.url.nil? %>
 
-                    <%= simple_form_for(order) do |f| %>
+                    <%= simple_form_for(order, html: { class: "dropzone"
+                    }) do |f| %>
 
-                    <%= f.input :art %>
+                    <%= f.input :art, as: :hidden %>
                     <%= f.input :art_cache, as: :hidden %>
                     <%= f.submit "Enviar", class: 'btn btn-primary' %>
 

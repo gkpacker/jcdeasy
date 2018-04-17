@@ -64,7 +64,7 @@
                   </div>
                   <%= f.association :campaign, collection: @campaigns, prompt: 'Escolhe uma campanha', label: false %>
                   <p class="link-cadastrar-empresa">Clique <a href="#" data-toggle="modal" data-target=".campaign-modal">aqui </a> para cadastrar uma nova campanha</p>
-                  <%= f.submit 'Adicionar painel à campanha', class: 'btn btn-primary btn-block' %>
+                  <%= f.submit 'Adicionar painel à campanha', class: 'btn btn-primary btn-block', id: 'add-panel' %>
                 <% end %>
               <% end %>
             <% else %>

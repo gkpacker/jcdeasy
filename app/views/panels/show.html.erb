@@ -51,7 +51,7 @@
             <% if @companies.present? %>
               <% if @campaigns.empty? %>
                 <div class="text-center">
-                  <h4>Ainda não tem campanhas em andamento, começa montar uma:</h4>
+                  <h4>Você não possui campanhas em andamento</h4>
                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".campaign-modal">Montar minha campanha</button>
                 </div>
               <% else %>
@@ -70,9 +70,9 @@
             <% else %>
               <div class="text-center">
                 <h4>
-                  Ainda não tem empresa no seu cadastro: registre uma antes de adicionar painéis ao seu carrinho:
+                  Registre uma empresa antes de adicionar painéis ao seu carrinho:
                 </h4>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".company-modal">Cadastrar uma empresa</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".company-modal">Registrar uma empresa</button>
               </div>
             <% end %>
           <% end %>

@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   flatpickr(".panel-date", {
       dateFormat: "d/m/Y",
-      minDate: new Date().fp_incr(10),
+      minDate: new Date().fp_incr(15),
       disable: disableDates,
       onValueUpdate: close()
   });

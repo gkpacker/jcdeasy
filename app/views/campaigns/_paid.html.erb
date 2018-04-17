@@ -37,17 +37,20 @@
 
               <div class="col-md-12">
                   <div class="order-status">
-                    <%= cl_image_tag order.art, width: 230 %>
-                 <% if order.art.nil? %>
-                <%= simple_form_for(order) do |f| %>
 
-                  <%= f.input :art %>
-                  <%= f.input :art_cache, as: :hidden %>
-                  <%= f.submit "Enviar", class: 'btn btn-primary' %>
+
+                 <% if order.art.url.nil? %>
+
+                    <%= simple_form_for(order) do |f| %>
+
+                    <%= f.input :art %>
+                    <%= f.input :art_cache, as: :hidden %>
+                    <%= f.submit "Enviar", class: 'btn btn-primary' %>
 
                 <% end %>
                 <% else %>
-                <p>Arte aprovada</p>
+                <%= cl_image_tag order.art, width: 230 %>
+                <p>Arte enviada</p>
                 <% end %>
 
 

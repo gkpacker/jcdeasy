@@ -14,3 +14,19 @@ if (document.querySelector('.navbar-wagon')) {
 if (document.getElementById('add-panel')) {
   bindDisableForm()
 }
+if (document.querySelector(".dropzone")) {
+  Dropzone.options.artUpload = {
+  paramName: "art", // The name that will be used to transfer the art
+  maxFilesize: 2, // MB
+  maxFiles: 1, // MB
+  addRemoveLinks: true,
+  accept: function(art, done) {
+    if (art.name == "justinbieber.jpg") {
+      done("Naha, you don't.");
+    }
+    else {
+      done()
+       }
+    }
+  }
+}

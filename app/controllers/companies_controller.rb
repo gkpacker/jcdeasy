@@ -32,7 +32,6 @@ before_action :find_company, only: [:show, :edit, :update, :destroy]
 
   def destroy
     @company.archived!
-    redirect_to users_path
   end
 
   private

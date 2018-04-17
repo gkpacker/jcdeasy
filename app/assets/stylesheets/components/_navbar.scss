@@ -62,16 +62,6 @@
 .navbar-wagon-button {
   display: 0 0 100%;
   margin: 0 10px;
-  &:hover {
-    background-color: rgb(32,32,32);
-    border-radius: 5px;
-    p {
-      color: rgb(200,200,200)
-    }
-    a {
-      color: rgb(200,200,200)
-    }
-  }
 }
 
 /* Navbar link */
@@ -130,4 +120,11 @@
   position: absolute;
   top: -5px;
   left: 8px;
+}
+
+.link-entrar-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
 }

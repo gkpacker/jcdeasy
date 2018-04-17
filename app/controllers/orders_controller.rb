@@ -21,7 +21,8 @@ class OrdersController < ApplicationController
   end
 
   def update
-
+    @order.update(art_params)
+    redirect_to campaign_path(@order.campaign)
   end
 
   def destroy
@@ -41,5 +42,9 @@ class OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(:date, :duration, :quantity, :campaign_id, :panel_id)
+  end
+
+  def art_params
+    params.require(:order).permit(:art)
   end
 end

@@ -20,13 +20,19 @@ if (document.querySelector(".dropzone")) {
   maxFilesize: 2, // MB
   maxFiles: 1, // MB
   addRemoveLinks: true,
-  accept: function(art, done) {
-    if (art.name == "justinbieber.jpg") {
-      done("Naha, you don't.");
-    }
-    else {
-      done()
-       }
+  init: function() {
+    this.on("complete", function(file) {
+      this.removeFile(file);
+    })
+  },
+  success: (art) => {
+      const order = document.querySelector('.order-status')
+      if (document.querySelector('.dropzone-art')) {
+        document.querySelector('.dropzone-art').remove()
+        document.querySelector('#art-status').remove()
+      }
+      order.insertAdjacentHTML('beforeend', `<img class="dropzone-art" src="${art.dataURL}" alt="${art.name}" width="230">`)
+      order.insertAdjacentHTML('beforeend', `<p id="art-status">Arte enviada</p>`)
     }
   }
 }

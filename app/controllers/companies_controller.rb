@@ -14,7 +14,7 @@ before_action :find_company, only: [:show, :edit, :update, :destroy]
     if @company.save
       redirect_to request.referer
     else
-      sweetalert(" ", "Erro ao criar empresa", opts = { icon: 'error', button: true } )
+      sweetalert("  ", "Erro ao criar empresa", opts = { icon: 'error', button: true } )
       redirect_to request.referer
     end
   end

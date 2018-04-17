@@ -37,7 +37,7 @@
 
               <div class="col-md-12">
                   <div class="order-status">
-                    <p>Faça o upload da sua arte!</p>
+                    <%= cl_image_tag order.art, width: 230 %>
 
                 <%= simple_form_for(order) do |f| %>
                   <%= f.input :art %>
@@ -48,7 +48,7 @@
                 <p>Arte aprovada</p>
               </div>
               </div>
-              <%= cl_image_tag order.art, width: 300 %>
+
 
 
                 </div>

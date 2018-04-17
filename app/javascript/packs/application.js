@@ -6,6 +6,7 @@ import "plugins/flatpickr";
 import "plugins/inputmask";
 import "components/select2";
 import "components/scroll-text.js";
+import "components/disabling.js";
 import { initUpdateNavbarOnScroll } from '../components/navbar';
 if (document.querySelector('.navbar-wagon')) {
   initUpdateNavbarOnScroll();

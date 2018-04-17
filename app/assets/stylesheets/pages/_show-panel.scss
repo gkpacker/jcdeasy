@@ -1,10 +1,18 @@
-.back-button {
-  margin: 15px 0;
-  a {
+.back-button p {
+    margin: 15px 0;
     color: #FBA329;
-    font-family: $headers-font;
-    font-size: 14px;
+    font-size: 16px;
+    &:hover {
+      color: #c67d09;
   }
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.back-button a:focus {
+  text-decoration: none;
 }
 
 .information-wrap {

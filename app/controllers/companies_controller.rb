@@ -9,6 +9,7 @@ before_action :find_company, only: [:show, :edit, :update, :destroy]
   end
 
   def create
+    sweetalert_success('Your resource is created and available.', 'Successfully created', persistent: 'Awesome!')
     @company = Company.new(company_params)
     @company.user = current_user
     if @company.save
@@ -31,7 +32,6 @@ before_action :find_company, only: [:show, :edit, :update, :destroy]
 
   def destroy
     @company.archived!
-    redirect_to users_path
   end
 
   private

@@ -20,7 +20,7 @@
   </div>
 
   <div class="total-price text-right">
-    <p id="total_price" data-price="<%= @price_cents %>">Valor total = <%= humanized_money_with_symbol(@price_cents/100) %></p>
+    <p id="total_price" data-price="<%= @price_cents %>">Total = <%= humanized_money_with_symbol(@price_cents/100) %></p>
   </div>
 
   <%= f.submit 'Adicionar painel à campanha', class: 'btn btn-primary btn-block', id: 'add-panel', disabled: true %>

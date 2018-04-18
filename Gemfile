@@ -27,6 +27,7 @@ gem 'sweetify'
 gem 'sweetalert2'
 gem 'sweetalert-rails', '~> 0.4.2'
 gem 'dropzonejs-rails'
+gem 'kaminari'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

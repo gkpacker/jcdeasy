@@ -1,4 +1,5 @@
 class Panel < ApplicationRecord
+  paginates_per 24
   belongs_to :panel_type
   belongs_to :station
   has_many :orders

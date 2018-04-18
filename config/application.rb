@@ -13,6 +13,7 @@ module Jcdeasy
       generate.helper false
       generate.test_framework  :test_unit, fixture: false
     end
+    config.i18n.default_locale = :'pt-BR'
 
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1

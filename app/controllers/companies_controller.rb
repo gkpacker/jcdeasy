@@ -12,6 +12,7 @@ before_action :find_company, only: [:show, :edit, :update, :destroy]
     @company = Company.new(company_params)
     @company.user = current_user
     if @company.save
+      sweetalert("  ", "Empresa criada com sucesso", opts = { icon: 'success', button: false, timer: 1400 } )
       redirect_to request.referer
     else
       sweetalert("  ", "Erro ao criar empresa", opts = { icon: 'error', button: true } )

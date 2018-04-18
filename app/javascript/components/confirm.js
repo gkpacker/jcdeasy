@@ -49,8 +49,8 @@ const handleConfirm = function(element) {
             title: 'Deletado!',
             text: 'Seu arquivo foi deletado.',
             type: 'success',
-            buttons: 'false',
-            timer: 2000,
+            buttons: false,
+            timer: 1400,
           }
       )
     }

@@ -16,7 +16,7 @@ if (duration) {
         const total = parseInt(price) * parseInt(duration.value/28);
         // total_price.innerHTML = `${new Money(parseInt(price), Money.BRL)} / mês * ${duration.value/28} meses = ${new Money(total, Money.BRL)}`;
         // total_price.innerHTML = `${accounting.formatMoney(parseInt(price)/100, "R$ ", 2, ".", ",")} / mês x ${duration.value/28} = ${accounting.formatMoney(total/100, "R$ ", 2, ".", ",")}`;
-        total_price.innerHTML = `Valor total = ${accounting.formatMoney(total/100, "R$ ", 2, ".", ",")}`;
+        total_price.innerHTML = `Total = ${accounting.formatMoney(total/100, "R$ ", 2, ".", ",")}`;
       }
     }
   })

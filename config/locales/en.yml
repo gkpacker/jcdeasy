@@ -36,7 +36,7 @@ en:
       first: "&laquo; Primeira"
       last: "Última &raquo;"
       previous: "&lsaquo; Anterior"
-      next: "Proxima &rsaquo;"
+      next: "Próxima &rsaquo;"
       truncate: "&hellip;"
   helpers:
     page_entries_info:

@@ -1,5 +1,10 @@
 <div class="container">
+
   <div class="row">
+    <div class="col-md-12" align="center">
+      <%= paginate @panels %>
+    </div>
+
     <% @panels.each do |panel| %>
       <div class="col-xs-12 col-sm-4 col-md-4 cards-margin " >
         <%= link_to panel_path(panel), class: "card-link" do %>
@@ -43,6 +48,9 @@
           </div>
       </div>
     <% end %>
+    <div class="col-md-12" align="center">
+      <%= paginate @panels %>
+    </div>
   </div>
 </div>
 

@@ -12,10 +12,10 @@ class PanelsController < ApplicationController
         end
         @panels = panels.flatten
       else
-        @panels = Panel.includes(:panel_type).includes(:station).station_search(params[:station])
+        @panels = Panel.includes(:panel_type).includes(:station).page(params[:page]).station_search(params[:station])
       end
     else
-      @panels = Panel.includes(:panel_type).includes(:station).includes(station: :lines).first(10)
+      @panels = Panel.includes(:panel_type).includes(:station).includes(station: :lines).page(params[:page])
     end
   end
 

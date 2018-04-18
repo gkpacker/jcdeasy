@@ -6,13 +6,13 @@
           <div class="card-wrap">
               <div class="img-wrap" style="background-image: url(<%= panel.panel_type.picture %>)">
                 <div class="price-wrap">
-                  <p class="price"><small>R$ </small><strong>
+                  <p class="price"><small>R$ </small>
                     <% if panel.price == 0 %>
                       <%= panel.panel_type.price %>
                     <% else %>
                       <%= panel.price %>
                     <% end %>
-                  </strong>/ mês</p>
+                  <small>/ mês</small></p>
 
                 </div>
 

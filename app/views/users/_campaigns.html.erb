@@ -1,7 +1,7 @@
 <% @companies.each do |company| %>
   <% company.campaigns.each do |campaign| %>
     <%= link_to campaign_path(campaign) do%>
-      <div class="row">
+      <div class="row" data-id="<%= dom_id(campaign) %>">
         <li class="col-md-12 list-unstyled">
             <div class="compaign-wrap">
               <div class="row">
@@ -14,6 +14,9 @@
                       <p class="btn-aprovado-pagamento" align="center">Pagamento Aprovado</p>
                     <% else %>
                       <p class="btn-pagamento-pendente" align="center">Pagamento Pendente</p>
+                    <% end %>
+                    <%= link_to campaign_path(campaign), method: :delete, remote: true, data: { confirm_swal: "Are you sure?" }, class: "campaign-icons" do %>
+                      <i class="fa fa-trash" aria-hidden="true"></i>
                     <% end %>
                   </div>
                   </div>

@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   resource :users, only: [:show]
 
-  resources :campaigns, only: [:show, :new, :create, :edit, :update]
+  resources :campaigns, only: [:show, :new, :create, :edit, :update, :destroy]
 
   resources :companies, only: [:show, :new, :create, :edit, :update, :destroy]
 

@@ -34,21 +34,52 @@ a:hover {
   box-shadow: 2px 2px rgb(240,240,240);
 }
 
-.panel-buy-wrap {
-  padding: 10px;
-  border: 1px solid #ccc;
-  p {
-    margin: 0px;
+.panel-buy-wrap p {
+  margin-bottom: 2px;
+}
+
+.choose-campaign {
+  padding: 12px;
+  margin-bottom: 15px;
+  background-color: rgba(220,220,220,0.2);
+  &:hover {
+    border-left: 4px solid #fdb631;
+    padding-left: 8px;
+    box-shadow: 1px 1px rgba(220, 220, 220, 0.4);
   }
 }
 
-
-.btn-days{
+@media screen and (max-width: 540px) {
+  .choose-campaign {
+    margin-top: 15px;
+  }
 }
 
+.choose-duration {
+  padding: 12px;
+  margin-bottom: 15px;
+  background-color: rgba(220,220,220,0.2);
+  &:hover {
+    border-left: 4px solid #fdb631;
+    padding-left: 8px;
+    box-shadow: 1px 1px rgba(220, 220, 220, 0.4);
+  }
+}
+
+.choose-dates {
+  padding: 12px;
+  margin-bottom: 15px;
+  background-color: rgba(220,220,220,0.2);
+  &:hover {
+    border-left: 4px solid #fdb631;
+    padding-left: 8px;
+    box-shadow: 1px 1px rgba(220, 220, 220, 0.4);
+  }
+}
 
 .label-title {
   font-size: 16px;
+  text-align: justify;
 }
 
 .link-cadastrar-empresa{
@@ -60,6 +91,7 @@ a:hover {
 
 .printing-data {
   margin-top: 25px;
+  margin-bottom: 40px;
   th, td {
     font-size: 16px;
   }

@@ -10,6 +10,7 @@
     </div>
 
     <div class="row">
+
       <div class="information-wrap">
         <div class="col-md-7">
           <% @panel.station.lines.each do |line| %>
@@ -27,46 +28,35 @@
     </div>
 
 
-  <div class="row">
-    <div class="col-md-7">
-      <div class="panel-picture-wrap">
-        <% if @panel.picture %>
-          <%= cl_image_tag(@panel.picture) %>
-        <% else %>
-         <%= cl_image_tag(@panel.panel_type.picture, height:'100%', width: '100%') %>
-        <% end %>
-      </div>
-    </div>
+    <div class="row">
 
-    <div class="col-md-5">
-      <div class="panel-buy-wrap background">
+      <div class="col-md-7">
+        <div class="panel-picture-wrap">
+          <% if @panel.picture %>
+            <%= cl_image_tag(@panel.picture, height:'100%', width: '100%') %>
+          <% else %>
+           <%= cl_image_tag(@panel.panel_type.picture, height:'100%', width: '100%') %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="col-md-5">
         <% if user_signed_in? %>
-          <ul class="hidden">
-            <% @dates.each do |date| %>
-              <li class="dates" data-datefrom="<%= date[:from] %>" data-dateto="<%= date[:to] %>">
-              </li>
-            <% end %>
-          </ul>
-          <% if @companies.present? %>
-            <% if @campaigns.empty? %>
-              <div class="text-center">
-                <h5>Você não possui nenhuma campanha ativa</h5>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".campaign-modal">Montar nova campanha</button>
-              </div>
-            <% else %>
-                <%= simple_form_for [@panel, @order] do |f| %>
-                  <p class="label-title">Indica o título da campanha que você está montando:</p>
-                  <%= f.association :campaign, collection: @campaigns, prompt: 'Escolhe uma campanha', label: false %>
-                  <p class="link-cadastrar-empresa">Clique <a href="#" data-toggle="modal" data-target=".campaign-modal">aqui </a> para cadastrar uma nova campanha</p>
-                  <p class="label-title">Escolhe a duração de vehiculação da campanha</p>
-                  <div class="form-group select required order_campaign">
-                   <%= f.select :duration, [['1 mês', 28], ['2 meses', 56], ['3 meses', 84], ['4 meses', 112], ['5 meses', 140], ['5 meses', 168], ['6 meses', 196], ['7 meses', 224], ['8 meses', 252], ['9 meses', 280], ['10 meses', 308], ['11 meses', 336], ['12 meses', 364]], { required: true, prompt: "Duração de vehiculação da campanha" }, { class: "form-control select required btn-days"} %>
-                  </div>
-                  <p class="label-title">Escolhe a data de inicio da vehiculação da sua campanha</p>
-                  <%= f.input :date, required: false, input_html: { class: "panel-date" }, placeholder: 'Data de inicio da campanha' %>
-                  </div>
-                  <%= f.submit 'Adicionar painel à campanha', class: 'btn btn-primary btn-block', id: 'add-panel', disabled: true %>
-                <% end %>
+          <div class="panel-buy-wrap">
+            <ul class="hidden">
+              <% @dates.each do |date| %>
+                <li class="dates" data-datefrom="<%= date[:from] %>" data-dateto="<%= date[:to] %>">
+                </li>
+              <% end %>
+            </ul>
+            <% if @companies.present? %>
+              <% if @campaigns.empty? %>
+                <div class="text-center">
+                  <h5>Você não possui nenhuma campanha ativa</h5>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".campaign-modal">Montar nova campanha</button>
+                </div>
+              <% else %>
+                <%= render 'panels/choose_campaign_parameters' %>
               <% end %>
             <% else %>
               <div class="text-center">
@@ -76,33 +66,15 @@
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".company-modal">Registrar uma empresa</button>
               </div>
             <% end %>
-          <% end %>
-        </div>
+          </div>
+        <% end %>
       </div>
+
     </div>
 
     <div class="row">
       <div class="col-md-7 printing-data">
-        <h6>Conheça os requerimentos para a criação da arte:</h6>
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th>Area total:</th>
-              <th>Area visivel:</th>
-              <th>Area de segurança:</th>
-              <th>Impressão:</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><%= @panel.panel_type.total_area %></td>
-              <td><%= @panel.panel_type.visible_area %></td>
-              <td><%= @panel.panel_type.security_area %></td>
-              <td><%= @panel.panel_type.impression %></td>
-            </tr>
-          </tbody>
-        </table>
-        <p>NB: O cliente deve fazer o upload da arte nesse site no maximo 15 dias antes do inicio da veiculação. A JCDecaux se responsabiliza pela aprovação do visual e a impressão do cartaz.</p>
+        <%= render 'panels/print_info' %>
       </div>
     </div>
 

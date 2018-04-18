@@ -2,6 +2,7 @@ import "bootstrap";
 // import Money from "js-money";
 // import formatMoney from "accounting";
 import "components/slide";
+import "components/modal";
 import "components/confirm";
 import "plugins/flatpickr";
 import "plugins/inputmask";

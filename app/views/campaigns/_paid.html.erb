@@ -19,11 +19,31 @@
               </div>
               <div class="col-md-9">
                 <div class="row">
+                <div class="col-md-12">
+                  <div class="col-info">
+                    <p><strong><%= order.panel.panel_type.name %></strong></p>
+                    <p><%= humanized_money_with_symbol(order.price) %></p>
+                  </div>
+                </div>
                   <div class="col-md-12">
-                <div class="col-info">
-                  <p><strong><%= order.panel.panel_type.name %></strong></p>
-                  <p><%= humanized_money_with_symbol(order.price) %></p>
-            </div>
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th>Area total:</th>
+                        <th>Area visivel:</th>
+                        <th>Area de segurança:</th>
+                        <th>Impressão:</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><%= order.panel.panel_type.total_area %></td>
+                        <td><%= order.panel.panel_type.visible_area %></td>
+                        <td><%= order.panel.panel_type.security_area %></td>
+                        <td><%= order.panel.panel_type.impression %></td>
+                      </tr>
+                    </tbody>
+                  </table>
             <div class="col-md-12">
                   <div class="order-infos">
                     <p><i class="fa fa-train" aria-hidden="true"></i> <%= order.panel.station.name %></p>
@@ -39,13 +59,13 @@
                   <div class="order-status">
 
 
-                 <% if order.art.url.nil? %>
-                  <%= simple_form_for(order, html: { id: 'art-upload', class: 'dropzone'}) do |f| %>
+                 <%# if order.art.url.nil? %>
+                  <%= simple_form_for(order, html: { id: 'art-upload', class: 'dropzone ' + dom_id(order)}) do |f| %>
                   <% end %>
-                <% else %>
-                  <%= cl_image_tag order.art, width: 230, class: 'dropzone-art' %>
-                  <p id="art-status">Arte enviada</p>
-                <% end %>
+                <%# else %>
+                  <%= cl_image_tag order.art, width: 230, class: 'dropzone-art #{dom_id(order)}' %>
+                  <p id="art-status" class="<%= dom_id(order) %>">Arte enviada</p>
+                <%# end %>
 
 
               </div>
@@ -60,6 +80,9 @@
               </div>
           </li>
         <% end %>
+        <div class="col-md-9 col-md-offset-3">
+          <p class="obs-footer">A arte deve ser enviada no maximo 15 dias antes do início da veículação. A JCDecaux se responsabiliza pela aprovação do visual e a impressão do cartaz.</p>
+        </div>
         </ul>
       </div>
     </div>

@@ -1,4 +1,6 @@
 import "bootstrap";
+// import Money from "js-money";
+// import formatMoney from "accounting";
 import "components/slide";
 import "components/confirm";
 import "plugins/flatpickr";
@@ -6,6 +8,7 @@ import "plugins/inputmask";
 import "components/select2";
 import "components/scroll-text.js";
 import { bindDisableForm } from "components/disabling.js";
+import "components/total-price.js";
 import swal from 'sweetalert';
 import { initUpdateNavbarOnScroll } from '../components/navbar';
 if (document.querySelector('.navbar-wagon')) {

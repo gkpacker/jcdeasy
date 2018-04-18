@@ -1,0 +1,28 @@
+<%= simple_form_for [@panel, @order] do |f| %>
+
+  <div class="choose-campaign">
+    <p class="label-title">Indica o título da campanha que você está montando:</p>
+    <%= f.association :campaign, collection: @campaigns, prompt: 'Escolhe uma campanha', label: false %>
+    <p class="link-cadastrar-empresa">Clique <a href="#" data-toggle="modal" data-target=".campaign-modal">aqui </a> para cadastrar uma nova campanha</p>
+  </div>
+
+  <div class="choose-duration">
+    <p class="label-title">Escolhe a duração de vehiculação da campanha:</p>
+    <div class="form-group select required order_campaign">
+     <%= f.select :duration, [['1 mês', 28], ['2 meses', 56], ['3 meses', 84], ['4 meses', 112], ['5 meses', 140], ['5 meses', 168], ['6 meses', 196], ['7 meses', 224], ['8 meses', 252], ['9 meses', 280], ['10 meses', 308], ['11 meses', 336], ['12 meses', 364]], { required: true }, { class: "form-control select required"} %>
+    </div>
+  </div>
+
+  <div class="choose-dates">
+    <p class="label-title">Escolhe a data de inicio da vehiculação da sua campanha:</p>
+    <%= f.input :date, required: false, label: false, input_html: { class: "panel-date" }, placeholder: 'Data de inicio da campanha' %>
+    </div>
+  </div>
+
+  <div class="total-price text-right">
+    <p id="total_price" data-price="<%= @price_cents %>">Valor total = <%= humanized_money_with_symbol(@price_cents/100) %></p>
+  </div>
+
+  <%= f.submit 'Adicionar painel à campanha', class: 'btn btn-primary btn-block', id: 'add-panel', disabled: true %>
+
+<% end %>

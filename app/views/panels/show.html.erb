@@ -9,102 +9,71 @@
       </div>
     </div>
 
-    <div class="row information-wrap">
+    <div class="row">
+
+      <div class="information-wrap">
+        <div class="col-md-7">
+          <% @panel.station.lines.each do |line| %>
+            <p><%= cl_image_tag("Logo/logo-metrô.png", height: 20) %>
+            <%= line.name %></p>
+          <% end %>
+          <p><strong>Estação: </strong><%= @panel.station.name %></p>
+        </div>
+
+        <div class="col-md-5">
+          <h3><%= @panel.panel_type.name %></h3>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
 
       <div class="col-md-7">
-        <% @panel.station.lines.each do |line| %>
-          <p><%= cl_image_tag("Logo/logo-metrô.png", height: 20) %>
-          <%= line.name %></p>
-        <% end %>
-        <p><strong>Estação: </strong><%= @panel.station.name %></p>
+        <div class="panel-picture-wrap">
+          <% if @panel.picture %>
+            <%= cl_image_tag(@panel.picture, height:'100%', width: '100%') %>
+          <% else %>
+           <%= cl_image_tag(@panel.panel_type.picture, height:'100%', width: '100%') %>
+          <% end %>
+        </div>
       </div>
 
       <div class="col-md-5">
-        <h3><%= @panel.panel_type.name %></h3>
-        <h4><%= humanized_money_with_symbol(@price) %> / mês</h4>
-      </div>
-
-    </div>
-
-
-
-
-
-
-  <div class="row">
-    <div class="col-md-7">
-      <div class="panel-picture-wrap">
-        <% if @panel.picture %>
-          <%= cl_image_tag(@panel.picture) %>
-        <% else %>
-         <%= cl_image_tag(@panel.panel_type.picture, height:'100%', width: '100%') %>
-        <% end %>
-      </div>
-    </div>
-
-    <div class="col-md-5">
-      <div class="panel-buy-wrap">
         <% if user_signed_in? %>
-          <ul class="hidden">
-            <% @dates.each do |date| %>
-              <li class="dates" data-datefrom="<%= date[:from] %>" data-dateto="<%= date[:to] %>">
-              </li>
-            <% end %>
-          </ul>
-          <% if @companies.present? %>
-            <% if @campaigns.empty? %>
-              <div class="text-center">
-                <h5>Você não possui nenhuma campanha ativa</h5>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".campaign-modal">Montar nova campanha</button>
-              </div>
-            <% else %>
-                <%= simple_form_for [@panel, @order] do |f| %>
-                  <div class="col-md-5">
-                    <%= f.select :duration, [['1 período', 28], ['2 períodos', 56], ['3 períodos', 84], ['4 períodos', 112], ['5 períodos', 140], ['5 períodos', 168], ['6 períodos', 196], ['7 períodos', 224], ['8 períodos', 252], ['9 períodos', 280], ['10 períodos', 308], ['11 períodos', 336], ['12 períodos', 364]], class: "btn-days" %>
-                  </div>
-                  <div class="col-md-7">
-                    <%= f.input :date, required: false, input_html: { class: "panel-date" }, placeholder: 'Data de veículação', label: false %>
-                  </div>
-                  <%= f.association :campaign, collection: @campaigns, prompt: 'Escolhe uma campanha', label: false %>
-                  <p class="link-cadastrar-empresa">Clique <a href="#" data-toggle="modal" data-target=".campaign-modal">aqui </a> para cadastrar uma nova campanha</p>
-                  <%= f.submit 'Adicionar painel à campanha', class: 'btn btn-primary btn-block', id: 'add-panel', disabled: true %>
-                <% end %>
+          <div class="panel-buy-wrap">
+            <ul class="hidden">
+              <% @dates.each do |date| %>
+                <li class="dates" data-datefrom="<%= date[:from] %>" data-dateto="<%= date[:to] %>">
+                </li>
+              <% end %>
+            </ul>
+            <% if @companies.present? %>
+              <% if @campaigns.empty? %>
+                <div class="text-left">
+                  <h5>Você não possui nenhuma campanha ativa</h5>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".campaign-modal">Montar nova campanha</button>
+                </div>
+              <% else %>
+                <%= render 'panels/choose_campaign_parameters' %>
               <% end %>
             <% else %>
-              <div class="text-center">
+              <div class="text-left">
                 <h4>
                   Registre uma empresa antes de adicionar painéis ao seu carrinho:
                 </h4>
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".company-modal">Registrar uma empresa</button>
               </div>
             <% end %>
-          <% end %>
-        </div>
+          </div>
+        <% end %>
       </div>
+
     </div>
 
     <div class="row">
       <div class="col-md-7 printing-data">
-        <h6>Conheça os requerimentos para a criação da arte:</h6>
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th>Area total:</th>
-              <th>Area visivel:</th>
-              <th>Area de segurança:</th>
-              <th>Impressão:</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><%= @panel.panel_type.total_area %></td>
-              <td><%= @panel.panel_type.visible_area %></td>
-              <td><%= @panel.panel_type.security_area %></td>
-              <td><%= @panel.panel_type.impression %></td>
-            </tr>
-          </tbody>
-        </table>
-        <p>NB: O cliente deve fazer o upload da arte nesse site no maximo 15 dias antes do inicio da veiculação. A JCDecaux se responsabiliza pela aprovação do visual e a impressão do cartaz.</p>
+        <%= render 'panels/print_info' %>
       </div>
     </div>
 

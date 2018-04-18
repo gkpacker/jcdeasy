@@ -36,8 +36,10 @@ class PanelsController < ApplicationController
     end
     if @panel.price == 0
       @price = @panel.panel_type.price
+      @price_cents = @panel.panel_type.price_cents
     else
       @price = @panel.price
+      @price_cents = @panel.price_cents
     end
   end
 

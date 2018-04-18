@@ -19,6 +19,10 @@
     </div>
   </div>
 
+  <div class="total-price">
+    <p id="total_price" data-price="<%= @price_cents %>"></p>
+  </div>
+
   <%= f.submit 'Adicionar painel à campanha', class: 'btn btn-primary btn-block', id: 'add-panel', disabled: true %>
 
 <% end %>

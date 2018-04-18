@@ -16,23 +16,23 @@ if (document.getElementById('add-panel')) {
 }
 if (document.querySelector(".dropzone")) {
   Dropzone.options.artUpload = {
+  dictDefaultMessage: "Arraste sua arte para fazer o upload",
   paramName: "art", // The name that will be used to transfer the art
   maxFilesize: 2, // MB
   maxFiles: 1, // MB
   addRemoveLinks: true,
   init: function() {
-    this.on("complete", function(file) {
-      this.removeFile(file);
-    })
-  },
-  success: (art) => {
-      const order = document.querySelector('.order-status')
-      if (document.querySelector('.dropzone-art')) {
-        document.querySelector('.dropzone-art').remove()
-        document.querySelector('#art-status').remove()
-      }
-      order.insertAdjacentHTML('beforeend', `<img class="dropzone-art" src="${art.dataURL}" alt="${art.name}" width="230">`)
-      order.insertAdjacentHTML('beforeend', `<p id="art-status">Arte enviada</p>`)
+      this.on("complete", function(file) {
+        const currentElement = this.element.parentElement;
+        const imageElement = currentElement.querySelectorAll("img")[1];
+        if (imageElement) {
+          imageElement.remove()
+          currentElement.querySelector("p").remove()
+        }
+        currentElement.insertAdjacentHTML('beforeend', `<img class="dropzone-art" src="${this.files[0].dataURL}" alt="${this.files[0].name}" width="230">`)
+        currentElement.insertAdjacentHTML('beforeend', `<p id="art-status">Arte enviada</p>`)
+        this.removeFile(file)
+      })
     }
   }
 }

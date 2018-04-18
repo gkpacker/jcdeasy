@@ -39,7 +39,7 @@ a:hover {
 }
 
 .choose-campaign {
-  padding: 12px;
+  padding: 12px 12px 6px 12px;
   margin-bottom: 15px;
   background-color: rgba(220,220,220,0.2);
   &:hover {
@@ -56,7 +56,7 @@ a:hover {
 }
 
 .choose-duration {
-  padding: 12px;
+  padding: 12px 12px 6px 12px;
   margin-bottom: 15px;
   background-color: rgba(220,220,220,0.2);
   &:hover {
@@ -67,7 +67,7 @@ a:hover {
 }
 
 .choose-dates {
-  padding: 12px;
+  padding: 12px 12px 6px 12px;
   margin-bottom: 15px;
   background-color: rgba(220,220,220,0.2);
   &:hover {
@@ -75,6 +75,10 @@ a:hover {
     padding-left: 8px;
     box-shadow: 1px 1px rgba(220, 220, 220, 0.4);
   }
+}
+
+.total-price {
+
 }
 
 .label-title {

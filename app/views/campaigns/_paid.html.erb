@@ -59,13 +59,14 @@
                   <div class="order-status">
 
 
-                 <%# if order.art.url.nil? %>
+                 <% if order.art.url.nil? %>
                   <%= simple_form_for(order, html: { id: 'art-upload', class: 'dropzone ' + dom_id(order)}) do |f| %>
                   <% end %>
-                <%# else %>
+                  <p id="pendent" class="<%= dom_id(order) %>">Arte pendente</p>
+                <% else %>
                   <%= cl_image_tag order.art, width: 230, class: 'dropzone-art #{dom_id(order)}' %>
-                  <p id="art-status" class="<%= dom_id(order) %>">Arte enviada</p>
-                <%# end %>
+                  <p id="art-status" class="text-center <%= dom_id(order) %>">Arte aprovada</p>
+                <% end %>
 
 
               </div>

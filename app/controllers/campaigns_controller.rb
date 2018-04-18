@@ -28,7 +28,7 @@ class CampaignsController < ApplicationController
     if params[:campaign][:company].present?
       @campaign.company = Company.find(params[:campaign][:company])
       if @campaign.save
-        sweetalert(' ', "Campanha '#{@campaign.title}' criada com sucesso", opts = { icon: 'success', button: false, timer: 1400 } )
+        sweetalert(' ', "Campanha criada com sucesso", opts = { icon: 'success', button: false, timer: 1400 } )
         redirect_to request.referer
       else
         sweetalert("Você precisa nomear sua campanha", "Erro ao criar campanha", opts = { icon: 'error', button: true } )

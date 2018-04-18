@@ -1,4 +1,3 @@
-
 <div class="container">
   <div class="row">
     <% @panels.each do |panel| %>
@@ -7,13 +6,13 @@
           <div class="card-wrap">
               <div class="img-wrap" style="background-image: url(<%= panel.panel_type.picture %>)">
                 <div class="price-wrap">
-                  <p class="price"><small>R$ </small><strong>
+                  <p class="price">
                     <% if panel.price == 0 %>
-                      <%= panel.panel_type.price %>
+                      <%= humanized_money_with_symbol(panel.panel_type.price) %>
                     <% else %>
-                      <%= panel.price %>
+                      <%= humanized_money_with_symbol(panel.price) %>
                     <% end %>
-                  </strong>/ mês</p>
+                  <small>/ mês</small></p>
 
                 </div>
 

@@ -7,7 +7,7 @@
 .profile {
   background: #fff;
   border: 1px solid #e1e1e1;
-  border-radius: 3px;
+  // border-radius: 3px;
   padding: 15px;
   box-shadow: 5px 5px 5px -4px #ddd;
   display: block;
@@ -31,7 +31,7 @@
   font-size: 16px;
   padding: 10px;
   width: 100%;
-  border-radius: 7px;
+  // border-radius: 7px;
 
 }
 
@@ -51,7 +51,7 @@
  color: #565655;
  font-size: 24px;
  &:hover {
-  color: #D17A00;
+  color: #009DB5;
   text-decoration: none;
  }
 }
@@ -68,9 +68,9 @@
   border: 1px solid #e1e1e1;
   margin: 0 auto;
   margin-top:10px;
-  border-radius: 15px;
+  // border-radius: 15px;
   &:hover {
-    border: 1px solid #fda403;
+    border: 1px solid #009DB5;
   }
 
 }
@@ -83,11 +83,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #fda403;
+  background-color: #009DB5;
   padding: 15px;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
-  color: white;
+  // border-top-left-radius: 15px;
+  // border-top-right-radius: 15px;
   width: 100%;
 
 }
@@ -116,11 +115,11 @@
 .compaign-wrap{
   color: #565655;
   background-color: #eee;
-  border-left: 3px solid #fda403;
+  border-left: 3px solid #009DB5;
   padding: 15px;
   margin: 10px 0;
   &:hover {
-     border-left: 10px solid #fda403;
+     border-left: 10px solid #009DB5;
     transition-duration: 0.2s
   }
 
@@ -129,7 +128,7 @@
 .btn-aprovado-pagamento {
   color: white;
   padding: 10px;
-  border-radius: 15px;
+  // border-radius: 15px;
   background-color: #27ae60;
   font-size: 14px;
 }
@@ -137,7 +136,7 @@
 .btn-pagamento-pendente {
   color: white;
   padding: 10px;
-  border-radius: 15px;
+  // border-radius: 15px;
   background-color: #e74c3c;
   font-size: 14px;
 }

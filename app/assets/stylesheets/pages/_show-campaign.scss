@@ -42,7 +42,7 @@
 }
 
 .col-info .fa-trash {
-   color: #fda403;
+   color: #00305C;
   &:hover {
     color: #c67d09;
   }
@@ -50,6 +50,10 @@
 
 .title-wrap {
   margin-top: 30px;
+}
+
+.obs-footer {
+  font-size: 14px;
 }
 
 .subtotal-text {

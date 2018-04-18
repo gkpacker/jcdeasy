@@ -1,7 +1,7 @@
 .btn-primary {
   border: none;
-  border-radius: 5px;
+  transition: all 0.3s ease;
   &:hover {
-    background-color: #c67d09;
+    background-color: #00305C;
   }
 }

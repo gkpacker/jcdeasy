@@ -50,7 +50,7 @@
             </ul>
             <% if @companies.present? %>
               <% if @campaigns.empty? %>
-                <div class="text-center">
+                <div class="text-left">
                   <h5>Você não possui nenhuma campanha ativa</h5>
                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".campaign-modal">Montar nova campanha</button>
                 </div>
@@ -58,7 +58,7 @@
                 <%= render 'panels/choose_campaign_parameters' %>
               <% end %>
             <% else %>
-              <div class="text-center">
+              <div class="text-left">
                 <h4>
                   Registre uma empresa antes de adicionar painéis ao seu carrinho:
                 </h4>

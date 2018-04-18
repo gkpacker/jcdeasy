@@ -1,6 +1,24 @@
 # encoding: UTF-8
 # pt-BR translations for Devise
 pt-BR:
+  hello: "Hello world"
+  views:
+    pagination:
+      first: "&laquo; Primeira"
+      last: "Última &raquo;"
+      previous: "&lsaquo; Anterior"
+      next: "Proxima &rsaquo;"
+      truncate: "&hellip;"
+  helpers:
+    page_entries_info:
+      one_page:
+        display_entries:
+          zero: "No %{entry_name} found"
+          one: "Displaying <b>1</b> %{entry_name}"
+          other: "Mostrando <b>todos %{count}</b> painéis"
+      more_pages:
+        display_entries: "Displaying %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> of <b>%{total}</b> in total"
+
   devise:
     confirmations:
       confirmed: "Sua conta foi confirmada com sucesso. Você está logado."
@@ -24,7 +42,7 @@ pt-BR:
       unlock_instructions:
         subject: "Instruções de desbloqueio"
     omniauth_callbacks:
-      failure: "Não foi possível autenticá-lo como %{kind} porque "%{reason}"."
+      failure: "Não foi possível autenticá-lo como %{kind} porque '%{reason}'."
       success: "Autenticado com sucesso com uma conta de %{kind}."
     passwords:
       no_token: "Você só pode acessar essa página através de um e-mail de troca de senha. Se já estiver acessando por um e-mail, verifique se a URL fornecida está completa."
@@ -59,3 +77,20 @@ pt-BR:
       not_saved:
         one: "Não foi possível salvar %{resource}: 1 erro"
         other: "Não foi possível salvar %{resource}: %{count} erros."
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            first_name:
+              blank: "Preenchimento obrigatório."
+            last_name:
+              blank: "Preenchimento obrigatório."
+            phone_number:
+              blank: "Preenchimento obrigatório."
+            cpf:
+              blank: "Preenchimento obrigatório."
+            email:
+              blank: "Preenchimento obrigatório."
+            password:
+              blank: "Preenchimento obrigatório."

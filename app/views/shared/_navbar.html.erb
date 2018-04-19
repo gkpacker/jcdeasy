@@ -8,9 +8,9 @@
     <%= image_tag "logo.png", height: 50 %>
   <% end %>
   <% unless current_page?(root_path) %>
-  <div class="hidden-xs">
+
     <%= render 'shared/search-form' %>
-    </div>
+
 
   <% end %>
   <!-- Right Navigation -->
@@ -81,4 +81,9 @@
 
 
 </div>
+
+
+<%= render 'shared/search-form-mobile' %>
+
+
 

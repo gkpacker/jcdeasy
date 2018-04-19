@@ -1,5 +1,5 @@
 class CampaignsController < ApplicationController
-  before_action :find_campaign, only: [:show, :edit, :update, :paid]
+  before_action :find_campaign, only: [:show, :edit, :update, :paid, :destroy]
   before_action :find_companies, only: [:new, :create, :edit, :update]
   skip_before_action :verify_authenticity_token, only: :paid
 
@@ -55,6 +55,11 @@ class CampaignsController < ApplicationController
   def paid
     @campaign.paid = true
     @campaign.save
+  end
+
+  def destroy
+    @campaign = Campaign.find(params[:id])
+    @campaign.archived!
   end
 
   private

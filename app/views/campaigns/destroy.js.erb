@@ -1,0 +1,5 @@
+var campaign = document.querySelector("[data-campaign-id='<%= @campaign.id %>']")
+  if (campaign.parentElement.parentElement.childElementCount === 1) {
+    campaign.parentElement.parentElement.parentElement.insertAdjacentHTML("afterbegin", "<em><h5>Você ainda não possui empresas registradas</h5></em>")
+  }
+  campaign.parentElement.remove()

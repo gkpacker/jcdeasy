@@ -1,9 +1,9 @@
 import "bootstrap";
 import "components/slide";
-import "components/modal";
 import "components/confirm";
 import "plugins/flatpickr";
 import "plugins/inputmask";
+import "components/modal";
 import "components/select2";
 import "components/scroll-text.js";
 import { bindDisableForm } from "components/disabling.js";

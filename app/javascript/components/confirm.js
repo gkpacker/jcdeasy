@@ -38,15 +38,18 @@ const handleConfirm = function(element) {
     if (result.value) {
       element.removeAttribute('data-confirm-swal')
       element.click()
-      swal({
-        title: 'Deletado!',
-        text: '',
-        position: 'top-end',
-        backdrop: false,
-        type: 'success',
-        showConfirmButton: false,
-        timer: 1400
-      })
+      const alert = () => {
+        swal({
+          title: 'Deletado!',
+          text: '',
+          position: 'top-end',
+          backdrop: false,
+          type: 'success',
+          showConfirmButton: false,
+          timer: 1400
+        })
+      }
+      setInterval(alert(), 1000)
     }
   }
 

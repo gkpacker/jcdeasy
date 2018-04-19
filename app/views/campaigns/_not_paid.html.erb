@@ -120,14 +120,14 @@
               documents: [
                 {
                   type: 'cpf',
-                  number: '<%= current_user.cpf %>'
+                  number: '<%= current_user.cpf.gsub(/\D/, '') %>'
                 },
                 {
                   type: 'cnpj',
-                  number: '<%= @campaign.company.cnpj %>'
+                  number: '+<%= @campaign.company.cnpj.gsub(/\D/, '') %>'
                 }
               ],
-              phone_numbers: ['<%= j current_user.phone_number %>'],
+              phone_numbers: ['+<%= j current_user.phone_number.gsub(/\D/, '') %>'],
             },
             defaultInstallment: 1,
             billing: {

@@ -30,7 +30,7 @@ class PanelsController < ApplicationController
       @campaigns = []
       @companies.includes(:campaigns).each do |company|
         company.campaigns.each do |campaign|
-          @campaigns << campaign unless campaign.paid && campaign.archived?
+          @campaigns << campaign unless campaign.archived? || campaign.paid
         end
       end
     end

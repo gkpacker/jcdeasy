@@ -1,0 +1,5 @@
+var company = document.querySelector("[data-company-id='<%= @company.id %>']")
+  if (company.parentElement.childElementCount === 1) {
+    company.parentElement.parentElement.parentElement.insertAdjacentHTML("afterbegin", "<em><h5>Você ainda não possui empresas registradas</h5></em>")
+  }
+  company.remove()

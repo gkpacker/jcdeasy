@@ -1,6 +1,5 @@
 class CompaniesController < ApplicationController
 before_action :find_company, only: [:show, :edit, :update, :destroy]
-
   def show
   end
 
@@ -32,6 +31,7 @@ before_action :find_company, only: [:show, :edit, :update, :destroy]
   end
 
   def destroy
+    @company = Company.find(params[:id])
     @company.archived!
   end
 

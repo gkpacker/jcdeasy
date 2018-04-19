@@ -36,23 +36,17 @@ const handleConfirm = function(element) {
 
   const confirmed = (element, result) => {
     if (result.value) {
-      // User clicked confirm button
-      const companies = document.querySelector("#companies-list")
-      const list = document.querySelector(".company-list-ul")
       element.removeAttribute('data-confirm-swal')
       element.click()
-      element.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.remove()
-      if (companies.childElementCount === 0) {
-        list.insertAdjacentHTML("afterbegin", "<em><h5>Você ainda não possui empresas registradas</h5></em>")
-      }
       swal({
-            title: 'Deletado!',
-            text: 'Seu arquivo foi deletado.',
-            type: 'success',
-            buttons: false,
-            timer: 1400,
-          }
-      )
+        title: 'Deletado!',
+        text: '',
+        position: 'top-end',
+        backdrop: false,
+        type: 'success',
+        showConfirmButton: false,
+        timer: 1400
+      })
     }
   }
 

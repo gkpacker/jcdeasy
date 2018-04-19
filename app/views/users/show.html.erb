@@ -30,7 +30,7 @@
         <div class="col-md-12">
           <div class="title-edit">
             <h4>Minhas Empresas:</h4>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".company-modal">Nova Empresa</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#company-modal">Nova Empresa</button>
           </div>
           <div class="profile">
             <ul class="company-list-ul">
@@ -44,36 +44,41 @@
         <div class="col-md-12">
           <div class="title-edit">
             <h4>Minhas Campanhas:</h4>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".campaign-modal">Nova Campanha</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#campaign-modal">Nova Campanha</button>
           </div>
           <div class="profile">
             <ul class="company-list-ul">
               <% if @campaigns.empty? %>
                 <em><h5>Você ainda não possui campanhas</h5></em>
+              <% else %>
+                <%= render 'users/campaigns' %>
               <% end %>
-              <%= render 'users/campaigns' %>
             </ul>
           </div>
         </div>
 
       </div>
     </div>
-  </div>
-</div>
 
 
-<div class="modal fade campaign-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content background">
-      <%= render template: 'campaigns/new' %>
+    <div id="company-modal" class="modal fade company-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content background">
+          <div class="modal-body">
+            <%= render template: "companies/new" %>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
-<div class="modal fade company-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content background">
-      <%= render template: "companies/new" %>
+    <div id="campaign-modal" class="modal fade campaign-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content background">
+          <div class="modal-body">
+            <%= render template: 'campaigns/new' %>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

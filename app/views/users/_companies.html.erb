@@ -1,7 +1,7 @@
 <div id="companies-list" class="row">
   <% @companies.each do |company| %>
   <li class="col-md-4 list-unstyled">
-    <div class="company-list">
+    <div class="company-list" data-company-id='<%= company.id %>'>
       <div class="row">
         <div class="col-md-12">
 
@@ -13,7 +13,7 @@
             <%= link_to edit_company_path(company), class:"company-icons" do %>
               <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
             <% end %>
-            <%= link_to company_path(company), method: :delete, data: { confirm_swal: "Are you sure?" }, class: "company-icons" do %>
+            <%= link_to company_path(company), method: :delete, remote: true, data: { confirm_swal: "Are you sure?" }, class: "company-icons" do %>
               <i class="fa fa-trash" aria-hidden="true"></i>
             <% end %>
             </div>

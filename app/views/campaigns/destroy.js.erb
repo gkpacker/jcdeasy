@@ -1,2 +1,5 @@
-const campaing = document.querySelector(['data-id="<%= dom_id(campaign) %>"'])
+var campaign = document.querySelector("[data-campaign-id='<%= @campaign.id %>']")
+  if (campaign.parentElement.childElementCount === 2) {
+    campaign.parentElement.parentElement.parentElement.insertAdjacentHTML("afterbegin", "<em><h5>Você ainda não possui empresas registradas</h5></em>")
+  }
   campaign.remove()

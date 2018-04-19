@@ -6,7 +6,7 @@ import "plugins/inputmask";
 import "components/modal";
 import "components/select2";
 import "components/scroll-text.js";
-import { bindDisableForm } from "components/disabling.js";
+import { bindDisableForm, bindDisableCampaignForm } from "components/disabling.js";
 if (document.getElementById("order_duration")) {
   import("components/total-price.js")
 }
@@ -16,7 +16,10 @@ if (document.querySelector('.navbar-wagon')) {
   initUpdateNavbarOnScroll();
 }
 if (document.getElementById('add-panel')) {
-  bindDisableForm()
+  bindDisablePanelForm()
+}
+if (document.getElementById('add-campaign')) {
+  bindDisableCampaignForm()
 }
 if (document.querySelector(".dropzone")) {
   Dropzone.options.artUpload = {

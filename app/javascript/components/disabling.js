@@ -1,47 +1,77 @@
-const bindDisableForm = () => {
+const bindDisablePanelForm = () => {
   const button = document.getElementById('add-panel');
-  const buttonCampaign = document.getElementById('add-campaign');
-
   const date = document.getElementById('order_date');
   const campaign = document.getElementById("order_campaign_id");
-
-  const title = document.getElementById('campaign_title');
-  const company = document.getElementById("campaign_company");
 
   date.addEventListener('change', (event) => {
     if (!(campaign.value === "")) {
       button.removeAttribute('disabled')
+    } else {
+      button.setAttribute('disabled', 'disabled')
+    }
+    if (date.value === "") {
+      button.setAttribute('disabled', 'disabled')
     }
   });
 
   campaign.addEventListener('change', (event) => {
     if (!(date.value === "")) {
       button.removeAttribute('disabled')
+    } else {
+      button.setAttribute('disabled', 'disabled')
+    }
+    if (campaign.value === "") {
+      button.setAttribute('disabled', 'disabled')
     }
   })
 
-  title.addEventListener('keyup', (event) => {
-    if (!(company.value === "")) {
-      buttonCampaign.removeAttribute('disabled')
-    } else {
-      buttonCampaign.setAttribute('disabled', 'disabled')
-    }
-    if (title.value === "") {
-      buttonCampaign.setAttribute('disabled', 'disabled')
-    }
-  });
-
-  company.addEventListener('change', (event) => {
-    if (!(title.value === "")) {
-      buttonCampaign.removeAttribute('disabled')
-    } else {
-      buttonCampaign.setAttribute('disabled', 'disabled')
-    }
-    if (company.value === "") {
-      buttonCampaign.setAttribute('disabled', 'disabled')
-    }
-  })
 };
 
 
-export { bindDisableForm }
+const bindDisableCampaignForm = () => {
+  const buttonCampaign = document.querySelectorAll('#add-campaign');
+  const allTitles = document.querySelectorAll('#campaign_title');
+  const allCompanies = document.querySelectorAll("#campaign_company");
+
+  allTitles.forEach((title)=>{
+    title.addEventListener('keyup', (event) => {
+      const company = title.parentElement.parentElement.parentElement.querySelector('select')
+      if (!(company.value === "")) {
+        buttonCampaign.forEach((button)=>{
+          button.removeAttribute('disabled')
+        })
+      } else {
+        buttonCampaign.forEach((button)=>{
+          button.setAttribute('disabled', 'disabled')
+        })
+      }
+      if (title.value === "") {
+        buttonCampaign.forEach((button)=>{
+          button.setAttribute('disabled', 'disabled')
+        })
+      }
+    });
+  })
+  allCompanies.forEach((company)=> {
+    company.addEventListener('change', (event) => {
+      const title =  company.parentElement.parentElement.querySelector("#campaign_title")
+      if (!(title.value === "")) {
+        buttonCampaign.forEach((button)=>{
+          button.removeAttribute('disabled')
+        })
+      } else {
+        buttonCampaign.forEach((button)=>{
+          button.setAttribute('disabled', 'disabled')
+        })
+      }
+      if (company.value === "") {
+        buttonCampaign.forEach((button)=>{
+          button.setAttribute('disabled', 'disabled')
+        })
+      }
+    })
+  })
+}
+
+
+export { bindDisablePanelForm, bindDisableCampaignForm }

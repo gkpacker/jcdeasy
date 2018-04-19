@@ -10,9 +10,9 @@ class PanelsController < ApplicationController
         params[:station].each do |station|
           panels << Panel.includes(:panel_type).includes(:station).station_search(station)
         end
-        @panels = panels.flatten
+        @panels = Kaminari.paginate_array(panels.flatten).page(params[:page]).per(24)
       else
-        @panels = Panel.includes(:panel_type).includes(:station).page(params[:page]).station_search(params[:station])
+        @panels = Panel.includes(:panel_type).includes(:station).page(params[:page]).per(24).station_search(params[:station])
       end
     else
       @panels = Panel.includes(:panel_type).includes(:station).includes(station: :lines).page(params[:page])

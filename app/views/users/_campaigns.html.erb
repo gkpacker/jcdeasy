@@ -7,17 +7,17 @@
                 <div class="col-md-8 compaign-info">
                   <p><%= campaign.title %> - <%= campaign.company.name %></p>
                 </div>
-                <div class="col-md-4 compaign-info">
+                <div class="col-md-4 compaign-stats compaign-info">
                   <div class="campaign-status">
                     <% if campaign.paid %>
                       <p class="btn-aprovado-pagamento" align="center">Pagamento Aprovado</p>
                     <% else %>
                       <p class="btn-pagamento-pendente" align="center">Pagamento Pendente</p>
-                    <%= link_to campaign_path(campaign), method: :delete, remote: true, data: { confirm_swal: "Are you sure?" }, class: "campaign-icons" do %>
-                      <i class="fa fa-trash" aria-hidden="true"></i>
-                    <% end %>
                     <% end %>
                   </div>
+                  <% unless campaign.paid %>
+                    <%= link_to  '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe,campaign_path(campaign), method: :delete, remote: true, data: { confirm_swal: "Are you sure?" } %>
+                  <% end %>
                   </div>
               </div>
             </div>

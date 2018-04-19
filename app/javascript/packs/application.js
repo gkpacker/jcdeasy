@@ -6,7 +6,7 @@ import "plugins/inputmask";
 import "components/modal";
 import "components/select2";
 import "components/scroll-text.js";
-import { bindDisableForm, bindDisableCampaignForm } from "components/disabling.js";
+import { bindDisablePanelForm, bindDisableCampaignForm } from "components/disabling.js";
 if (document.getElementById("order_duration")) {
   import("components/total-price.js")
 }
@@ -42,13 +42,13 @@ if (document.querySelector(".dropzone")) {
           send.remove()
         }
         currentElement.insertAdjacentHTML('beforeend', `<img class="dropzone-art" src="${this.files[0].dataURL}" alt="${this.files[0].name}" width="230">`)
-        currentElement.insertAdjacentHTML('beforeend', `<p id="art-status" class="text-center">Aguardando aprovação</p>`)
+        currentElement.insertAdjacentHTML('beforeend', `<p id="art-status" class="text-center"><i class="fa fa-clock-o" aria-hidden="true">Aguardando aprovação</p>`)
         this.element.remove()
         const a = () => {
           currentElement.querySelector("#art-status").remove()
         }
         const b = () => {
-          currentElement.insertAdjacentHTML('beforeend', `<p id="art-status">Arte aprovada</p>`)
+          currentElement.insertAdjacentHTML('beforeend', `<p id="art-status" class="text-center <%= dom_id(order) %>"><i class="fa fa-check-circle" aria-hidden="true"></i> Arte aprovada</p>`)
         }
         setInterval(a, 5000)
         setInterval(b, 5000)

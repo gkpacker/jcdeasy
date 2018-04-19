@@ -1,5 +1,4 @@
 <div class="container">
-
   <div class="row">
     <div class="col-md-12" align="center">
       <%= paginate @panels %>
@@ -10,6 +9,10 @@
         <%= link_to panel_path(panel), class: "card-link" do %>
           <div class="card-wrap">
               <div class="img-wrap" style="background-image: url(<%= panel.panel_type.picture %>)">
+                <div class="metro-icon">
+                  <%= image_tag "icon_metro_card.png", height: 60 %>
+
+                </div>
                 <div class="price-wrap">
                   <p class="price">
                     <% if panel.price == 0 %>
@@ -25,6 +28,7 @@
               </div>
           <% end %>
               <%= link_to panel_path(panel), class: "card-link" do %>
+
               <div class="card-footer-wrap">
 
                 <div class="card-info">

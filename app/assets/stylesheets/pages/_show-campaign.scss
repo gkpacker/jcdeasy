@@ -69,10 +69,12 @@
 }
 
 .order-status {
-   display: flex;
+  display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px;
   background-color: #F2F2F2;
-
+  p {
+    margin: 0 0 0 10px;
+  }
 }

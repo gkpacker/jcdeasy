@@ -13,16 +13,6 @@
                   <%= image_tag "icon_metro_card.png", height: 60 %>
 
                 </div>
-                <div class="price-wrap">
-                  <p class="price">
-                    <% if panel.price == 0 %>
-                      <%= humanized_money_with_symbol(panel.panel_type.price) %>
-                    <% else %>
-                      <%= humanized_money_with_symbol(panel.price) %>
-                    <% end %>
-                  <small>/ mês</small></p>
-
-                </div>
 
 
               </div>
@@ -32,8 +22,37 @@
               <div class="card-footer-wrap">
 
                 <div class="card-info">
-                  <h6><strong><%= panel.panel_type.name %></strong></h6>
-                  <p><strong>Estação:</strong> <%= panel.station.name %></br>
+
+                  <div class="row">
+
+                    <div class="col-md-12">
+                  <div class="col-md-6">
+                    <h6><strong><%= panel.panel_type.name %></strong></h6>
+                    <small>A partir de</small>
+                    <strong><% if panel.price == 0 %>
+                      <%= humanized_money_with_symbol(panel.panel_type.price) %>
+                    <% else %>
+                      <%= humanized_money_with_symbol(panel.price) %>
+                    <% end %></strong><small>/ painel</small>
+                  </div>
+
+                   <div class="col-md-6">
+                    <button type="button" class="btn btn-primary btn-detalhes">Saiba mais</button>
+                  </div>
+
+                  </div>
+
+
+                </div>
+                <div class="row">
+                 <div class="col-md-11 card-info-border centered">
+
+                  </div>
+                  </div>
+
+                  <div class="row">
+                 <div class="col-md-11 centered info-card">
+                  <p><%= panel.station.name %></br>
 
                       <% panel.station.lines.each do |line| %>
                 <%= line.name %> /
@@ -41,12 +60,12 @@
             <%= panel.panel_type.total_area %></br>
             </p>
 
+                  </div>
+                  </div>
+
                 </div>
 
-                <div class="card-btn-wrap">
 
-                  <button type="button" class="btn btn-primary btn-detalhes visible-sm-* visible-lg-*">Ver detalhes</button>
-                </div>
               </div>
               <% end %>
           </div>

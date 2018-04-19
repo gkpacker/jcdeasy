@@ -52,12 +52,12 @@
 
                   <div class="row">
                  <div class="col-md-11 centered info-card">
-                  <p><%= panel.station.name %></br>
-
+                  <p><i class="fa fa-train" aria-hidden="true"></i> <%= panel.station.name %></br><i class="fa fa-road" aria-hidden="true"></i>
                       <% panel.station.lines.each do |line| %>
                 <%= line.name %> /
               <% end %></br>
-            <%= panel.panel_type.total_area %></br>
+
+            <i class="fa fa-file-image-o" aria-hidden="true"></i> <%= panel.panel_type.total_area %></br>
             </p>
 
                   </div>

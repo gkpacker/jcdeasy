@@ -9,7 +9,7 @@ duration.addEventListener('change', (event) => {
       const total_price = document.getElementById("total_price")
       const price = total_price.dataset.price;
       const total = parseInt(price) * parseInt(duration.value/28);
-      total_price.innerHTML = `Total = ${accounting.formatMoney(total/100, "R$ ", 2, ".", ",")}`;
+      total_price.innerHTML = `${accounting.formatMoney(total/100, "R$ ", 2, ".", ",")}`;
     }
   }
 })

@@ -2,7 +2,7 @@
 
   <div class="choose-campaign">
     <p class="label-title">Selecione a campanha que você está montando:</p>
-    <%= f.association :campaign, collection: @campaigns.select {|campaign| campaign.active? }, prompt: 'Escolhe uma campanha', label: false %>
+    <%= f.association :campaign, collection: @campaigns, prompt: 'Escolhe uma campanha', label: false %>
     <p class="link-cadastrar-empresa">Clique <a href="#" data-toggle="modal" data-target=".campaign-modal">aqui </a> para cadastrar uma nova campanha</p>
   </div>
 

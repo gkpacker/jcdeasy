@@ -30,6 +30,18 @@ a:hover {
   }
 }
 
+@media screen and (max-width: 540px) {
+  .information-wrap {
+    h3 {
+      font-size: 16px;
+    }
+    p {
+      font-size: 12px;
+    }
+  }
+}
+
+
 .panel-picture-wrap {
   box-shadow: 2px 2px rgb(240,240,240);
 }
@@ -37,6 +49,15 @@ a:hover {
 .panel-buy-wrap p {
   margin-bottom: 2px;
 }
+
+@media screen and (max-width: 540px) {
+  .panel-buy-wrap {
+    h5 {
+      font-size: 14px;
+    }
+  }
+}
+
 
 .choose-campaign {
   padding: 12px 12px 6px 12px;
@@ -97,9 +118,24 @@ a:hover {
   margin-top: 25px;
   margin-bottom: 40px;
   th, td {
-    font-size: 16px;
+    font-size: 14px;
   }
   p {
     font-size: 12px;
   }
 }
+
+@media screen and (max-width: 540px) {
+  .printing-data {
+    h6 {
+      font-size: 14px;
+    }
+    th, td {
+    font-size: 10px;
+    }
+    p {
+      font-size: 10px;
+    }
+  }
+}
+

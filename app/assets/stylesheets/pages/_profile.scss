@@ -114,10 +114,10 @@
 
 .compaign-stats {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  a {
-    color: red;
+  p {
+    margin-bottom: 0px;
   }
 }
 
@@ -130,6 +130,9 @@
   &:hover {
     border-left: 10px solid #009DB5;
     transition-duration: 0.2s
+  }
+  a {
+    color: #565655
   }
 
 }
@@ -148,10 +151,6 @@
   // border-radius: 15px;
   background-color: #e74c3c;
   font-size: 14px;
-}
-
-.campaign-status {
-width: 200px;
 }
 
 

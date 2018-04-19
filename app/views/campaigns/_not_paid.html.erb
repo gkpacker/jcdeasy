@@ -88,7 +88,10 @@
                 method: 'PATCH',
                 credentials: 'include'
               })
-              .then(window.location.reload())
+              const reload = () => {
+                window.location = location
+              }
+              setInterval(reload, 1000)
             },
             error: function(err) {
               console.log(err);

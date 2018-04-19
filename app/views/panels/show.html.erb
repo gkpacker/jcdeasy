@@ -66,6 +66,13 @@
               </div>
             <% end %>
           </div>
+        <% else %>
+          <div class="panel-buy-wrap">
+            <div class="text-left">
+              <h5>Selecione painéis e monte sua campanha</h5>
+              <%= link_to "Comece já !", new_user_session_path, class: "btn btn-primary" %>
+            </div>
+          </div>
         <% end %>
       </div>
 

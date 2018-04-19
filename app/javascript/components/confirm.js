@@ -26,7 +26,7 @@ const handleConfirm = function(element) {
       text: ' ',
       type: 'warning',
       customClass: 'sweet-confirm',
-      confirmButtonColor: '#fda403',
+      confirmButtonColor: '#189db4',
       cancelButtonText: 'Cancelar',
       confirmButtonText: 'Apagar',
       reverseButtons: true,

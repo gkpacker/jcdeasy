@@ -128,3 +128,29 @@
   justify-content: space-between;
 
 }
+
+
+#search-form-mobile {
+  display: none;
+
+}
+
+@media (max-width: 600px)
+{
+    #search-form-mobile {
+    display: block;
+  }
+    #search-form-normal{
+    display: none;
+  }
+  .search-section-mobile {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0;
+
+  }
+}
+
+

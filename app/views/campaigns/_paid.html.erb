@@ -13,79 +13,90 @@
         <% @campaign.orders.each do |order| %>
           <li>
             <div class="row">
-              <div class="col-md-3 pic-wrap">
-                <%= cl_image_tag(order.panel.panel_type.picture, class:"pic") %>
-              </p>
+              <div class="col-sm-12 col-md-3 pic-wrap">
+                <%= cl_image_tag(order.panel.panel_type.picture, class:"pic") %></p>
               </div>
-              <div class="col-md-9">
+              <div class="col-sm-12 col-md-9">
                 <div class="row">
-                <div class="col-md-12">
-                  <div class="col-info">
-                    <p><strong><%= order.panel.panel_type.name %></strong></p>
-                    <p><%= humanized_money_with_symbol(order.price) %></p>
+                  <div class="col-md-12">
+
+                    <div class="row">
+                      <div class="col-info">
+                        <p><strong><%= order.panel.panel_type.name %></strong></p>
+                        <p><%= humanized_money_with_symbol(order.price) %></p>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="row">
+                          <div class="col-md-12">
+                            <table class="table table-bordered">
+                              <thead>
+                                <tr>
+                                  <th>Area total:</th>
+                                  <th>Area visivel:</th>
+                                  <th>Area de segurança:</th>
+                                  <th>Impressão:</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td><%= order.panel.panel_type.total_area %></td>
+                                  <td><%= order.panel.panel_type.visible_area %></td>
+                                  <td><%= order.panel.panel_type.security_area %></td>
+                                  <td><%= order.panel.panel_type.impression %></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div class="order-infos">
+                              <p><i class="fa fa-train" aria-hidden="true"></i> <%= order.panel.station.name %></p>
+                              <p><i class="fa fa-calendar-o" aria-hidden="true"></i> <%= order.date.to_date.strftime("%d/%m/%Y") %></p>
+                              <p><i class="fa fa-clock-o" aria-hidden="true"></i> <%= order.duration %> dias</p>
+                              <p><i class="fa fa-file-image-o" aria-hidden="true"></i>
+                              <%= order.panel.panel_type.total_area %></p>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div class="order-status">
+                              <% if order.art.url.nil? %>
+                                <%= simple_form_for(order, html: { id: 'art-upload', class: 'dropzone ' + dom_id(order)}) do |f| %>
+                                <% end %>
+                                <p id="pendent" class="<%= dom_id(order) %>"><i class="fa fa-clock-o" aria-hidden="true"></i> Arte pendente</p>
+                              <% else %>
+                                <%= cl_image_tag order.art, width: 230, class: 'dropzone-art #{dom_id(order)}' %>
+                                <p id="art-status" class="text-center <%= dom_id(order) %>"><i class="fa fa-check-circle" aria-hidden="true"></i> Arte aprovada</p>
+                              <% end %>
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+
                   </div>
                 </div>
-                  <div class="col-md-12">
-                  <table class="table table-bordered">
-                    <thead>
-                      <tr>
-                        <th>Area total:</th>
-                        <th>Area visivel:</th>
-                        <th>Area de segurança:</th>
-                        <th>Impressão:</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td><%= order.panel.panel_type.total_area %></td>
-                        <td><%= order.panel.panel_type.visible_area %></td>
-                        <td><%= order.panel.panel_type.security_area %></td>
-                        <td><%= order.panel.panel_type.impression %></td>
-                      </tr>
-                    </tbody>
-                  </table>
-            <div class="col-md-12">
-                  <div class="order-infos">
-                    <p><i class="fa fa-train" aria-hidden="true"></i> <%= order.panel.station.name %></p>
-                <p><i class="fa fa-calendar-o" aria-hidden="true"></i> <%= order.date.to_date.strftime("%d/%m/%Y") %></p>
-                <p><i class="fa fa-clock-o" aria-hidden="true"></i> <%= order.duration %> dias</p>
-                <p><i class="fa fa-file-image-o" aria-hidden="true"></i>
-                <%= order.panel.panel_type.total_area %></p>
               </div>
-              </div>
-
-
-              <div class="col-md-12">
-                  <div class="order-status">
-
-
-                 <% if order.art.url.nil? %>
-                  <%= simple_form_for(order, html: { id: 'art-upload', class: 'dropzone ' + dom_id(order)}) do |f| %>
-                  <% end %>
-                  <p id="pendent" class="<%= dom_id(order) %>">Arte pendente</p>
-                <% else %>
-                  <%= cl_image_tag order.art, width: 230, class: 'dropzone-art #{dom_id(order)}' %>
-                  <p id="art-status" class="text-center <%= dom_id(order) %>">Arte aprovada</p>
-                <% end %>
-
-
-              </div>
-              </div>
-
-
-
-
-
-                </div>
-                </div>
-              </div>
+            </div>
           </li>
         <% end %>
-        <div class="col-md-9 col-md-offset-3">
-          <p class="obs-footer">A arte deve ser enviada no maximo 15 dias antes do início da veículação. A JCDecaux se responsabiliza pela aprovação do visual e a impressão do cartaz.</p>
-        </div>
         </ul>
       </div>
     </div>
+
   </div>
+  <div class="row">
+    <div class="col-md-12">
+      <p class="obs-footer">A arte deve ser enviada no maximo 15 dias antes do início da veículação. A JCDecaux se responsabiliza pela aprovação do visual e a impressão do cartaz.</p>
+    </div>
+  </div>
+
 </div>

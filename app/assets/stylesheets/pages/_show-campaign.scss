@@ -38,7 +38,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
+  padding: 10px 15px 3px 15px;
 }
 
 .col-info .fa-trash {
@@ -54,6 +54,7 @@
 
 .obs-footer {
   font-size: 14px;
+  margin: 60px 0;
 }
 
 .subtotal-text {

@@ -82,8 +82,16 @@
 
 </div>
 
+<% unless current_page?(root_path) %>
 
-<%= render 'shared/search-form-mobile' %>
+    <%= render 'shared/search-form-mobile' %>
+
+
+
+  <% end %>
+
+
+
 
 
 

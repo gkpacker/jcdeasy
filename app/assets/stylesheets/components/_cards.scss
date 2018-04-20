@@ -30,6 +30,12 @@
 .btn-detalhes{
   width: 100%;
   margin-top: 25%;
+  padding: 6px;
+  border: 1px solid #c8c8c8;
+  &:hover{
+    border: 1px solid #00305C;
+    color: #00305C;
+  }
 }
 
 .card-wrap {

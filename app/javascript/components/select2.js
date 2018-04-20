@@ -12,4 +12,9 @@ document.addEventListener("DOMContentLoaded", () => {
     tags: true,
     placeholder: 'Seleciona uma estação'
   });
+
+  $('#select2-mobile2').select2({
+    tags: true,
+    placeholder: 'Seleciona uma estação'
+  });
 })

@@ -4,19 +4,20 @@ class PanelsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    if params[:station].present?
-      if params[:station].length > 1
-        panels = []
-        params[:station].each do |station|
-          panels << Panel.includes(:panel_type).includes(:station).station_search(station)
+    @panels =
+      if params[:station].present?
+        if params[:station].length > 1
+          panels =
+            params[:station].flat_map do |station|
+              Panel.includes(:panel_type, :station).station_search(station)
+            end
+           Kaminari.paginate_array(panels).page(params[:page]).per(24)
+        else
+          Panel.includes(:panel_type, :station).page(params[:page]).per(24).station_search(params[:station])
         end
-        @panels = Kaminari.paginate_array(panels.flatten).page(params[:page]).per(24)
       else
-        @panels = Panel.includes(:panel_type).includes(:station).page(params[:page]).per(24).station_search(params[:station])
+        Panel.includes(:panel_type, :station, station: :lines).page(params[:page])
       end
-    else
-      @panels = Panel.includes(:panel_type).includes(:station).includes(station: :lines).page(params[:page])
-    end
   end
 
   def show

@@ -49,7 +49,6 @@ class PanelsController < ApplicationController
     render json: dates
   end
 
-
   private
 
   def set_panel

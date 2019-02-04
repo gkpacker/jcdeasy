@@ -38,7 +38,6 @@ end
 
 group :development, :test do
   gem 'pry-byebug'
-  gem 'dotenv-rails'
   gem 'pry-rails'
   gem 'listen', '~> 3.0.5'
   gem 'spring'

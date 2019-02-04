@@ -1,7 +1,7 @@
 class CompaniesController < ApplicationController
-before_action :find_company, only: [:show, :edit, :update, :destroy]
-  def show
-  end
+  before_action :find_company, only: [:show, :edit, :update, :destroy]
+
+  def show; end
 
   def new
     @company = Company.new
@@ -19,8 +19,7 @@ before_action :find_company, only: [:show, :edit, :update, :destroy]
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @company.update(company_params)
@@ -31,14 +30,24 @@ before_action :find_company, only: [:show, :edit, :update, :destroy]
   end
 
   def destroy
-    @company = Company.find(params[:id])
     @company.archived!
   end
 
   private
 
   def company_params
-    params.require(:company).permit(:name, :cnpj, :street_number, :address1, :address2, :zip_code, :city, :state)
+    params
+      .require(:company)
+      .permit(
+        :name,
+        :cnpj,
+        :street_number,
+        :address1,
+        :address2,
+        :zip_code,
+        :city,
+        :state
+      )
   end
 
   def find_company

@@ -9,11 +9,9 @@ class User < ApplicationRecord
   validates :phone_number, :cpf, presence: true, uniqueness: true
   validate :check_cpf
 
-
   private
 
   def check_cpf
     errors.add(:cpf, "CPF inválido, digite apenas números") unless CPF.valid?(self.cpf)
   end
-
 end

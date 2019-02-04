@@ -15,6 +15,7 @@ gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
+gem "sprockets", ">= 3.7.2"
 
 gem 'devise'
 gem "cpf_cnpj"

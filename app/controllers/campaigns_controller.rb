@@ -8,12 +8,13 @@ class CampaignsController < ApplicationController
     @total_cents = 0
     @orders = []
     @campaign.orders.includes(:panel).includes(panel: :panel_type).each do |order|
-      @orders << { id: order.id,
-                  title: order.panel.panel_type.name,
-                  unit_price: order.price_cents,
-                  quantity: 1,
-                  tangible: true
-                  }
+      @orders << {
+        id: order.id,
+        title: order.panel.panel_type.name,
+        unit_price: order.price_cents,
+        quantity: 1,
+        tangible: true
+      }
       @total += order.price
       @total_cents += order.price_cents
     end
@@ -41,8 +42,7 @@ class CampaignsController < ApplicationController
   end
 
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @campaign.update(campaign_params)
@@ -53,12 +53,10 @@ class CampaignsController < ApplicationController
   end
 
   def paid
-    @campaign.paid = true
-    @campaign.save
+    @campaign.update_attributes(paid: true)
   end
 
   def destroy
-    @campaign = Campaign.find(params[:id])
     @campaign.archived!
   end
 
@@ -75,5 +73,4 @@ class CampaignsController < ApplicationController
   def campaign_params
     params.require(:campaign).permit(:title, :company_id, :paid)
   end
-
 end

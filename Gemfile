@@ -16,6 +16,7 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 gem "sprockets", ">= 3.7.2"
+gem "activejob", ">= 5.1.6.1"
 
 gem 'devise'
 gem "cpf_cnpj"
